@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mesopotamia</title>
+  <link rel="stylesheet" href="mesopotamia style.css">
+  <link rel="icon" href="images/mesopotamia-black.png" type="image/png">
+
+</head>
+<body>
+  <div class="background-circles">
+    <div class="glass-circle circle1"></div>
+    <div class="glass-circle circle2"></div>
+    <div class="glass-circle circle3"></div>
+    <div class="glass-circle circle4"></div>
+  </div>
+
+
+<header>
+  <a href="index.html" class="logo" target="_blank" rel="noopener noreferrer">History of City Planning</a>
+  <nav class="navigation">
+    <div class="back">
+      <a href="https://www.tiki-toki.com/timeline/entry/2157847/History-of-city-plannning/#vars!date=5057_BC-05-09_07:50:28" class="bttn" target="_blank" rel="noopener noreferrer">Explore Timeline</a>
+    </div>
+  </nav>
+</header>
+
+<div class="spacer"></div>
+
+<section class="main">
+  <div class="civilization">
+    <h1 class="main-title">Mesopotamia</h1>
+    <h2 class="info">Journey through the cradle of civilization, Where writing was born and the first cities flourished. Explore the magnificent settlements between the Tigris and Euphrates rivers that laid the fountain for human civilization. </h2>
+  </div>
+
+  <a href="#cities" class="explore">Explore Cities</a>
+
+  <div class="spacer"></div>
+
+  <div class="cities" id="cities">
+
+    <!-- Card 1 -->
+    <div class="city-card" id="eridu" onclick="openModal('modal-1')">
+     <img src="images/eridu.jpg" alt="">
+     <div class="name">Eridu</div>
+     <div class="date">5000 B.C.E</div>
+    </div>
+
+   <!-- Card 2 -->
+   <div class="city-card" id="ashur" onclick="openModal('modal-2')">
+    <img src="images/ashur.jpg" alt="">
+    <div class="name">Ashur</div>
+    <div class="date">2600 B.C.E</div>
+   </div>
+
+    <!-- Card 3 -->
+   <div class="city-card" id="nippur" onclick="openModal('modal-3')">
+    <img src="images/nippur.jpg" alt="">
+    <div class="name">Nippur</div>
+    <div class="date">4800 B.C.E</div>
+   </div>
+
+   <!-- Card 4 -->
+   <div class="city-card" id="nineveh" onclick="openModal('modal-4')">
+    <img src="images/nineveh.jpg" alt="">
+    <div class="name">Nineveh</div>
+    <div class="date">900 B.C.E</div>
+   </div>
+
+
+   
+  </div>
+
+  <!-- Modal 1 -->
+  <div id="modal-1" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-1')">×</span>
+      <h2 class="modal-title">Eridu</h2>
+      <div class="modal-columns">
+        <div class="modal-column">
+          <h3>Data</h3><hr />
+          <a href="https://mesopotamiaforarc236.my.canva.site/eridu" class="modal-button" target="_blank" rel="noopener noreferrer">Eridu Data</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div id="modal-2" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-2')">×</span>
+      <h2 class="modal-title">Ashur</h2>
+      <div class="modal-columns">
+        <div class="modal-column">
+          <h3>Data</h3><hr />
+          <a href="https://mesopotamiaforarc236.my.canva.site/ashur" class="modal-button" target="_blank" rel="noopener noreferrer">Ashur Data</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div id="modal-3" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-3')">×</span>
+      <h2 class="modal-title">Nippur</h2>
+      <div class="modal-columns">
+        <div class="modal-column"><h3>Data</h3><hr />
+          <a href="https://mesopotamiaforarc236.my.canva.site/nippur" class="modal-button" target="_blank" rel="noopener noreferrer">Nippur Data</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div id="modal-4" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal-4')">×</span>
+      <h2 class="modal-title">Nineveh</h2>
+      <div class="modal-columns">
+        <div class="modal-column"><h3>Data</h3><hr />
+          <a href="https://mesopotamiaforarc236.my.canva.site/copy-of-nineveh" class="modal-button" target="_blank" rel="noopener noreferrer">Nineveh Data</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+ 
+</section>
+
+  <footer>
+   <p>&copy; 2025 History of City Planning. All rights reserved.</p>
+
+   <p class="disclaimer">
+   This website is intended for educational and non-commercial purposes only. All images and external content are the property of their respective copyright holders. No copyright infringement is intended.
+   </p>
+
+   <p class="disclaimer">
+    If you are the copyright owner of any material appearing on this website and wish to have it removed or credited properly, please contact us and we will respond promptly.
+   </p>
+
+   <p class="made-by">
+    Developed by Mahmoud El-Sayed
+   </p>
+  </footer>
+
+
+
+<script>
+  function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+  document.body.style.overflow = "hidden";
+
+  // ✅ تحديث عنوان الصفحة بالهاش المناسب
+  const cityHashMap = {
+    "modal-1": "eridu",
+    "modal-2": "ashur",
+    "modal-3": "nippur",
+    "modal-4": "nineveh"
+  };
+  const hash = cityHashMap[id];
+  if (hash) {
+    history.pushState(null, null, `#${hash}`);
+  }
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+  document.body.style.overflow = "auto";
+
+  // ✅ إزالة الهاش من الـ URL بعد إغلاق المودال
+  history.pushState("", document.title, window.location.pathname + window.location.search);
+}
+
+window.addEventListener("click", function (e) {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach(modal => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+
+      // ✅ إزالة الهاش لو قفلت المودال عن طريق الضغط خارج المحتوى
+      history.pushState("", document.title, window.location.pathname + window.location.search);
+      document.body.style.overflow = "auto";
+    }
+  });
+});
+
+// ✅ لما الصفحة تفتح، لو في هاش نفتح المودال المناسب
+window.addEventListener("DOMContentLoaded", function () {
+  const hash = window.location.hash.substring(1); // يشيل #
+  if (hash) {
+    const modalMap = {
+      "eridu": "modal-1",
+      "ashur": "modal-2",
+      "nippur": "modal-3",
+      "nineveh": "modal-4"
+    };
+    if (modalMap[hash]) {
+      openModal(modalMap[hash]);
+    }
+  }
+});
+
+</script>
+
+</body>
+</html>

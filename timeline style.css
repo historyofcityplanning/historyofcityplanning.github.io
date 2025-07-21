@@ -1,0 +1,35 @@
+*{
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Outfit", sans-serif;
+}
+
+
+body {
+    background-color: #000;
+}
+
+header {
+    background-color: #111;
+    position: fixed;
+    padding: 12px 12px 12px 40px;
+    display: flex;
+    width: 100%;
+    color: #eeeeee;
+    align-items: center;
+}
+
+header a {
+    text-decoration: none;
+    color: #eeeeee;
+    margin-right: 12px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.sub {
+    font-weight: 500;
+    font-size: 18px;
+}

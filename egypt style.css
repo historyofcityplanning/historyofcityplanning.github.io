@@ -1,0 +1,602 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: "Outfit", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: black;
+  background-repeat: repeat-y;
+  background-size: 1768px;
+}
+
+header {
+  background-color: #111;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 30px;
+  margin-bottom: 100px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  text-decoration: none;
+  color: #eeeeee;
+  font-weight: 700;
+  font-size: 1.4em;
+}
+
+.navigation a {
+  text-decoration: none;
+}
+
+.back {
+  display: inline-block;
+  padding: 12px 20px;
+  background: transparent;
+  color: #eeeeee !important;
+  border: 1px solid #a8a8a890;
+  text-decoration: none;
+  border-radius: 24px;
+  font-weight: 700;
+  transition: all 0.4s ease-in-out;
+  font-size: 12px;
+}
+
+.back:hover {
+  transform: scale(1.05);
+}
+
+.bttn {
+  color: #eeeeee;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.spacer {
+  height: 120px;
+}
+
+.main {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 15px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.civilization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #eeeeee4a;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 80px 40px;
+  max-width: 50%;
+  text-align: center;
+  margin-bottom: 40px;
+  backdrop-filter: blur(2px);
+}
+
+.main-title {
+  font-size: 50px;
+  text-align: center;
+  font-weight: 600;
+  color: #eeee;
+  margin-bottom: 40px;
+}
+
+.info {
+  font-size: 18px;
+  color: #eeee;
+  text-align: center;
+  font-weight: 400;
+}
+
+.explore {
+  color: #eeee;
+  text-decoration: none;
+  border: 1px solid #eeee;
+  border-radius: 24px;
+  padding: 8px 16px;
+  background-color: #201f1faf;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 0.4s ease-in-out;
+}
+
+.explore:hover {
+  transform: scale(1.1);
+}
+
+.cities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.city-card {
+  position: relative;
+  display: inline-block;
+  width: 450px;
+  height: 350px;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.city-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: 20px;
+}
+
+.name {
+  position: absolute;
+  top: 270px;
+  left: 20px;
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+  padding: 0;
+  border-radius: 8px;
+  text-align: left;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.date {
+  position: absolute;
+  top: 310px;
+  left: 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  border-radius: 8px;
+  text-align: left;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+.city-card:hover {
+  transform: scale(1.05);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(8px);
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #1c1c1cec;
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 800px;
+  max-height: 600px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  border: solid 2px #2d2d2dec;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #eee;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.close:hover {
+  transform: scale(1.25);
+  color: red;
+
+}
+
+.modal-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.modal-columns {
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.modal-column {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.modal-column h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.modal-column hr {
+  border: none;
+  border-top: 1px solid #444;
+  margin-bottom: 20px;
+}
+
+.modal-button {
+  display: block;
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 16px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 500;
+  background: #c9982e5e;
+  border: 1px solid #c9982e9a;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-button:hover {
+  background: #c9982eab;
+  transform: scale(1.02);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+
+
+footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  width: 100%;
+}
+
+footer .disclaimer {
+  font-size: 13px;
+  color: #999;
+  margin-top: 10px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer .made-by {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-top: 10px;
+}
+
+
+
+
+/* ========== Tablet (max-width: 992px) ========== */
+@media (max-width: 992px) {
+
+  .civilization {
+    max-width: 90%;
+    padding: 60px 20px;
+  }
+
+  .main-title {
+    font-size: 48px;
+  }
+
+  .info {
+    font-size: 16px;
+  }
+
+  .cities {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 30px;
+  }
+
+  .city-card {
+    width: 90%;
+    height: 300px;
+    margin: auto;
+  }
+
+ .name {
+  font-size: 26px;
+  top: 220px;
+  left: 20px;
+  text-align: left;
+}
+
+.date {
+  font-size: 16px;
+  top: 260px;
+  left: 20px;
+  text-align: left;
+}
+
+
+  .modal-content {
+    max-width: 95%;
+    max-height: 90vh;
+    padding: 30px;
+  }
+
+  .modal-columns {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* ========== Mobile (max-width: 576px) ========== */
+@media (max-width: 576px) {
+
+  header {
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 20px;
+    height: 40px;
+  }
+
+  .logo {
+    font-size: 1em;
+    text-align: center;
+  }
+
+  .back {
+    font-size: 10px;
+    padding: 8px 12px;
+  }
+
+  .bttn {
+    font-size: 12px;
+  }
+
+  .civilization {
+    padding: 40px 15px;
+  }
+
+  .main-title {
+    font-size: 38px;
+  }
+
+  .info {
+    font-size: 15px;
+  }
+
+  .city-card {
+    width: 100%;
+    height: 240px;
+  }
+
+ .name {
+  font-size: 20px;
+  top: 180px;
+  left: 16px;
+  text-align: left;
+}
+
+.date {
+  font-size: 14px;
+  top: 210px;
+  left: 16px;
+  text-align: left;
+}
+
+
+  .modal-title {
+    font-size: 22px;
+    margin-bottom: 30px;
+  }
+
+  .modal-column h3 {
+    font-size: 18px;
+  }
+
+  .modal-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .close {
+    font-size: 32px;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+
+
+.background-circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.glass-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px); /* يعطي تأثير التوهج الناعم */
+  opacity: 0.5;
+  animation: float 12s ease-in-out infinite;
+}
+
+/* دائرة 1 */
+.circle1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 5%;
+  background: radial-gradient(circle at center, #C9972E, #e4ad36);
+}
+
+/* دائرة 2 */
+.circle2 {
+  width: 200px;
+  height: 200px;
+  top: 75%;
+  left: 20%;
+  background: radial-gradient(circle at center, #C9972E, #e4ad36);
+}
+
+/* دائرة 3 */
+.circle3 {
+  width: 250px;
+  height: 250px;
+  top: 15%;
+  right: 10%;
+  background: radial-gradient(circle at center, #C9972E, #e4ad36);
+}
+
+/* دائرة 4 */
+.circle4 {
+  width: 180px;
+  height: 180px;
+  bottom: 5%;
+  right: 30%;
+  background: radial-gradient(circle at center, #C9972E, #e4ad36);
+}
+
+/* أنيميشن طفو خفيف */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+
+
+/* موبايل - أقل من 600px */
+@media (max-width: 600px) {
+  .glass-circle {
+    filter: blur(50px); /* أقل blur */
+    opacity: 0.7;        /* تبقى أوضح */
+  }
+
+  .circle1 {
+    width: 160px;
+    height: 160px;
+    top: 6%;
+    left: 2%;
+  }
+
+  .circle2 {
+    width: 150px;
+    height: 150px;
+    top: 45%;
+    left: 5%;
+  }
+
+  .circle3 {
+    width: 150px;
+    height: 150px;
+    top: 30%;
+    right: 2%;
+  }
+
+  .circle4 {
+    width: 150px;
+    height: 150px;
+    bottom: 20%;
+    right: 10%;
+  }
+}
+
+/* تابلت - من 601px إلى 1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .glass-circle {
+    filter: blur(60px);
+    opacity: 0.4;
+  }
+
+  .circle1 {
+    width: 220px;
+    height: 220px;
+    top: 15%;
+    left: 3%;
+  }
+
+  .circle2 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 1%;
+  }
+
+  .circle3 {
+    width: 180px;
+    height: 180px;
+    top: 35%;
+    right: 4%;
+  }
+
+  .circle4 {
+    width: 180px;
+    height: 180px;
+    top: 70%;
+    right: 15%;
+  }
+}
+
+
+
+@media (min-width: 993px) and (max-width: 1100px) {
+  .city-card {
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .cities {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .civilization {
+    max-width: 90%;
+  }
+}
