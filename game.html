@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game</title>
+  <link rel="stylesheet" href="game style.css">
+</head>
+<body>
+
+  <header>
+    <div>
+      <a href="index.html" class="title" target="_blank" rel="noopener noreferrer">History of City Planning</a>
+      <span class="sub">Game Mode</span>
+    </div>
+  </header>
+
+  <div id="scoreboard">
+    <div id="score">Score: 0</div>
+    <div id="lives">Lives: 5</div>
+  </div>
+
+  <div class="game-container">
+    <div id="card-zone">
+      <div id="placed-cards" class="card-row"></div>
+      <div id="active-card" class="card"></div>
+      <div id="drop-zones" class="drop-row"></div>
+    </div>
+  </div>
+
+  <div id="leaderboard" style="display: none;">
+    <h2>Game Over</h2>
+    <p>Your Score: <span id="final-score">0</span></p>
+    <h3>Leaderboard</h3>
+    <ul id="leaderboard-list"></ul>
+    <button onclick="restartGame()">Play Again</button>
+  </div>
+
+  <script src="citiesGameData.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

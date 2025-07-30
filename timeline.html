@@ -1,0 +1,3623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Timeline</title>
+  <link rel="stylesheet" href="timeline style.css" />
+  <link rel="icon" href="images/compass.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
+<body>
+  <header>
+    <div>
+      <a href="index.html" class="title" target="_blank" rel="noopener noreferrer">
+        History of City Planning
+      </a>
+      <span class="sub">Timeline</span>
+    </div>
+    <div id="year-tracker">5000 BCE</div>
+  </header>
+
+  <div id="search-suggestions"></div>
+
+  <div class="filter-box">
+    <button class="close-btn">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </button>
+    <strong></strong>
+    <input type="search" id="filter-search" placeholder="Search City Or Year..." autocomplete="off" spellcheck="false" />
+    <div class="zoom-control">
+      <span class="zoom-label">Detail Level:</span>
+      <button id="zoom-out">-</button>
+      <span id="zoom-level-display">Level: 3</span>
+      <button id="zoom-in">+</button>
+    </div>
+
+
+
+    
+    <div class="check">
+      <label><input type="checkbox" id="filter-all" checked> All</label>
+      <label><input type="checkbox" data-civ="ancient-egypt" checked> Ancient Egypt</label>
+      <label><input type="checkbox" data-civ="Mesopotamia" checked> Mesopotamia</label>
+      <label><input type="checkbox" data-civ="indus-valley" checked> Indus Valley</label>
+      <label><input type="checkbox" data-civ="Mesoamerica" checked> Mesoamerica</label>
+      <label><input type="checkbox" data-civ="Ancient-China" checked> Ancient China</label>
+      <label><input type="checkbox" data-civ="Persian-Empire" checked> Persian Empire</label>
+      <label><input type="checkbox" data-civ="Ancient-Greece" checked> Ancient Greece</label>
+      <label><input type="checkbox" data-civ="Roman-Empire" checked> Roman Empire</label>
+      <label><input type="checkbox" data-civ="Medieval-Era" checked> Medieval Era</label>
+      <label><input type="checkbox" data-civ="Renaissance-Era" checked> Renaissance Era</label>
+    </div>
+    <button id="reset-position-btn">Reset Position</button>
+    <div class="scroll-buttons">    
+     <button id="scroll-start">|&lt;</button>   <!-- البداية -->
+     <button id="scroll-left">&lt;</button>    <!-- تحرك يسار -->
+     <button id="scroll-right">&gt;</button>   <!-- تحرك يمين -->
+     <button id="scroll-end">&gt;|</button>    <!-- النهاية -->
+    </div>
+
+    
+
+
+
+
+  </div>
+  <button id="open-filter-btn" class="open-filter-btn">
+    <i class="fa-solid fa-filter"></i>
+  </button>
+
+
+
+  <div class="mobile-scroll-buttons">
+    <button id="mobile-scroll-start">⏮</button>
+    <button id="mobile-scroll-left">◀</button>
+    <button id="mobile-scroll-right">▶</button>
+    <button id="mobile-scroll-end">⏭</button>
+  </div>
+
+  <div class="timeline-container">
+    
+    <div class="timeline-scroll">
+
+      <div class="era-markers"></div>
+
+      <!-- الحضارات والمدن زي ما انت كاتبهم -->
+      
+
+      <div class="civilization-row Mesopotamia">
+        <div class="label-column Mesopotamia">Mesopotamia</div>
+        <div class="timeline-line">
+          <div class="active-period Mesopotamia" style="left: 0.07%; width: 67%;">
+            <span>Mesopotamian Civilization</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Mesopotamia" style="left: 0.07%; width: 45.03%;">
+            <span>Early Mesopotamia</span>
+            <P>5000 : 2000 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Mesopotamia" style="left: 45.14%; width: 16.47%;">
+            <SPAn>Classical Mesopotamia</SPAn>
+            <P>2000 : 900 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Mesopotamia" style="left: 61.65%; width: 5.45%;">
+            <SPAn>Imperial Mesopotamia</SPAn>
+            <P>900 : 539 BCE</P>
+          </div> <!-- Level 2 -->
+
+
+
+          <!-- مدينة Eridu -->
+          <div class="city" data-modal="modal-eridu" style="left: 0.22%;">
+            <div class="city-inner">
+              <img src="images/eridu.jpg" alt="eridu">
+              <div class="city-text">
+                <div class="city-name">Eridu</div>
+                <div class="city-date">5000 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Nippur -->
+          <div class="city" data-modal="modal-nippur" style="left: 13.9%;">
+            <div class="city-inner">
+              <img src="images/nippur.jpg" alt="nippur">
+              <div class="city-text">
+                <div class="city-name">Nippur</div>
+                <div class="city-date">4080 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Ashur -->
+          <div class="city" data-modal="modal-ashur" style="left: 36.24%;">
+            <div class="city-inner">
+              <img src="images/ashur.jpg" alt="ashur">
+              <div class="city-text">
+                <div class="city-name">Ashur</div>
+                <div class="city-date">2600 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Nineveh -->
+          <div class="city" data-modal="modal-nineveh" style="left: 64.77%;">
+            <div class="city-inner">
+              <img src="images/nineveh.jpg" alt="nineveh">
+              <div class="city-text">
+                <div class="city-name">Nineveh</div>
+                <div class="city-date">700 BCE</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+      <div class="civilization-row indus-valley">
+        <div class="label-column indus-valley">Indus Valley</div>
+        <div class="timeline-line">
+          <div class="active-period indus-valley" style="left: -1%; width: 56.61%;">
+            <span>Indus Valley Civilization</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period indus-valley" style="left: -1%; width: 37.1%;">
+            <SPAn>Pre-Harappan</SPAn>
+            <P>7000 : 2600  BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period indus-valley" style="left: 36.15%; width: 10.45%;">
+            <SPAn>Mature Harappan</SPAn>
+            <P>2600 : 1900 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period indus-valley" style="left: 46.65%; width: 8.95%;">
+            <SPAn>Late Harappan</SPAn>
+            <P>1900 : 1300 BCE</P>
+          </div> <!-- Level 2 -->
+
+
+          <!-- مدينة Chanhu-Daro -->
+          <div class="city" data-modal="modal-chanhu-daro" style="left: 15.26%;">
+            <div class="city-inner">
+              <img src="images/chanhu-daro.jpg" alt="chanhu-daro">
+              <div class="city-text">
+                <div class="city-name">Chanhu-Daro</div>
+                <div class="city-date">4000 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- مدينة Kalibangan -->
+          <div class="city" data-modal="modal-kalibangan" style="left: 22.75%;">
+            <div class="city-inner">
+              <img src="images/kalibangan.jpg" alt="kalibangan">
+              <div class="city-text">
+                <div class="city-name">Kalibangan</div>
+                <div class="city-date">3500 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Dholavira -->
+          <div class="city" data-modal="modal-dholavira" style="left: 30.25%;">
+            <div class="city-inner">
+              <img src="images/dholavira.webp" alt="dholavira">
+              <div class="city-text">
+                <div class="city-name">Dholavira</div>
+                <div class="city-date">3000 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة kot-diji -->
+          <div class="city" data-modal="modal-kot-diji" style="left: 33.24%;">
+            <div class="city-inner">
+              <img src="images/kot diji.jpg" alt="kot-diji">
+              <div class="city-text">
+                <div class="city-name">Kot Diji</div>
+                <div class="city-date">2800 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة banawali -->
+          <div class="city" data-modal="modal-banawali" style="left: 36.24%;">
+            <div class="city-inner">
+              <img src="images/banawali.avif" alt="banawali">
+              <div class="city-text">
+                <div class="city-name">Banawali</div>
+                <div class="city-date">2600 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Lothal -->
+          <div class="city" data-modal="modal-lothal" style="left: 39.24%;">
+            <div class="city-inner">
+              <img src="images/lothal.jpg" alt="lothal">
+              <div class="city-text">
+                <div class="city-name">Lothal</div>
+                <div class="city-date">2400 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Surkotada -->
+          <div class="city" data-modal="modal-surkotada" style="left: 43.785%;">
+            <div class="city-inner">
+              <img src="images/surkotada.webp" alt="surkotada">
+              <div class="city-text">
+                <div class="city-name">Surkotada</div>
+                <div class="city-date">2100 - 1700 BCE</div>
+              </div>
+            </div>
+          </div>
+          
+          
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+
+
+      <div class="civilization-row ancient-egypt">
+        <div class="label-column egypt">Ancient Egypt</div>
+        <div class="timeline-line">
+          <div class="active-period ancient-egypt" style="left: 15.08%; width: 59.6%;">
+            <span>Egyptian Civilization</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period ancient-egypt" style="left: 30.1%; width: 12%;">
+            <span>Old Kingdom</span>
+            <P>3000:2200 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period ancient-egypt" style="left: 45.1%; width: 6%;">
+            <span>Middle Kingdom</span>
+            <P>2000:1600 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period ancient-egypt" style="left: 52.6%; width: 7.5%;">
+            <span>New Kingdom</span>
+            <P>1500:1000 BCE</P>
+          </div> <!-- Level 2 -->
+
+          <!-- مدينة Naqada -->
+          <div class="city" data-modal="modal-Naqada" style="left: 15.1%;">
+            <div class="city-inner">
+              <img src="images/naqada.jpg" alt="Naqada">
+              <div class="city-text">
+                <div class="city-name">Naqada</div>
+                <div class="city-date">4000 - 3500 BCE</div>
+              </div>
+            </div>
+          </div>
+          
+
+          <!-- مدينة Elkab (Nekheb) -->
+          <div class="city" data-modal="modal-elkab" style="left: 15.49%;">
+            <div class="city-inner">
+              <img src="images/elkab.jpg" alt="elkab">
+              <div class="city-text">
+                <div class="city-name">Elkab (Nekheb)</div>
+                <div class="city-date">4000 - 1070 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة memphis -->
+          <div class="city" data-modal="modal-memphis" style="left: 28.748%;">
+            <div class="city-inner">
+              <img src="images/memphis.jpg" alt="memphis">
+              <div class="city-text">
+                <div class="city-name">Memphis</div>
+                <div class="city-date">3100 BCE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- مدينة Abydos -->
+          <div class="city" data-modal="modal-Abydos" style="left: 31.9%;">
+            <div class="city-inner">
+              <img src="images/abydos.jpg" alt="abydos">
+              <div class="city-text">
+                <div class="city-name">Abydos</div>
+                <div class="city-date">2890 - 1292 BCE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- مدينة Kahun -->
+          <div class="city" data-modal="modal-kahun" style="left: 47.2%;">
+            <div class="city-inner">
+              <img src="images/kahun.jpg" alt="kahun">
+              <div class="city-text">
+                <div class="city-name">Kahun</div>
+                <div class="city-date">1878 - 1897 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة elephantine -->
+          <div class="city" data-modal="modal-elephantine" style="left: 49.04%;">
+            <div class="city-inner">
+              <img src="images/elephantine.jpg" alt="elephantine">
+              <div class="city-text">
+                <div class="city-name">Elephantine</div>
+                <div class="city-date">1750 - 1650 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Tanis -->
+          <div class="city" data-modal="modal-tanis" style="left: 51.8%;">
+            <div class="city-inner">
+              <img src="images/tanis.jpg" alt="Tanis">
+              <div class="city-text">
+                <div class="city-name">Tanis</div>
+                <div class="city-date">1550 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Tell-Basta -->
+          <div class="city" data-modal="modal-Tell-Basta" style="left: 52.12%;">
+            <div class="city-inner">
+              <img src="images/tell.jpg" alt="Tell-Basta">
+              <div class="city-text">
+                <div class="city-name">Tell-Basta</div>
+                <div class="city-date">1550-1069 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Tell El-Amarna -->
+          <div class="city" data-modal="modal-amarnah" style="left: 55%;">
+            <div class="city-inner">
+              <img src="images/amarnah.jpg" alt="Tell El-Amarnah">
+              <div class="city-text">
+                <div class="city-name">Tell El-Amarnah</div>
+                <div class="city-date">1353 - 1336 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Akhenaten -->
+          <div class="city" data-modal="modal-akhenaten" style="left: 55.39%;">
+            <div class="city-inner">
+              <img src="images/akhenaten.jpg" alt="akhenaten">
+              <div class="city-text">
+                <div class="city-name">Akhenaten</div>
+                <div class="city-date">1346 - 1332 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Habu -->
+          <div class="city" data-modal="modal-habu" style="left: 57.35%;">
+            <div class="city-inner">
+              <img src="images/habu.jpg" alt="habu">
+              <div class="city-text">
+                <div class="city-name">Habu</div>
+                <div class="city-date">1186 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Pi-Ramesses -->
+          <div class="city" data-modal="modal-ramesses" style="left: 59.54%;">
+            <div class="city-inner">
+              <img src="images/ramesses.jpg" alt="ramesses">
+              <div class="city-text">
+                <div class="city-name">Pi-Ramesses</div>
+                <div class="city-date">1050 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+
+
+      <div class="civilization-row Ancient-Greece">
+        <div class="label-column Ancient-Greece">Ancient Greece</div>
+        <div class="timeline-line">
+          <div class="active-period Ancient-Greece" style="left: 45.1%; width: 29.58%;">
+            <span>Ancient Greece</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Ancient-Greece" style="left: 63.14%; width: 4.7%;">
+            <SPAn>Archaic Greece</SPAn>
+            <P>800 : 480 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Ancient-Greece" style="left: 67.85%; width: 3.12%;">
+            <SPAn>Classical Greece</SPAn>
+            <P>480 : 323 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Ancient-Greece" style="left: 71%; width: 3.7%;">
+            <SPAn>Hellenistic Greece</SPAn>
+            <P>323 : 31 BCE</P>
+          </div> <!-- Level 2 -->
+
+
+          <!-- مدينة Mycenae -->
+          <div class="city" data-modal="modal-mycenae" style="left: 45.25%;">
+            <div class="city-inner">
+              <img src="images/mycenae.jpg" alt="ramesses">
+              <div class="city-text">
+                <div class="city-name">Mycenae</div>
+                <div class="city-date">2000 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Ephesus -->
+          <div class="city" data-modal="modal-ephesus" style="left: 60.87%;">
+            <div class="city-inner">
+              <img src="images/ephesus.jpg" alt="ephesus">
+              <div class="city-text">
+                <div class="city-name">Ephesus</div>
+                <div class="city-date">10th Century BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Sparta -->
+          <div class="city" data-modal="modal-sparta" style="left: 61.75%;">
+            <div class="city-inner">
+              <img src="images/sparta.webp" alt="sparta">
+              <div class="city-text">
+                <div class="city-name">Sparta</div>
+                <div class="city-date">900 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Corinth -->
+          <div class="city" data-modal="modal-corinth" style="left: 64.03%;">
+            <div class="city-inner">
+              <img src="images/corinth.jpg" alt="corinth">
+              <div class="city-text">
+                <div class="city-name">Corinth</div>
+                <div class="city-date">747 BCE</div>
+              </div>
+            </div>
+          </div>
+        
+
+
+          <!-- مدينة Olynthus -->
+          <div class="city" data-modal="modal-olyntuhs" style="left: 65.53%;">
+            <div class="city-inner">
+              <img src="images/olyntuhs.jpg" alt="olyntuhs">
+              <div class="city-text">
+                <div class="city-name">Olynthus</div>
+                <div class="city-date">650 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Delphi -->
+          <div class="city" data-modal="modal-delphi" style="left: 66.58%;">
+            <div class="city-inner">
+              <img src="images/delphi.JPG" alt="delphi">
+              <div class="city-text">
+                <div class="city-name">Delphi</div>
+                <div class="city-date">580 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Athens -->
+          <div class="city" data-modal="modal-athens" style="left: 68.06%;">
+            <div class="city-inner">
+              <img src="images/athens.jpg" alt="athens">
+              <div class="city-text">
+                <div class="city-name">Athens</div>
+                <div class="city-date">480 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Rhodes -->
+          <div class="city" data-modal="modal-rhodes" style="left: 69.32%;">
+            <div class="city-inner">
+              <img src="images/rhodes.jpg" alt="rhodes">
+              <div class="city-text">
+                <div class="city-name">Rhodes</div>
+                <div class="city-date">408 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Ancient Thebes -->
+          <div class="city" data-modal="modal-thebes" style="left: 69.75%;">
+            <div class="city-inner">
+              <img src="images/thebes.webp" alt="thebes">
+              <div class="city-text">
+                <div class="city-name">Ancient Thebes</div>
+                <div class="city-date">371 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Delos -->
+          <div class="city" data-modal="modal-delos" style="left: 70.55%;">
+            <div class="city-inner">
+              <img src="images/delos.jpg" alt="delos">
+              <div class="city-text">
+                <div class="city-name">Delos</div>
+                <div class="city-date">314 BCE</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+
+
+      <div class="civilization-row Persian-Empire">
+        <div class="label-column Persian-Empire">Persian Empire</div>
+        <div class="timeline-line">
+          <div class="active-period Persian-Empire" style="left: 66.88%; width: 18.03%;">
+            <span>Persian Empire</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Persian-Empire" style="left: 66.88%; width: 3.4%;">
+            <SPAn>Achaemenid Empire</SPAn>
+            <P>550 : 330 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Persian-Empire" style="left: 71.4%; width: 7.095%;">
+            <SPAn>Parthian Empire</SPAn>
+            <P>247 BCE : 224 CE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Persian-Empire" style="left: 78.57%; width: 6.34%;">
+            <SPAn>Sasanian Empire</SPAn>
+            <P>224 : 651 CE</P>
+          </div> <!-- Level 2 -->
+
+
+          <!-- مدينة Ecbatana -->
+          <div class="city" data-modal="modal-ecbatana" style="left: 65.13%;">
+            <div class="city-inner">
+              <img src="images/ecbatana.jpg" alt="ecbatana">
+              <div class="city-text">
+                <div class="city-name">Ecbatana</div>
+                <div class="city-date">678 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Passagardae -->
+          <div class="city" data-modal="modal-passagardae" style="left: 66.85%;">
+            <div class="city-inner">
+              <img src="images/passagardae.jpg" alt="passagardae">
+              <div class="city-text">
+                <div class="city-name">Passagardae</div>
+                <div class="city-date">550 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Susa -->
+          <div class="city" data-modal="modal-susa" style="left: 67.18%;">
+            <div class="city-inner">
+              <img src="images/susa.jpg" alt="susa">
+              <div class="city-text">
+                <div class="city-name">Susa</div>
+                <div class="city-date">540 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Persepolis -->
+          <div class="city" data-modal="modal-persepolis" style="left: 67.5%;">
+            <div class="city-inner">
+              <img src="images/persepolis.jpg" alt="delos">
+              <div class="city-text">
+                <div class="city-name">Persepolis</div>
+                <div class="city-date">518 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Nisa -->
+          <div class="city" data-modal="modal-nisa" style="left: 71.58%;">
+            <div class="city-inner">
+              <img src="images/nisa.webp" alt="nisa">
+              <div class="city-text">
+                <div class="city-name">Nisa</div>
+                <div class="city-date">247 - 211 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Ctesiphon -->
+          <div class="city" data-modal="modal-ctesiphon" style="left: 73.45%;">
+            <div class="city-inner">
+              <img src="images/ctesiphon.jpg" alt="ctesiphon">
+              <div class="city-text">
+                <div class="city-name">Ctesiphon</div>
+                <div class="city-date">129 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة ardashir -->
+          <div class="city" data-modal="modal-ardashir" style="left: 78.5%;">
+            <div class="city-inner">
+              <img src="images/ardashir.jpg" alt="ardashir">
+              <div class="city-text">
+                <div class="city-name">Ardashir Khurrah</div>
+                <div class="city-date">224 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Gundeshapur -->
+          <div class="city" data-modal="modal-gundeshapur" style="left: 78.9%;">
+            <div class="city-inner">
+              <img src="images/gundeshapur.jpg" alt="gundeshapur">
+              <div class="city-text">
+                <div class="city-name">Gundeshapur</div>
+                <div class="city-date">256 - 260 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Bishapur -->
+          <div class="city" data-modal="modal-bishapur" style="left: 79.25%;">
+            <div class="city-inner">
+              <img src="images/bishapur.jpg" alt="bishapur">
+              <div class="city-text">
+                <div class="city-name">Bishapur</div>
+                <div class="city-date">266 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+
+
+
+
+      <div class="civilization-row Ancient-China">
+        <div class="label-column Ancient-China">Ancient China</div>
+        <div class="timeline-line">
+          <div class="active-period Ancient-China" style="left: 44.05%; width: 34.4%;">
+            <span>Ancient China</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Ancient-China" style="left: 44.05%; width: 7.05%;">
+            <SPAn>Xia Dynasty</SPAn>
+            <P>2070 : 1600 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Ancient-China" style="left: 51.15%; width: 8.2%;">
+            <SPAn>Shang Dynasty</SPAn>
+            <P>1600 : 1046 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Ancient-China" style="left: 59.4%; width: 11.97%;">
+            <SPAn>Zhou Dynasty</SPAn>
+            <P>1046 : 256 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Ancient-China" style="left: 72.1%; width: 6.4%;">
+            <SPAn>Han Dynasty</SPAn>
+            <P>206 BCE : 220 CE</P>
+          </div> <!-- Level 2 -->
+
+
+
+          <!-- مدينة Nanguan -->
+          <div class="city" data-modal="modal-nanguan" style="left: 51.29%;">
+            <div class="city-inner">
+              <img src="images/nanguan.jpg" alt="nanguan">
+              <div class="city-text">
+                <div class="city-name">Nanguan</div>
+                <div class="city-date">1600 - 1046 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Yinxu -->
+          <div class="city" data-modal="modal-yinxu" style="left: 55.6%;">
+            <div class="city-inner">
+              <img src="images/yinxu.jpg" alt="yinxu">
+              <div class="city-text">
+                <div class="city-name">Yinxu</div>
+                <div class="city-date">1300 - 1026 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Zheng -->
+          <div class="city" data-modal="modal-zheng" style="left: 55.96%;">
+            <div class="city-inner">
+              <img src="images/zheng.jpg" alt="zheng">
+              <div class="city-text">
+                <div class="city-name">Zheng</div>
+                <div class="city-date">1300 - 1026 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Linzi -->
+          <div class="city" data-modal="modal-linzi" style="left: 59.6%;">
+            <div class="city-inner">
+              <img src="images/linzi.jpg" alt="linzi">
+              <div class="city-text">
+                <div class="city-name">Linzi</div>
+                <div class="city-date">1046 - 1043 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Shandan -->
+          <div class="city" data-modal="modal-shandan" style="left: 68.5%;">
+            <div class="city-inner">
+              <img src="images/shandan.jpg" alt="shandan">
+              <div class="city-text">
+                <div class="city-name">Shandan</div>
+                <div class="city-date">457 - 221 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <!-- مدينة Chang'an -->
+          <div class="city" data-modal="modal-chang'an" style="left: 72.28%;">
+            <div class="city-inner">
+              <img src="images/chang'an.webp" alt="chang'an">
+              <div class="city-text">
+                <div class="city-name">Chang'an</div>
+                <div class="city-date">202 BCE - 9 CE</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="civilization-row Mesoamerica">
+        <div class="label-column Mesoamerica">Mesoamerica</div>
+        <div class="timeline-line">
+          <div class="active-period Mesoamerica" style="left: 52.61%; width: 45.4%;">
+            <span>Mesoamerican Civilization</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Mesoamerica" style="left: 52.6%; width: 16.5%;">
+            <SPAn>Olmec Period</SPAn>
+            <P>1500 : 400 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Mesoamerica" style="left: 78.9%; width: 9.75%;">
+            <SPAn>Maya Classic</SPAn>
+            <P>250 : 900 CE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Mesoamerica" style="left: 94.65%; width: 3.3%;">
+            <SPAn>Aztec Empire</SPAn>
+            <P>1300 : 1521 CE</P>
+          </div> <!-- Level 2 -->
+
+
+          <!-- مدينة Monte Albán -->
+          <div class="city" data-modal="modal-monte" style="left: 67.82%;">
+            <div class="city-inner">
+              <img src="images/monte alban.webp" alt="monte">
+              <div class="city-text">
+                <div class="city-name">Monte Albán</div>
+                <div class="city-date">500 BCE - 750 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Teotihuacan -->
+          <div class="city" data-modal="modal-teotihuacan" style="left: 73.83%;">
+            <div class="city-inner">
+              <img src="images/teotihuacan.jpg" alt="teotihuacan">
+              <div class="city-text">
+                <div class="city-name">Teotihuacan</div>
+                <div class="city-date">100 BCE - 550 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Palenque -->
+          <div class="city" data-modal="modal-palenque" style="left: 78.32%;">
+            <div class="city-inner">
+              <img src="images/palenque.webp" alt="palenque">
+              <div class="city-text">
+                <div class="city-name">Palenque</div>
+                <div class="city-date">200 CE - 800 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Tikal -->
+          <div class="city" data-modal="modal-tikal" style="left: 79.05%;">
+            <div class="city-inner">
+              <img src="images/tikal.jpg" alt="tikal">
+              <div class="city-text">
+                <div class="city-name">Tikal</div>
+                <div class="city-date">250 - 900 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Chichen Itza -->
+          <div class="city" data-modal="modal-Chichen-Itza" style="left: 82.82%;">
+            <div class="city-inner">
+              <img src="images/Chichen Itza.jpg" alt="Chichen-Itza">
+              <div class="city-text">
+                <div class="city-name">Chichen Itza</div>
+                <div class="city-date">500 - 1200 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+      
+      
+      
+      <div class="civilization-row Roman-Empire">
+        <div class="label-column Roman-Empire">Roman Empire</div>
+        <div class="timeline-line">
+          <div class="active-period Roman-Empire" style="left: 63.82%; width: 18.45%;">
+            <span>Roman Empire</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Roman-Empire" style="left: 63.85%; width: 3.82%;">
+            <SPAn>Roman Kingdom</SPAn>
+            <P>753 : 509 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Roman-Empire" style="left: 67.75%; width: 7%;">
+            <SPAn>Roman Republic</SPAn>
+            <P>509 : 27 BCE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Roman-Empire" style="left: 74.8%; width: 7.47%;">
+            <SPAn>Roman Empire</SPAn>
+            <P>27 BCE : 476 CE</P>
+          </div> <!-- Level 2 -->
+
+
+
+          <!-- مدينة Ostia -->
+          <div class="city" data-modal="modal-ostia" style="left: 66%;">
+            <div class="city-inner">
+              <img src="images/ostia.jpg" alt="ostia">
+              <div class="city-text">
+                <div class="city-name">Ostia</div>
+                <div class="city-date">620 - 476 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Minturnae -->
+          <div class="city" data-modal="modal-minturnae" style="left: 70.8%;">
+            <div class="city-inner">
+              <img src="images/minturnae.jpg" alt="minturnae">
+              <div class="city-text">
+                <div class="city-name">Minturnae</div>
+                <div class="city-date">296 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة tarraco -->
+          <div class="city" data-modal="modal-tarraco" style="left: 72%;">
+            <div class="city-inner">
+              <img src="images/tarraco.jpg" alt="tarraco">
+              <div class="city-text">
+                <div class="city-name">Tarraco</div>
+                <div class="city-date">218 - 206 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Lucca -->
+          <div class="city" data-modal="modal-lucca" style="left: 72.4%;">
+            <div class="city-inner">
+              <img src="images/lucca.jpg" alt="lucca">
+              <div class="city-text">
+                <div class="city-name">Lucca</div>
+                <div class="city-date">180 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Thessalonica -->
+          <div class="city" data-modal="modal-thessalonica" style="left: 72.85%;">
+            <div class="city-inner">
+              <img src="images/thessalonica.jpg" alt="thessalonica">
+              <div class="city-text">
+                <div class="city-name">Thessalonica</div>
+                <div class="city-date">168 BCE - 330 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Ephesus -->
+          <div class="city" data-modal="modal-ephesus-2" style="left: 73.4%;">
+            <div class="city-inner">
+              <img src="images/ephesus-2.jpg" alt="ephesus-2">
+              <div class="city-text">
+                <div class="city-name">Ephesus</div>
+                <div class="city-date">129 BCE - 395 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Herculaneum -->
+          <div class="city" data-modal="modal-herculaneum" style="left: 73.9%;">
+            <div class="city-inner">
+              <img src="images/herculaneum.jpg" alt="herculaneum">
+              <div class="city-text">
+                <div class="city-name">Herculaneum</div>
+                <div class="city-date">89 BCE - 79 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Antioch -->
+          <div class="city" data-modal="modal-antioch" style="left: 74.27%;">
+            <div class="city-inner">
+              <img src="images/antioch.jpg" alt="antioch">
+              <div class="city-text">
+                <div class="city-name">Antioch</div>
+                <div class="city-date">64 BCE - 637 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Carthage -->
+          <div class="city" data-modal="modal-carthage" style="left: 74.65%;">
+            <div class="city-inner">
+              <img src="images/carthage.jpg" alt="carthage">
+              <div class="city-text">
+                <div class="city-name">Carthage</div>
+                <div class="city-date">44 BCE - 698 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Turin -->
+          <div class="city" data-modal="modal-turin" style="left: 75.02%;">
+            <div class="city-inner">
+              <img src="images/turin.jpg" alt="turin">
+              <div class="city-text">
+                <div class="city-name">Turin</div>
+                <div class="city-date">28 BCE - 476 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Aosta -->
+          <div class="city" data-modal="modal-aosta" style="left: 75.34%;">
+            <div class="city-inner">
+              <img src="images/aosta.avif" alt="aosta">
+              <div class="city-text">
+                <div class="city-name">Aosta</div>
+                <div class="city-date">25 BCE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Trier -->
+          <div class="city" data-modal="modal-trier" style="left: 75.66%;">
+            <div class="city-inner">
+              <img src="images/trier.webp" alt="trier">
+              <div class="city-text">
+                <div class="city-name">Trier</div>
+                <div class="city-date">16 BCE - 476 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Londinium -->
+          <div class="city" data-modal="modal-londinium" style="left: 76.02%;">
+            <div class="city-inner">
+              <img src="images/londinium.webp" alt="londinium">
+              <div class="city-text">
+                <div class="city-name">Londinium</div>
+                <div class="city-date">47 - 410 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Timgad -->
+          <div class="city" data-modal="modal-timgad" style="left: 76.8%;">
+            <div class="city-inner">
+              <img src="images/timgad.jpeg" alt="timgad">
+              <div class="city-text">
+                <div class="city-name">Timgad</div>
+                <div class="city-date">100 - 700 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+      <div class="civilization-row Medieval-Era">
+        <div class="label-column Medieval-Era">Medieval Era</div>
+        <div class="timeline-line">
+          <div class="active-period Medieval-Era" style="left: 82.27%; width: 15.39%;">
+            <span>Medieval Era</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Medieval-Era" style="left: 82.27%; width: 7.82%;">
+            <SPAn>Early Middle Ages</SPAn>
+            <P>476 : 1000 CE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Medieval-Era" style="left: 90.15%; width: 4.45%;">
+            <SPAn>High Middle Ages</SPAn>
+            <P>1000 : 1300 CE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Medieval-Era" style="left: 94.65%; width: 3%;">
+            <SPAn>Late Middle Ages</SPAn>
+            <P>1300 : 1500 CE</P>
+          </div> <!-- Level 2 -->
+
+
+
+          <!-- مدينة cologne -->
+          <div class="city" data-modal="modal-cologne" style="left: 81.9%;">
+            <div class="city-inner">
+              <img src="images/cologne.webp" alt="cologne">
+              <div class="city-text">
+                <div class="city-name">Cologne</div>
+                <div class="city-date">5th Century</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Arras -->
+          <div class="city" data-modal="modal-arras" style="left: 82.75%;">
+            <div class="city-inner">
+              <img src="images/arras.jpg" alt="arras">
+              <div class="city-text">
+                <div class="city-name">Arras</div>
+                <div class="city-date">499 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة dubrovnik -->
+          <div class="city" data-modal="modal-dubrovnik" style="left: 84.73%;">
+            <div class="city-inner">
+              <img src="images/dubrovnik.jpg" alt="dubrovnik">
+              <div class="city-text">
+                <div class="city-name">Dubrovnik</div>
+                <div class="city-date">7th Century</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Edinburgh -->
+          <div class="city" data-modal="modal-edinburgh" style="left: 85.06%;">
+            <div class="city-inner">
+              <img src="images/edinburgh.jpg" alt="edinburgh">
+              <div class="city-text">
+                <div class="city-name">Edinburgh</div>
+                <div class="city-date">7th Century</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Mont Saint Michel -->
+          <div class="city" data-modal="modal-mont" style="left: 86.35%;">
+            <div class="city-inner">
+              <img src="images/mont.jpg" alt="mont">
+              <div class="city-text">
+                <div class="city-name">Mont Saint Michel</div>
+                <div class="city-date">8th Century</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Arnhem -->
+          <div class="city" data-modal="modal-arnhem" style="left: 88.75%;">
+            <div class="city-inner">
+              <img src="images/arnhem.jpg" alt="arnhem">
+              <div class="city-text">
+                <div class="city-name">Arnhem</div>
+                <div class="city-date">893 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Colmar -->
+          <div class="city" data-modal="modal-colmar" style="left: 87.83%;">
+            <div class="city-inner">
+              <img src="images/colmar.webp" alt="colmar">
+              <div class="city-text">
+                <div class="city-name">Colmar</div>
+                <div class="city-date">9th Century</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Avila -->
+          <div class="city" data-modal="modal-avila" style="left: 91.7%;">
+            <div class="city-inner">
+              <img src="images/avila.jpg" alt="avila">
+              <div class="city-text">
+                <div class="city-name">Avila</div>
+                <div class="city-date">1090 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة San Gimignano -->
+          <div class="city" data-modal="modal-san" style="left: 92.05%;">
+            <div class="city-inner">
+              <img src="images/san.webp" alt="san">
+              <div class="city-text">
+                <div class="city-name">San Gimignano</div>
+                <div class="city-date">1119 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Lübeck -->
+          <div class="city" data-modal="modal-lubeck" style="left: 92.6%;">
+            <div class="city-inner">
+              <img src="images/lubeck.avif" alt="lubeck">
+              <div class="city-text">
+                <div class="city-name">Lübeck</div>
+                <div class="city-date">1159 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Cesky Krumlov -->
+          <div class="city" data-modal="modal-cesky" style="left: 93.7%;">
+            <div class="city-inner">
+              <img src="images/cesky.jpg" alt="cesky">
+              <div class="city-text">
+                <div class="city-name">Cesky Krumlov</div>
+                <div class="city-date">13th Century</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Kraków -->
+          <div class="city" data-modal="modal-krakow" style="left: 94.05%;">
+            <div class="city-inner">
+              <img src="images/krakow.jpg" alt="krakow">
+              <div class="city-text">
+                <div class="city-name">Kraków</div>
+                <div class="city-date">1257 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Carcassonne -->
+          <div class="city" data-modal="modal-carcassonne" style="left: 94.38%;">
+            <div class="city-inner">
+              <img src="images/carcassonne.webp" alt="carcassonne">
+              <div class="city-text">
+                <div class="city-name">Carcassonne</div>
+                <div class="city-date">1266 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          
+
+
+
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+      <div class="civilization-row Renaissance-Era">
+        <div class="label-column Renaissance-Era">Renaissance Era</div>
+        <div class="timeline-line">
+          <div class="active-period Renaissance-Era" style="left: 94.65%; width: 4.5%;">
+            <span>Renaissance Era</span>
+          </div> <!-- Level 1 -->
+          <div class="era-period Renaissance-Era" style="left: 94.65%; width: 2.97%;">
+            <SPAn>Early Renaissance</SPAn>
+            <P>1300 : 1500 CE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Renaissance-Era" style="left: 97.66%; width: 1.47%;">
+            <SPAn>High + Late Renaissance</SPAn>
+            <P>1500 : 1600 CE</P>
+          </div> <!-- Level 2 -->
+          <div class="era-period Renaissance-Era" style="left: 99.15%; width: 0.85%;">
+            <SPAn>Transition to Modern Era</SPAn>
+            <P>1600 : 1750 CE (Begining of Modern Era)</P>
+          </div> <!-- Level 2 -->
+
+
+
+          <!-- مدينة Rome -->
+          <div class="city" data-modal="modal-rome" style="left: 95.36%;">
+            <div class="city-inner">
+              <img src="images/rome.webp" alt="rome">
+              <div class="city-text">
+                <div class="city-name">Rome</div>
+                <div class="city-date">1420 - 1450 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Urbino -->
+          <div class="city" data-modal="modal-Urbino" style="left: 95.68%;">
+            <div class="city-inner">
+              <img src="images/Urbino.webp" alt="Urbino">
+              <div class="city-text">
+                <div class="city-name">Urbino</div>
+                <div class="city-date">1443 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Ferrara -->
+          <div class="city" data-modal="modal-ferrara" style="left: 96%;">
+            <div class="city-inner">
+              <img src="images/ferrara.webp" alt="ferrara">
+              <div class="city-text">
+                <div class="city-name">Ferrara</div>
+                <div class="city-date">1445 - 1460 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Naples -->
+          <div class="city" data-modal="modal-naples" style="left: 96.32%;">
+            <div class="city-inner">
+              <img src="images/naples.jpeg" alt="naples">
+              <div class="city-text">
+                <div class="city-name">Naples</div>
+                <div class="city-date">1450 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Milan -->
+          <div class="city" data-modal="modal-milan" style="left: 96.64%;">
+            <div class="city-inner">
+              <img src="images/milan.webp" alt="milan">
+              <div class="city-text">
+                <div class="city-name">Milan</div>
+                <div class="city-date">1450 - 1480 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Genoa -->
+          <div class="city" data-modal="modal-genoa" style="left: 97%;">
+            <div class="city-inner">
+              <img src="images/genoa.jpg" alt="genoa">
+              <div class="city-text">
+                <div class="city-name">Genoa</div>
+                <div class="city-date">1450 - 1500 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Mantua -->
+          <div class="city" data-modal="modal-Mantua" style="left: 97.36%;">
+            <div class="city-inner">
+              <img src="images/Mantua.jpg" alt="Mantua">
+              <div class="city-text">
+                <div class="city-name">Mantua</div>
+                <div class="city-date">1459 - 1470 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Rimini -->
+          <div class="city" data-modal="modal-rimini" style="left: 97.68%;">
+            <div class="city-inner">
+              <img src="images/rimini.jpg" alt="rimini">
+              <div class="city-text">
+                <div class="city-name">Rimini</div>
+                <div class="city-date">1460 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Lyon -->
+          <div class="city" data-modal="modal-lyon" style="left: 98%;">
+            <div class="city-inner">
+              <img src="images/lyon.jpg" alt="lyon">
+              <div class="city-text">
+                <div class="city-name">Lyon</div>
+                <div class="city-date">1470 - 1500 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Nuremberg -->
+          <div class="city" data-modal="modal-nuremberg" style="left: 98.35%;">
+            <div class="city-inner">
+              <img src="images/nuremberg.webp" alt="nuremberg">
+              <div class="city-text">
+                <div class="city-name">Nuremberg</div>
+                <div class="city-date">1470 - 1525 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة London -->
+          <div class="city" data-modal="modal-london" style="left: 98.7%;">
+            <div class="city-inner">
+              <img src="images/london.webp" alt="london">
+              <div class="city-text">
+                <div class="city-name">London</div>
+                <div class="city-date">1520 - 1550 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <!-- مدينة Toledo -->
+          <div class="city" data-modal="modal-toledo" style="left: 99.05%;">
+            <div class="city-inner">
+              <img src="images/toledo.JPG" alt="toledo">
+              <div class="city-text">
+                <div class="city-name">Toledo</div>
+                <div class="city-date">1540 - 1550 CE</div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- مدينة Palmanova -->
+          <div class="city" data-modal="modal-palmanova" style="left: 99.4%;">
+            <div class="city-inner">
+              <img src="images/palmanova.jpg" alt="palmanova">
+              <div class="city-text">
+                <div class="city-name">Palmanova</div>
+                <div class="city-date">1593 CE</div>
+              </div>
+            </div>
+          </div>
+
+        
+          <div class="years-line"></div>
+          <div class="years-ticks"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div id="intro-card" class="intro-card">
+    <div class="intro-content">
+      <button id="close-btn">✕</button>
+      <h1>History of City Planning</h1>
+      <h2>This timeline shows the history of how cities were planned and built in ancient civilizations. It compares different civilizations to help us see what was happening in other parts of the world when a city appeared in one place. By looking at these moments side by side, we can better understand how city planning changed over time and how different cultures influenced each other. <br> For better exprience use it on a desktop computer or laptop.</h2>
+      <p>By: History Of City Planning Team </p>
+      <span>Developed By: Mahmoud El-Sayed</span>
+      <div class="intro-buttons">
+        <button id="continue-btn">Continue</button>
+      </div>
+    </div>
+  </div>
+
+
+
+            <!---egypt-->
+
+
+
+  <!-- Modal Naqada -->
+  <div id="modal-Naqada" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/naqada.jpg" alt="Naqada">
+        <div class="city-modal-text">
+          <h2>Naqada (4000 - 3500 BCE)</h2>
+          <p>known for its advanced pottery, early hieroglyphic symbols, and the societal foundations that led to the rise of the Pharaonic civilization.</p>
+          <a href="https://historyofcityplanning.github.io/egypt.html#naqada" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Elkab (Nekheb) -->
+  <div id="modal-elkab" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/elkab.jpg" alt="elkab">
+        <div class="city-modal-text">
+          <h2>Elkab (Nekheb) (4000 - 1070 BCE)</h2>
+          <p>An ancient walled city in Upper Egypt, sacred to the vulture goddess Nekhbet, and dates back to around 3500 BCE.</p>
+          <a href="https://historyofcityplanning.github.io/egypt.html#el-kab" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Memphis -->
+  <div id="modal-memphis" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/memphis.jpg" alt="Memphis">
+        <div class="city-modal-text">
+         <h2>Memphis (3100 BC)</h2>
+         <p>The first capital of unified Egypt around 3100 BCE, serving as a political and religious center near the Nile Delta.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#memphis" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Abydos -->
+  <div id="modal-Abydos" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/abydos.jpg" alt="Abydos">
+        <div class="city-modal-text">
+         <h2>Abydos (2890 - 1292 BCE)</h2>
+         <p>Abydos was one of Egypt's oldest cities, known as a major religious center and the burial place of early pharaohs around 3100 BCE.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#abydos" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Kahun -->
+  <div id="modal-kahun" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/kahun.jpg" alt="Kahun">
+        <div class="city-modal-text">
+         <h2>Kahun (1878-1897 BC)</h2>
+         <p>Kahun was a workers' village built around 1895 BCE near the pyramid of Pharaoh Senusret II, known for its well-planned layout and early examples of urban planning.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#kahun" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal elephantine -->
+  <div id="modal-elephantine" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/elephantine.jpg" alt="elephantine">
+        <div class="city-modal-text">
+         <h2>Elephantine Island (1750 - 1650 BCE)</h2>
+         <p>Elephantine is an ancient city-island near Aswan, Egypt, inhabited since 3000 BCE, serving as a key trading post and military outpost at Egypt’s southern border.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#elephantine" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Tanis -->
+  <div id="modal-tanis" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/tanis.jpg" alt="Tanis">
+        <div class="city-modal-text">
+         <h2>Tanis (1550 BCE)</h2>
+         <p>Tanis was a major ancient Egyptian city in the Nile Delta, flourishing during the Third Intermediate Period (c. 1070–664 BCE), known for its grand temples and royal tombs of the 21st and 22nd Dynasties.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#tanis" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Tell-Basta -->
+  <div id="modal-Tell-Basta" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/tell.jpg" alt="Tell-Basta">
+        <div class="city-modal-text">
+         <h2>Tell Basta (1500 - 1069 BCE)</h2>
+         <p>known as Per-Bastet in ancient Egypt, was a prominent city in the Nile Delta, famous as the cult center of the cat goddess Bastet, flourishing during the Late Period (c. 700–500 BCE).</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#tell-basta" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Abydos -->
+  <div id="modal-amarnah" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/amarnah.jpg" alt="amarnah">
+        <div class="city-modal-text">
+         <h2>Tell El-Amarnah (1353 - 1336 BCE)</h2>
+         <p>Tell el-Amarnah was the short-lived capital city of Pharaoh Akhenaten (c. 1350 BCE), known for the Amarna Period's radical religious reforms towards monotheism (Aten worship) and distinctive artistic styles.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#tell-amarnah" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Akhenaten -->
+  <div id="modal-akhenaten" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/akhenaten.jpg" alt="akhenaten">
+        <div class="city-modal-text">
+         <h2>Akhenaten (1346 - 1332 BCE)</h2>
+         <p>Was an Egyptian Pharaoh of the 18th Dynasty, known for abandoning traditional polytheism and promoting the worship of Aten, the sun disk, founding the city of Akhetaten (modern Tell el-Amarna). His reign marked the unique Amarna Period.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#akhenaten" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Habu -->
+  <div id="modal-habu" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/habu.jpg" alt="Habu">
+        <div class="city-modal-text">
+         <h2>Habu (1186 BCE)</h2>
+         <p>Habu is an ancient temple complex on the West Bank of Luxor, best known for the Mortuary Temple of Ramesses III (c. 1186–1155 BCE). It served as a religious, administrative, and military center during the New Kingdom.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#habu" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Pi-Ramesses -->
+  <div id="modal-ramesses" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ramesses.jpg" alt="ramesses">
+        <div class="city-modal-text">
+         <h2>Pi-Ramesses (1050 BCE)</h2>
+         <p>Pi-Ramesses was the capital of Egypt during the reign of Ramesses II (c. 1279–1213 BCE). Located in the eastern Nile Delta, it was a grand city with massive temples, palaces, and military facilities, symbolizing Egypt's power during the New Kingdom.</p>
+         <a href="https://historyofcityplanning.github.io/egypt.html#ramesses" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+       <!---mesopotamia-->
+  <!-- Modal Eridu -->
+  <div id="modal-eridu" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/eridu.jpg" alt="eridu">
+        <div class="city-modal-text">
+         <h2>Eridu (5000 BCE)</h2>
+         <p>Eridu is considered the earliest city in southern Mesopotamia, dating back to around 5400 BCE. It was a major religious center dedicated to the god Enki (Ea), and it marked the beginning of urban civilization in Sumer.</p>
+         <a href="https://historyofcityplanning.github.io/mesopotamia.html#eridu" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Nippur -->
+  <div id="modal-nippur" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/nippur.jpg" alt="nippur">
+        <div class="city-modal-text">
+         <h2>Nippur (4800 BCE)</h2>
+         <p>Nippur was an important religious and cultural center in Sumer, founded around 4800 BCE. It was the sacred city of Enlil, the chief deity of the Sumerian pantheon, and served as a spiritual capital throughout Mesopotamian history.</p>
+         <a href="https://historyofcityplanning.github.io/mesopotamia.html#nippur" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Ashur -->
+  <div id="modal-ashur" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ashur.jpg" alt="ashur">
+        <div class="city-modal-text">
+         <h2>Ashur (2600 BCE)</h2>
+         <p>Ashur was founded around 2600 BCE and became the first capital of the Assyrian Empire. It was a major religious center dedicated to the god Ashur, after whom the city and empire were named.</p>
+         <a href="https://historyofcityplanning.github.io/mesopotamia.html#ashur" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal nineveh -->
+  <div id="modal-nineveh" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/nineveh.jpg" alt="nineveh">
+        <div class="city-modal-text">
+         <h2>Nineveh (700 BCE)</h2>
+         <p>Nineveh was established around 3000 BCE and became the capital of the Neo-Assyrian Empire by the 700 BCE. It was one of the largest and most influential cities of ancient Mesopotamia, renowned for its grand palaces and the famous Library of Ashurbanipal.</p>
+         <a href="https://historyofcityplanning.github.io/mesopotamia.html#nineveh" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+           <!---indus-->
+
+  <!-- Modal Chanhu-Daro -->
+  <div id="modal-chanhu-daro" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/chanhu-daro.jpg" alt="chanhu-daro">
+        <div class="city-modal-text">
+         <h2>Chanhu-Daro (4000 BCE)</h2>
+         <p>Chanhu-Daro was an Indus Valley city established around 4000 BCE. It is known for its specialized craft production, particularly bead-making and metalwork, reflecting the industrial aspect of Harappan urban planning.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#chanhu-daro" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Kalibangan -->
+  <div id="modal-kalibangan" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/kalibangan.jpg" alt="">
+        <div class="city-modal-text">
+         <h2>Kalibangan (3500 BCE)</h2>
+         <p>Kalibangan was an Indus Valley city dating back to around 3500 BCE. It is notable for its early use of ploughed fields and fire altars, indicating both agricultural innovation and ritual practices in the Harappan culture.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#kalibangan" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Dholavira -->
+  <div id="modal-dholavira" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/dholavira.webp" alt="dholavira">
+        <div class="city-modal-text">
+         <h2>Dholavira (3000 BCE)</h2>
+         <p>Dholavira was a major city of the Indus Valley Civilization, flourishing between 3000 BCE and 1500 BCE. It is renowned for its advanced urban planning, including massive water reservoirs, well-defined city zones, and one of the earliest known examples of water conservation systems.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#dholavira" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Kot Diji -->
+  <div id="modal-kot-diji" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/kot diji.jpg" alt="kot-diji">
+        <div class="city-modal-text">
+         <h2>Kot Diji (2800 BCE)</h2>
+         <p>Kot Diji was a pre-Harappan settlement located in present-day Sindh, Pakistan, dating from around 3300 BCE to 2600 BCE. It represents an early fortified town with stone walls, pottery, and architectural features that influenced the later Indus Valley urban culture.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#kot-diji" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Banawali -->
+  <div id="modal-banawali" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/banawali.avif" alt="">
+        <div class="city-modal-text">
+         <h2>Banawali (2600 BCE)</h2>
+         <p>Banawali was an Indus Valley Civilization site located in present-day Haryana, India, active from around 2600 BCE to 1700 BCE. It featured a fortified citadel and lower town, with planned streets, mud-brick houses, and evidence of agriculture, trade, and craftsmanship.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#banawali" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Lothal -->
+  <div id="modal-lothal" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/lothal.jpg" alt="lothal">
+        <div class="city-modal-text">
+         <h2>Lothal (2400 BCE)</h2>
+         <p>Lothal was a prominent Indus Valley port city located in present-day Gujarat, India, active around 2400–1900 BCE. It is famous for its well-planned dockyard, grid-pattern streets, bead-making workshops, and trade links with Mesopotamia and other regions.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#lothal" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Surkotada -->
+  <div id="modal-surkotada" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/surkotada.jpg" alt="surkotada">
+        <div class="city-modal-text">
+         <h2>Surkotada (2100 - 1700 BCE)</h2>
+         <p>Surkotada is a small Indus Valley Civilization site in Gujarat, India, active around 2100–1700 BCE. It is significant for its compact fortified layout and is notable as the only Harappan site where horse remains have been reported, suggesting a potential early use of horses in the region.</p>
+         <a href="https://historyofcityplanning.github.io/indus.html#surkotada" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+            <!---greece-->
+
+
+
+  <!-- Modal Mycenae -->
+  <div id="modal-mycenae" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/mycenae.jpg" alt="mycenae">
+        <div class="city-modal-text">
+         <h2>Mycenae (2000 BCE)</h2>
+         <p>Mycenae was a major center of Greek civilization during the Late Bronze Age (circa 1600–1100 BCE). It is famous for its massive cyclopean walls, Lion Gate, and richly furnished shaft graves. Mycenae is often associated with Homer’s epics as the seat of King Agamemnon, leader of the Greeks in the Trojan War.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#mycenae" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Ephesus -->
+
+  <div id="modal-ephesus" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ephesus.jpg" alt="ephesus">
+        <div class="city-modal-text">
+         <h2>Ephesus (10th Century BCE)</h2>
+         <p>Ephesus was an ancient Greek city on the coast of Asia Minor (modern Turkey), founded around 1000 BCE. It became famous for the Temple of Artemis, one of the Seven Wonders of the Ancient World.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#ephesus" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Sparta -->
+  <div id="modal-sparta" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/sparta.webp" alt="sparta">
+        <div class="city-modal-text">
+         <h2>Sparta (900 BCE)</h2>
+         <p>Sparta was a powerful Greek city-state in Laconia, founded around 900 BCE. Known for its military society and disciplined warriors, it rivaled Athens in influence during Classical Greece.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#sparta" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Delphi -->
+  <div id="modal-delphi" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/delphi.JPG" alt="delphi">
+        <div class="city-modal-text">
+         <h2>Delphi (580 BCE)</h2>
+         <p>Delphi was an important ancient Greek sanctuary located on the slopes of Mount Parnassus, established around 800 BCE. It was home to the famous Oracle of Apollo, where priestesses delivered prophetic messages.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#delphi" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Corinth -->
+  <div id="modal-corinth" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/corinth.jpg" alt="corinth">
+        <div class="city-modal-text">
+         <h2>Corinth (747 BCE)</h2>
+         <p>Corinth was a powerful Greek city-state located on the narrow Isthmus of Corinth. Founded around 900 BCE, it became a major commercial hub due to its strategic position controlling land and sea trade routes between mainland Greece and the Peloponnese.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#corinth" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+  <!-- Modal Olynthus -->
+
+  <div id="modal-olyntuhs" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/olyntuhs.jpg" alt="olyntuhs">
+        <div class="city-modal-text">
+         <h2>Olynthus (650 BCE)</h2>
+         <p>Olynthus was an ancient Greek city located in Chalcidice, northern Greece. It rose to prominence in the 650 BCE as the leader of the Chalcidian League, a confederation of nearby cities. Olynthus was known for its well-planned grid layout and rich mosaics before being destroyed by Philip II of Macedon in 348 BCE.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#olyntuhs" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Athens -->
+  <div id="modal-athens" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/athens.jpg" alt="athens">
+        <div class="city-modal-text">
+         <h2>Athens (480 BCE)</h2>
+         <p>Athens is one of the oldest and most influential ancient Greek cities, continuously inhabited for over 5,000 years. It became the heart of Classical Greece in the 480 BCE, known as the Golden Age of Athens, when it was a center for democracy, philosophy, arts, and architecture. Key landmarks include the Acropolis and Parthenon. Athens was the home of philosophers like Socrates, Plato, and Aristotle.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#athens" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Rhodes -->
+  <div id="modal-rhodes" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/rhodes.jpg" alt="rhodes">
+        <div class="city-modal-text">
+         <h2>Rhodes (408 BCE)</h2>
+         <p>Rhodes is a prominent Greek island city located in the Aegean Sea, known for its strategic position linking Greece with Asia Minor. It flourished during the Classical and Hellenistic periods, especially after the founding of the city of Rhodes in 408 BCE. The city became famous for the Colossus of Rhodes, one of the Seven Wonders of the Ancient World. Rhodes was a powerful maritime and trading hub, blending Greek and Eastern influences in its architecture and culture.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#rhodes" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Thebes -->
+
+  <div id="modal-thebes" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/thebes.webp" alt="thebes">
+        <div class="city-modal-text">
+         <h2>Ancient Thebes (371 BCE)</h2>
+         <p>Thebes was one of the most important ancient Greek cities, located in central Greece (Boeotia). It was a major rival to Athens and Sparta, especially powerful during the 371 BCE. Thebes played a key role in Greek military history, notably defeating Sparta at the Battle of Leuctra in 371 BCE, marking the end of Spartan dominance. The city was also famous for its mythology (Oedipus, Heracles) and monumental structures like the Cadmea (Theban Acropolis).</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#thebes" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Delos -->
+  <div id="modal-delos" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/delos.jpg" alt="delos">
+        <div class="city-modal-text">
+         <h2>Delos (314 BCE)</h2>
+         <p>Delos is a small island in the Aegean Sea, considered one of the most sacred places in ancient Greece. It was believed to be the birthplace of Apollo and Artemis. In antiquity, Delos was a major religious sanctuary with grand temples and treasuries. During the 314 BCE, it became the symbolic center of the Delian League, led by Athens. Later, in the Hellenistic and Roman periods, Delos was a bustling commercial hub and free port.</p>
+         <a href="https://historyofcityplanning.github.io/greek.html#delos" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+              <!---persian-->
+
+
+  <!-- Modal Ecbatana -->
+  <div id="modal-ecbatana" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ecbatana.jpg" alt="ecbatana">
+        <div class="city-modal-text">
+         <h2>Ecbatana (678 BCE)</h2>
+         <p>Ecbatana (modern Hamadan, Iran) was the capital of the Median Empire and later a significant city for the Achaemenid Persians. Founded around the 678 BCE, it served as a royal summer residence due to its high elevation and cooler climate. Ecbatana was known for its massive fortifications and rich palaces. It remained an important administrative and military center under Persian, Seleucid, Parthian, and Sassanian rule.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#ecbatana" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Passagardae -->
+  <div id="modal-passagardae" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/passagardae.jpg" alt="passagardae">
+        <div class="city-modal-text">
+         <h2>Passagardae (550 BCE)</h2>
+         <p>Pasargadae was the first capital of the Achaemenid Empire, founded by Cyrus the Great around 550 BCE in modern-day Iran. It is best known for the Tomb of Cyrus, a monumental stone structure symbolizing Persian imperial power. The city included royal palaces, gardens (early Persian "Paradise" gardens), and ceremonial halls. Though it was later overshadowed by Persepolis, Pasargadae remained a sacred and symbolic site for Persian kings.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#passagardae" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Susa -->
+  <div id="modal-susa" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/susa.jpg" alt="susa">
+        <div class="city-modal-text">
+         <h2>Susa (540 BCE)</h2>
+         <p>Susa was one of the oldest and most important cities of the ancient Near East, serving as a major administrative capital of the Elamite, Achaemenid Persian, and later empires. Located in present-day Iran, it dates back to around 540 BCE. Under the Achaemenids, Susa became one of the empire’s royal capitals, known for the Palace of Darius I. It was a key center for governance, culture, and trade, linking Mesopotamia and the Iranian Plateau.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#susa" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Persepolis -->
+  <div id="modal-persepolis" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/persepolis.jpg" alt="persepolis">
+        <div class="city-modal-text">
+         <h2>Persepolis (518 BCE)</h2>
+         <p>Persepolis was the ceremonial capital of the Achaemenid Persian Empire, founded by Darius I around 518 BCE. Built on a grand terrace, it symbolized the empire's wealth and power with its monumental palaces, audience halls, and intricate reliefs depicting tribute-bearing delegations from across the empire. Persepolis was not just an administrative center but a political statement of imperial unity. It was famously looted and burned by Alexander the Great in 330 BCE.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#persepolis" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Nisa -->
+  <div id="modal-nisa" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/nisa.webp" alt="nisa">
+        <div class="city-modal-text">
+         <h2>Nisa (274 - 211 BCE)</h2>
+         <p>Nisa was one of the first capitals of the Parthian Empire, located near modern-day Ashgabat, Turkmenistan. Founded around the 3rd century BCE, it served as a royal residence and a major political and cultural center. Nisa is famous for its fortified citadel, Hellenistic-influenced architecture, and rich finds of ivory rhytons, statues, and inscriptions that reflect a blend of Iranian, Greek, and Central Asian influences.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#nisa" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Ctesiphon -->
+  <div id="modal-ctesiphon" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ctesiphon.jpg" alt="ctesiphon">
+        <div class="city-modal-text">
+         <h2>Ctesiphon (129 BCE)</h2>
+         <p>Ctesiphon was the capital of both the Parthian Empire and later the Sasanian Empire, located near modern Baghdad, Iraq. It became a major political and commercial hub from 129 BCE until the 7th century CE. The city is renowned for the Taq Kasra (Arch of Ctesiphon), one of the largest single-span brick arches in the world. Ctesiphon symbolized Persian imperial power and was a key center of culture, trade, and administration in Mesopotamia.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#ctesiphon" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Ardashir-Khurrah -->
+  <div id="modal-ardashir" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ardashir.jpg" alt="ardashir">
+        <div class="city-modal-text">
+         <h2>Ardashir Khurrah (224 CE)</h2>
+         <p>Ardashir Khurrah (also known as Gur, near modern Firuzabad, Iran) was founded by Ardashir I, the founder of the Sasanian Empire, in 224 CE. It was designed as a circular city, a typical Persian royal urban design symbolizing cosmic order and imperial power. The city served as a key administrative and military center in the early Sasanian period and was surrounded by strong fortifications and royal palaces, including the famous Palace of Ardashir.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#ardashir" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Gundeshapur -->
+  <div id="modal-gundeshapur" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/gundeshapur.jpg" alt="gundeshapur">
+        <div class="city-modal-text">
+         <h2>Gundeshapur (256 - 260 CE)</h2>
+         <p>Gundeshapur (also spelled Jundishapur) was an important Sasanian city in Khuzestan, southwestern Iran, founded by Shapur I in the 3rd century CE. It became renowned as a major center of learning, medicine, and philosophy, especially during the later Sasanian period. The Academy of Gundeshapur combined Persian, Greek, Indian, and Syriac scientific traditions, making it one of the most advanced intellectual hubs of late antiquity, particularly in medicine and translations of Greek philosophical works.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#gundeshapur" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Bishapur -->
+  <div id="modal-bishapur" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/bishapur.jpg" alt="bishapur">
+        <div class="city-modal-text">
+         <h2>Bishapur (266 CE)</h2>
+         <p>Bishapur was a prominent Sasanian city located in Fars Province, Iran, founded by Shapur I around 266 CE. It is famous for its unique blend of Persian and Roman architectural styles, reflecting the influence of Roman artisans captured during Shapur's campaigns. The city features impressive rock reliefs, palaces, and a temple dedicated to Anahita, the Persian goddess of water. Bishapur was a key political and cultural center during the Sasanian Empire.</p>
+         <a href="https://historyofcityplanning.github.io/persian.html#bishapur" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+             <!---chinese-->
+
+  <!-- Modal Nanguan -->
+  <div id="modal-nanguan" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/nanguan.webp" alt="nanguan">
+        <div class="city-modal-text">
+         <h2>Nanguan (1600 - 1046 BCE)</h2>
+         <p>Nanguan (南關) was an ancient city gate area and settlement in China, commonly associated with frontier or trade towns during the Han and Tang dynasties. Locations named Nanguan existed in various cities, often serving as southern gate districts that controlled commerce and traffic entering the city. While not a singular major city like Chang'an or Luoyang, "Nanguan" typically refers to strategic gate quarters in urban planning, often evolving into local trade hubs or administrative zones.</p>
+         <a href="https://historyofcityplanning.github.io/china.html#nanguan" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Yinxu -->
+  <div id="modal-yinxu" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/yinxu.jpg" alt="yinxu">
+        <div class="city-modal-text">
+         <h2>Yinxu (1300 - 1026 BCE)</h2>
+         <p>Yinxu (殷墟) — located near Anyang, Henan Province, was the last capital of the Shang Dynasty ( 1300–1026 BCE). It is one of the most significant archaeological sites in China, known for the discovery of oracle bones (the earliest form of Chinese writing) and large royal tombs, including that of Fu Hao, a Shang queen and military leader. Yinxu represents a highly advanced urban center with evidence of palaces, workshops, and religious structures.</p>
+         <a href="https://historyofcityplanning.github.io/china.html#yinxu" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Zheng -->
+  <div id="modal-zheng" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/zheng.jpg" alt="zheng">
+        <div class="city-modal-text">
+         <h2>Zheng (1300 - 1026 BCE)</h2>
+         <p>Zheng (鄭) — an ancient Chinese city-state, founded during the early Western Zhou Dynasty (~1046 BCE) and prominent in the Spring and Autumn Period (770–476 BCE). Its capital was likely near modern Xinzheng, Henan Province. Zheng was known for its strong military and played a major role in early interstate warfare and politics before being absorbed by larger powers like the State of Han.</p>
+         <a href="https://historyofcityplanning.github.io/china.html#zheng" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Linzi -->
+  <div id="modal-linzi" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/linzi.jpg" alt="linzi">
+        <div class="city-modal-text">
+         <h2>Linzi (1046 - 1043 BCE)</h2>
+         <p>Linzi (臨淄) — the capital city of the State of Qi during the Spring and Autumn and Warring States periods (approx. 1046 BCE to 221 BCE). Located in present-day Zibo, Shandong Province, Linzi was a major political, economic, and cultural center, famous for its bustling markets, philosophical schools, and advanced urban infrastructure. It remained influential until Qi’s conquest by the Qin Dynasty.</p>
+         <a href="https://historyofcityplanning.github.io/china.html#linzi" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Shandan -->
+  <div id="modal-shandan" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/shandan.jpg" alt="delos">
+        <div class="city-modal-text">
+         <h2>Shandan (457 - 221 BCE)</h2>
+         <p>Shandan (山丹) — an ancient oasis town on the Hexi Corridor of Gansu Province, China. It was a key strategic stop on the Silk Road, providing a vital link between Central China and Central Asia. Shandan has been significant since the Han Dynasty (206 BCE – 220 CE) for its military garrisons and horse-breeding farms, especially the famous Shandan Horse Ranch, one of the oldest in China.</p>
+         <a href="https://historyofcityplanning.github.io/china.html#shandan" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Chang'an -->
+  <div id="modal-chang'an" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/chang'an.webp" alt="chang'an">
+        <div class="city-modal-text">
+         <h2>Chang'an (202 BCE - 9 CE)</h2>
+         <p>Chang'an (modern Xi'an) — the ancient capital of multiple Chinese dynasties, most notably the Han (206 BCE – 220 CE) and Tang (618–907 CE). It was one of the largest and most cosmopolitan cities of the ancient world, serving as the eastern terminus of the Silk Road. Chang'an was a center of political power, trade, culture, and religion, attracting merchants, scholars, and envoys from across Asia, the Middle East, and even Europe. Its grid-layout urban planning heavily influenced city designs across East Asia.</p>
+         <a href="https://historyofcityplanning.github.io/china.html#chang'an" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+             <!---mesoamerican-->
+
+
+
+  <!-- Modal Monte Albán -->
+  <div id="modal-monte" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/monte alban.webp" alt="monte">
+        <div class="city-modal-text">
+         <h2>Monte Albán (500 BCE - 750 CE)</h2>
+         <p>Monte Albán — an ancient Zapotec city located in Oaxaca, Mexico, founded around 500 BCE and continuously inhabited until approximately 750 CE. It was one of the first major cities in Mesoamerica and served as the political, economic, and ceremonial center of the Zapotec civilization. Monte Albán is renowned for its terraced architecture, grand plazas, pyramids, and carved stone monuments (Danzantes), reflecting a highly organized urban society. It also played a key role in regional trade and cultural exchanges with neighboring civilizations like the Mixtecs and Teotihuacan.</p>
+         <a href="https://historyofcityplanning.github.io/mesoamerica.html#monte-alban" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Palenque -->
+  <div id="modal-palenque" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/palenque.webp" alt="palenque">
+        <div class="city-modal-text">
+         <h2>Palenque (200 CE)</h2>
+         <p>Palenque — a Maya city-state located in Chiapas, Mexico, flourishing between 200 CE and 800 CE. Known for its sophisticated architecture, detailed stucco carvings, and hieroglyphic inscriptions, Palenque was a major political and religious center. The city is famous for structures like the Temple of the Inscriptions, which houses the tomb of the ruler K'inich Janaab' Pakal. Palenque played a key role in Maya art and astronomy, with a refined urban layout harmonized with its jungle surroundings.</p>
+         <a href="https://historyofcityplanning.github.io/mesoamerica.html#palenque" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Teotihuacan -->
+  <div id="modal-teotihuacan" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/teotihuacan.jpg" alt="teotihuacan">
+        <div class="city-modal-text">
+         <h2>Teotihuacan (100 BCE - 550 CE)</h2>
+         <p>Teotihuacan was one of the largest and most influential cities in ancient Mesoamerica (100 BCE – 550 CE). Renowned for its monumental Pyramid of the Sun and Pyramid of the Moon, it served as a political, economic, and religious center that shaped Mesoamerican culture long after its decline.</p>
+         <a href="https://historyofcityplanning.github.io/mesoamerica.html#teotihuacan" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Chichen Itza -->
+  <div id="modal-Chichen-Itza" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/Chichen Itza.jpg" alt="delos">
+        <div class="city-modal-text">
+         <h2>Chichen Itza (500 - 1200 CE)</h2>
+         <p>Chichen Itza was a prominent Maya city in the Yucatán Peninsula, active between 500 and 1200 CE. It became a major religious, political, and economic center, famous for architectural landmarks like El Castillo (Temple of Kukulkan) and the Great Ball Court.</p>
+         <a href="https://historyofcityplanning.github.io/mesoamerica.html#chichen-itza" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Tikal -->
+  <div id="modal-tikal" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/tikal.jpg" alt="tikal">
+        <div class="city-modal-text">
+         <h2>Tikal (250 - 900 CE)</h2>
+         <p>Tikal was a major Maya city located in present-day Guatemala, flourishing between 250 and 900 CE. Known for its towering temple pyramids and as a powerful political and ceremonial hub, Tikal played a key role in Maya civilization’s Classic Period.</p>
+         <a href="https://historyofcityplanning.github.io/mesoamerica.html#tikal" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+
+
+             <!---roman-->
+
+
+  <!-- Modal Ostia -->
+  <div id="modal-ostia" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ostia.jpg" alt="ostia">
+        <div class="city-modal-text">
+         <h2>Ostia (620 - 476 BCE)</h2>
+         <p>Ostia was the harbor city of ancient Rome, founded in the 4th century BCE at the mouth of the Tiber River. It served as the main commercial port of Rome, vital for grain imports, and is well-known today for its well-preserved apartment blocks (insulae), baths, and forum.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#ostia" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Minturnae -->
+  <div id="modal-minturnae" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/minturnae.jpg" alt="minturnae">
+        <div class="city-modal-text">
+         <h2>Minturnae (295 - 700 BCE)</h2>
+         <p>Minturnae was an ancient Roman colony founded in the 3rd century BCE along the Via Appia in southern Italy. It was strategically important as a military outpost and a trading hub near the Liris River, with notable ruins like its amphitheater, aqueduct, and forum still visible today.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#minturnae" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Tarraco -->
+  <div id="modal-tarraco" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/tarraco.jpg" alt="tarraco">
+        <div class="city-modal-text">
+         <h2>Tarraco (218 - 206 BCE)</h2>
+         <p>Tarraco (modern-day Tarragona, Spain) was the capital of Roman Hispania Citerior, established in the 3rd century BCE. It served as a major administrative and military center on the Iberian Peninsula, known for its impressive Roman amphitheater, aqueducts, and provincial forum. Tarraco was a key port and gateway for Roman expansion in Hispania.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#tarraco" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Lucca -->
+  <div id="modal-lucca" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/lucca.jpg" alt="lucca">
+        <div class="city-modal-text">
+         <h2>Lucca (180 BCE)</h2>
+         <p>Lucca is an ancient Etruscan and Roman city in Tuscany, Italy, founded around the 2nd century BCE as a Roman colony. It became a strategic military outpost and later a significant medieval city known for its remarkably preserved Renaissance-era city walls, Roman amphitheater foundations, and grid street plan reflecting its Roman origins.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#lucca" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Thessalonica -->
+  <div id="modal-thessalonica" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/thessalonica.jpg" alt="thessalonica">
+        <div class="city-modal-text">
+         <h2>Thessalonica (168 BCE - 330 CE)</h2>
+         <p>Thessalonica (modern-day Thessaloniki) was founded in 315 BCE by King Cassander of Macedon. It became a major Hellenistic city, and later an important Roman trade hub due to its location on the Via Egnatia. Thessalonica was also a significant early Christian center, mentioned in the New Testament, and remained a vital city throughout Byzantine times.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#thessalonica" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Ephesus -->
+  <div id="modal-ephesus-2" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ephesus-2.jpg" alt="tikal">
+        <div class="city-modal-text">
+         <h2>Ephesus (129 BCE - 395 CE)</h2>
+         <p>Under Roman rule, Ephesus (Asia Minor, modern-day Turkey) flourished as the capital of the Roman province of Asia. By the 1st and 2nd centuries CE, it became one of the largest cities of the eastern Roman Empire, famed for its Temple of Artemis, the Library of Celsus, and its grand theatre. It was also an early center of Christianity, visited by St. Paul and mentioned in the Book of Revelation.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#ephesus-roman" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Herculaneum -->
+  <div id="modal-herculaneum" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/herculaneum.jpg" alt="herculaneum">
+        <div class="city-modal-text">
+         <h2>Herculaneum (89 BCE - 79 CE)</h2>
+         <p>An ancient Roman town near modern-day Naples, Italy, Herculaneum was a wealthy seaside resort that was buried by volcanic ash and pyroclastic flows from Mount Vesuvius in 79 CE. Unlike Pompeii, the deep burial preserved wooden structures, furniture, and even food, offering exceptional insights into daily Roman life.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#herculaneum" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Antioch -->
+  <div id="modal-antioch" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/antioch.jpg" alt="antioch">
+        <div class="city-modal-text">
+         <h2>Antioch (64 BCE - 637 CE)</h2>
+         <p>Under Roman rule from 64 BCE, Antioch became the administrative capital of the Roman province of Syria. It was the third-largest city of the Roman Empire after Rome and Alexandria, serving as a vital hub for commerce, culture, and governance in the Eastern Mediterranean. The city was renowned for its grand colonnaded streets, theaters, and the famous Great Church of Antioch, playing a key role in early Christianity.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#antioch" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Carthage -->
+  <div id="modal-carthage" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/carthage.webp" alt="carthage">
+        <div class="city-modal-text">
+         <h2>Carthage (44 BCE - 698 CE)</h2>
+         <p>After its destruction in 146 BCE during the Third Punic War, Carthage was rebuilt by the Romans starting in 29 BCE under Augustus. It became the capital of the Roman province of Africa Proconsularis and flourished as a major economic and cultural center. Roman Carthage was known for its grand forum, amphitheater, baths, and as a key hub for grain and trade routes across the Mediterranean.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#carthage" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Turin -->
+  <div id="modal-turin" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/turin.jpg" alt="turin">
+        <div class="city-modal-text">
+         <h2>Turin (28 BCE - 476 CE)</h2>
+         <p>Founded as Julia Augusta Taurinorum around 28 BCE, Turin was a Roman military colony strategically located at the foot of the Alps. The city was designed in a typical Roman castrum (grid layout) with fortified walls and four gates. Its location made it an important defensive and administrative center in the region of Gallia Cisalpina, serving both military and commercial functions along key Alpine routes.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#turin" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Aosta -->
+  <div id="modal-aosta" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/aosta.avif" alt="aosta">
+        <div class="city-modal-text">
+         <h2>Aosta (25 BCE)</h2>
+         <p>Founded as Augusta Praetoria Salassorum in 25 BCE by Emperor Augustus, Aosta was established after the defeat of the local Salassi tribe. The city was designed as a Roman colonia with a classic grid layout (castrum plan), fortified walls, monumental gates (like the Arch of Augustus), and a forum. Its strategic location at the junction of Alpine passes made it a key military and trade hub controlling access between Italy and Gaul.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#aosta" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Trier -->
+  <div id="modal-trier" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/trier.webp" alt="trier">
+        <div class="city-modal-text">
+         <h2>Trier (16 BCE - 476 CE)</h2>
+         <p>Founded as Augusta Treverorum around 16 BCE under Emperor Augustus, Trier became one of the most important Roman cities in the western provinces. It served as an imperial residence during the Tetrarchy and was often referred to as the "Second Rome". The city was known for its grand Roman architecture, including the Porta Nigra, Imperial Baths, and a large amphitheater, symbolizing its political and economic significance in Roman Germania.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#trier" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Londinium -->
+  <div id="modal-londinium" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/londinium.webp" alt="londinium">
+        <div class="city-modal-text">
+         <h2>Londinium (47 - 410 CE)</h2>
+         <p>Founded by the Romans around 47-50 CE after the Roman conquest of Britain, Londinium grew into a key commercial and administrative center due to its strategic location on the River Thames. The city was fortified with stone walls and featured structures like the forum, basilica, amphitheater, and a significant bridge crossing the Thames, making it the heart of Roman Britain until its decline in the early 5th century.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#londinium" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Timgad -->
+  <div id="modal-timgad" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/timgad.jpeg" alt="timgad">
+        <div class="city-modal-text">
+         <h2>Timgad (100 - 700 CE)</h2>
+         <p>Founded by Emperor Trajan in 100 CE, Timgad (Thamugadi) was a Roman colonial city in present-day Algeria, designed as a military veteran settlement. Known for its grid-plan layout and monumental structures like the Trajan Arch, forum, theater, and public baths, Timgad exemplifies Roman urban planning in North Africa. The city flourished as a trade and cultural hub until its decline in the 6th century CE.</p>
+         <a href="https://historyofcityplanning.github.io/roman.html#timgad" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+
+
+             <!---medieval-->
+
+
+  <!-- Modal Cologne -->
+  <div id="modal-cologne" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/cologne.webp" alt="cologne">
+        <div class="city-modal-text">
+         <h2>Cologne (5th Century)</h2>
+         <p>Cologne (Köln) is one of Germany’s oldest cities, evolving from a Roman colony into a major medieval and Renaissance trade hub. By the 16th century, it was a free imperial city known for its Catholic identity, thriving guilds, and cultural influence along the Rhine.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#cologne" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Arras -->
+  <div id="modal-arras" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/arras.jpg" alt="arras">
+        <div class="city-modal-text">
+         <h2>Arras (499 CE)</h2>
+         <p>Arras, in northern France, was a key Renaissance craft and trade center, famed for its fine tapestries in the 15th-16th centuries. Despite political shifts, it remained economically and culturally significant with its Gothic architecture and guild halls.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#arras" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Dubrovnik -->
+  <div id="modal-dubrovnik" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/dubrovnik.jpg" alt="dubrovnik">
+        <div class="city-modal-text">
+         <h2>Dubrovnik (7th Century)</h2>
+         <p>Dubrovnik (Ragusa) was a major maritime republic in the 15th-16th centuries, thriving on Mediterranean trade and diplomacy. Known for its fortifications and early legal reforms, it blended Gothic, Renaissance, and Baroque architecture during its Renaissance peak.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#dubrovnik" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Edinburgh -->
+  <div id="modal-edinburgh" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/edinburgh.jpg" alt="edinburgh">
+        <div class="city-modal-text">
+         <h2>Edinburgh (7th Century)</h2>
+         <p>Edinburgh grew as a key medieval stronghold from the 12th century, centered around Edinburgh Castle. By the 14th century, it became a major hub of Scottish governance and trade, with its medieval heritage preserved in the Old Town’s streets and walls.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#edinburgh" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Mont Saint Michel -->
+  <div id="modal-mont" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/mont.jpg" alt="mont">
+        <div class="city-modal-text">
+         <h2>Mont Saint Michel (8th Century)</h2>
+         <p>Mont Saint-Michel, off Normandy’s coast, became a famous medieval pilgrimage site with its Benedictine abbey (10th–13th centuries). Its tidal isolation and fortified walls made it both a spiritual sanctuary and a key defensive stronghold during the Hundred Years’ War.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#mont-saint-michel" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Arnhem -->
+  <div id="modal-arnhem" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/arnhem.jpg" alt="arnhem">
+        <div class="city-modal-text">
+         <h2>Arnhem (893 CE)</h2>
+         <p>Arnhem, in eastern Netherlands, gained city rights in 1233 and became a key fortified trade and military hub along the Rhine. In the late Middle Ages, its strong defenses made it important in the conflicts of the Low Countries.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#arnhem" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Colmar -->
+  <div id="modal-colmar" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/colmar.webp" alt="colmar">
+        <div class="city-modal-text">
+         <h2>Colmar (9th Century)</h2>
+         <p>Colmar, in Alsace, became a free imperial city in 1226 and thrived as a trade and craft center within the Décapole alliance. Its medieval streets and Gothic landmarks showcase its prosperity in the late Middle Ages.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#colmar" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Avila -->
+  <div id="modal-avila" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/avila.jpg" alt="avila">
+        <div class="city-modal-text">
+         <h2>Ávila (1090 CE)</h2>
+         <p>Ávila, in central Spain, rose as a key frontier fortress during the 12th-century Reconquista, known for its massive medieval walls. It later gained religious significance through Saint Teresa of Ávila in the 16th century.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#avila" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal San Gimignano -->
+  <div id="modal-san" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/san.webp" alt="san">
+        <div class="city-modal-text">
+         <h2>San Gimignano (1119 CE)</h2>
+         <p>San Gimignano, in Tuscany, thrived between the 12th and 14th centuries as a merchant and pilgrimage hub, famous for its iconic tower houses. Though it declined after the Black Death, its well-preserved medieval skyline earned it the nickname “Medieval Manhattan.”</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#san-gimignano" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Lübeck -->
+  <div id="modal-lubeck" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/lubeck.avif" alt="lubeck">
+        <div class="city-modal-text">
+         <h2>Lübeck (1159 CE)</h2>
+         <p>Lübeck, founded in 1159, became the leading city of the Hanseatic League in the 13th and 14th centuries, dominating Baltic maritime trade. Its Brick Gothic architecture, like the Holstentor gate, symbolizes its medieval economic power and influence across Northern Europe.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#lubeck" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Carcassonne -->
+  <div id="modal-carcassonne" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/carcassonne.webp" alt="carcassonne">
+        <div class="city-modal-text">
+         <h2>Carcassonne (1266 CE)</h2>
+         <p>Carcassonne, in southern France, peaked as a fortified medieval city between the 12th and 14th centuries, playing a key role during the Albigensian Crusade. Its iconic double walls and 52 towers make it a landmark of medieval military architecture.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#carcassonne" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Kraków -->
+  <div id="modal-krakow" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/krakow.jpg" alt="krakow">
+        <div class="city-modal-text">
+         <h2>Kraków (1257 CE)</h2>
+         <p>Kraków, one of Poland’s oldest cities, became a key political and cultural center from the 10th to 15th centuries. Rebuilt after the Mongol invasions, it thrived as a hub of trade and learning, with landmarks like Wawel Castle and the medieval Rynek Główny square.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#krakow" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  <!-- Modal Cesky Krumlov -->
+  <div id="modal-cesky" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/cesky.jpg" alt="cesky">
+        <div class="city-modal-text">
+         <h2>Český Krumlov (13th Century)</h2>
+         <p>Český Krumlov, in South Bohemia, flourished between the 13th and 16th centuries as a regional trade and administrative center under the Rosenberg family. Its medieval streets and towering castle showcase a unique blend of Gothic, Renaissance, and Baroque architecture.</p>
+         <a href="https://historyofcityplanning.github.io/medieval.html#cesky-krumlov" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+
+             <!---renaissance-->
+
+
+
+  <!-- Modal Nuremberg -->
+  <div id="modal-nuremberg" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/nuremberg.webp" alt="nuremberg">
+        <div class="city-modal-text">
+         <h2>Nuremberg (1470-1525 CE)</h2>
+         <p>Nuremberg was a major center of trade, arts, and innovation during the 15th–16th century German Renaissance. It became renowned for craftsmen, early printers, and artists like Albrecht Dürer, symbolizing the cultural and economic strength of the Holy Roman Empire.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#nuremberg" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Naples -->
+  <div id="modal-naples" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/naples.jpeg" alt="naples">
+        <div class="city-modal-text">
+         <h2>Naples (1450 CE)</h2>
+         <p>Naples became a key Renaissance center in the 15th–16th centuries under Aragonese and Spanish rule. It flourished in arts, architecture, and humanist culture, shaping Southern Italy’s Renaissance.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#naples" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Urbino -->
+  <div id="modal-Urbino" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/Urbino.webp" alt="Urbino">
+        <div class="city-modal-text">
+         <h2>Urbino (1443 CE)</h2>
+         <p>Urbino thrived during the 15th century under Duke Federico da Montefeltro, becoming a leading center of Renaissance art, architecture, and humanist learning. The Ducal Palace symbolizes its cultural golden age.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#urbino" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Rome -->
+  <div id="modal-rome" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/rome.webp" alt="rome">
+        <div class="city-modal-text">
+         <h2>Rome (1420-1450 CE)</h2>
+         <p>Rome experienced a major revival during the Renaissance, especially in the 15th and 16th centuries, becoming a hub for art, architecture, and papal patronage. The city’s transformation was marked by iconic projects like St. Peter’s Basilica and the Sistine Chapel.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#rome" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Genoa -->
+  <div id="modal-genoa" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/genoa.jpg" alt="genoa">
+        <div class="city-modal-text">
+         <h2>Genoa (1450 - 1500 CE)</h2>
+         <p>Genoa flourished during the Renaissance as a dominant maritime republic, controlling Mediterranean trade routes. Wealth from commerce and banking funded the city’s grand palaces and supported a thriving artistic and architectural scene.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#genoa" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Mantua -->
+  <div id="modal-Mantua" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/Mantua.jpg" alt="Mantua">
+        <div class="city-modal-text">
+         <h2>Mantua (1459 - 1470 CE)</h2>
+         <p>Mantua rose as a Renaissance cultural hub under the Gonzaga family, renowned for its patronage of the arts, including works by Mantegna and Giulio Romano. The city became a model of Renaissance court culture, blending architecture, music, and humanist scholarship.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#mantua" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Milan -->
+  <div id="modal-milan" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/milan.webp" alt="milan">
+        <div class="city-modal-text">
+         <h2>Milan (1450-1480 CE)</h2>
+         <p>Milan emerged as a Renaissance powerhouse under the Sforza dynasty in the 15th century, becoming a hub of art, architecture, and innovation. It hosted figures like Leonardo da Vinci, whose works symbolized Milan's cultural prominence.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#milan" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Lyon -->
+  <div id="modal-lyon" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/lyon.jpg" alt="lyon">
+        <div class="city-modal-text">
+         <h2>Lyon (1470 - 1500 CE)</h2>
+         <p>Lyon became a major Renaissance center in the 15th and 16th centuries, renowned for its thriving silk industry and important role in European banking and printing. Its strategic location at the confluence of the Rhône and Saône rivers made it a vital trade hub in France.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#lyon" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Rimini -->
+  <div id="modal-rimini" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/rimini.jpg" alt="rimini">
+        <div class="city-modal-text">
+         <h2>Rimini (1460 CE)</h2>
+         <p>Rimini flourished during the Renaissance under the rule of Sigismondo Malatesta in the 15th century, who transformed the city into a center of art and architecture. The Tempio Malatestiano, designed by Leon Battista Alberti, stands as a key example of early Renaissance architecture.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#rimini" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal London -->
+  <div id="modal-london" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/london.webp" alt="london">
+        <div class="city-modal-text">
+         <h2>London (1520 - 1550 CE)</h2>
+         <p>London became a major commercial and cultural hub during the English Renaissance (late 15th–16th centuries), thriving under the Tudors. The city's growth was marked by expanded trade, the rise of theatres like Shakespeare’s Globe, and significant urban development.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#london" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal Toledo -->
+  <div id="modal-toledo" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/toledo.JPG" alt="toledo">
+        <div class="city-modal-text">
+         <h2>Toledo (1540 - 1550 CE)</h2>
+         <p>Toledo flourished during the Spanish Renaissance (15th–16th centuries) as a political, religious, and cultural center. Known for its blend of Christian, Muslim, and Jewish heritage, it became a key hub for arts, crafts (notably sword-making), and humanist scholarship.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#toledo" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Ferrara -->
+  <div id="modal-ferrara" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/ferrara.webp" alt="ferrara">
+        <div class="city-modal-text">
+         <h2>Ferrara (1445 - 1460 CE)</h2>
+         <p>Ferrara flourished in the 15th–16th centuries under the Este family, becoming a leading Renaissance center of art and urban planning. Its “Addizione Erculea” expansion is considered a masterpiece of Renaissance city design.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#ferrara" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Palmanova -->
+  <div id="modal-palmanova" class="city-modal">
+    <div class="city-modal-content">
+        <img src="images/palmanova.jpg" alt="palmanova">
+        <div class="city-modal-text">
+         <h2>Palmanova (1593 CE)</h2>
+         <p>Palmanova, founded in 1593 by the Venetian Republic, is a prime example of Renaissance military architecture. Designed as a star fort, it embodied the ideal of a perfectly planned, fortified city reflecting humanist and geometric principles.</p>
+         <a href="https://historyofcityplanning.github.io/Renaissance.html#palmanova" class="learn-more-btn" target="_blank" rel="noopener noreferrer">Learn More</a>
+        </div>
+        <button class="modal-close">✕</button>
+    </div>
+  </div>
+
+
+  
+
+
+  
+
+
+
+  <footer>
+   <p>&copy; 2025 History of City Planning. All rights reserved.</p>
+
+   <p class="disclaimer">
+   This website is intended for educational and non-commercial purposes only. All images and external content are the property of their respective copyright holders. No copyright infringement is intended.
+   </p>
+
+   <p class="disclaimer">
+    If you are the copyright owner of any material appearing on this website and wish to have it removed or credited properly, please contact us and we will respond promptly.
+   </p>
+
+   <p class="made-by">
+    Developed by Mahmoud El-Sayed
+   </p>
+  </footer>
+
+<script>
+
+  let isModalOpen = false;
+
+// --- Constants ---
+const START_YEAR = -5000;
+const END_YEAR = 1650;
+const TICK_EVERY = 25;
+const YEAR_SPAN = END_YEAR - START_YEAR;
+
+function yearToPercent(year) {
+  const ratio = (year - START_YEAR) / YEAR_SPAN;
+  return ratio * 100;
+}
+
+// --- Generate Year Ticks ---
+document.querySelectorAll('.years-ticks').forEach(scale => {
+  for (let year = START_YEAR; year <= END_YEAR; year += TICK_EVERY) {
+    const tick = document.createElement('div');
+    tick.className = 'year-tick';
+    tick.style.left = yearToPercent(year) + '%';
+    tick.innerText = year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+    scale.appendChild(tick);
+  }
+});
+
+// --- Scroll Drag ---
+const container = document.querySelector('.timeline-container');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+container.addEventListener('mousedown', (e) => {
+  if (isModalOpen) return;
+  isDown = true;
+  startX = e.pageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+});
+container.addEventListener('mouseleave', () => { isDown = false; });
+container.addEventListener('mouseup', () => { isDown = false; });
+container.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - container.offsetLeft;
+  const walk = (x - startX) * 1.5;
+  container.scrollLeft = scrollLeft - walk;
+});
+
+// --- Civilization Filter ---
+document.querySelectorAll('.filter-box input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    if (this.id === 'filter-all') {
+      const isChecked = this.checked;
+      document.querySelectorAll('.filter-box input[data-civ]').forEach(civCheckbox => {
+        civCheckbox.checked = isChecked;
+        toggleCivilization(civCheckbox.dataset.civ, isChecked);
+      });
+    } else {
+      toggleCivilization(this.dataset.civ, this.checked);
+      updateAllCheckbox();
+    }
+  });
+});
+
+function toggleCivilization(civClass, show) {
+  const rows = document.querySelectorAll(`.civilization-row.${civClass}`);
+  rows.forEach(row => {
+    row.style.display = show ? 'flex' : 'none';
+  });
+}
+
+function updateAllCheckbox() {
+  const allCheckbox = document.getElementById('filter-all');
+  const allCivCheckboxes = document.querySelectorAll('.filter-box input[data-civ]');
+  const allChecked = Array.from(allCivCheckboxes).every(cb => cb.checked);
+  allCheckbox.checked = allChecked;
+}
+
+// --- Draggable Filter Box ---
+const filterBox = document.querySelector('.filter-box');
+let isDraggingFilter = false;
+let offset = { x: 0, y: 0 };
+
+filterBox.addEventListener('mousedown', (e) => {
+  isDraggingFilter = true;
+  offset.x = e.clientX - filterBox.offsetLeft;
+  offset.y = e.clientY - filterBox.offsetTop;
+  filterBox.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDraggingFilter) return;
+  e.preventDefault();
+  let x = e.clientX - offset.x;
+  let y = e.clientY - offset.y;
+  const maxX = window.innerWidth - filterBox.offsetWidth;
+  const maxY = window.innerHeight - filterBox.offsetHeight;
+  x = Math.max(0, Math.min(x, maxX));
+  y = Math.max(0, Math.min(y, maxY));
+  filterBox.style.left = `${x}px`;
+  filterBox.style.top = `${y}px`;
+  filterBox.style.right = 'auto';
+  filterBox.style.bottom = 'auto';
+  updateSuggestionsPosition();
+});
+
+document.addEventListener('mouseup', () => {
+  isDraggingFilter = false;
+  filterBox.style.cursor = 'grab';
+});
+
+document.addEventListener('mouseleave', () => {
+  isDraggingFilter = false;
+  filterBox.style.cursor = 'grab';
+});
+
+filterBox.style.position = 'fixed';
+filterBox.style.cursor = 'grab';
+
+document.getElementById('reset-position-btn').addEventListener('click', () => {
+  filterBox.style.left = 'auto';
+  filterBox.style.top = 'auto';
+  filterBox.style.right = '20px';
+  filterBox.style.bottom = '20px';
+  updateSuggestionsPosition();
+});
+
+// --- Autocomplete City Search with Fuzzy Matching ---
+const searchInput = document.getElementById('filter-search');
+const suggestionsBox = document.getElementById('search-suggestions');
+
+const cities = Array.from(document.querySelectorAll('.city')).map(cityDiv => {
+  const nameElement = cityDiv.querySelector('.city-name');
+  return {
+    name: nameElement ? nameElement.innerText.trim() : '',
+    element: cityDiv
+  };
+}).filter(city => city.name !== '');
+
+
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase().trim();
+  suggestionsBox.innerHTML = '';
+
+  if (query === '') {
+    suggestionsBox.style.display = 'none';
+    return;
+  }
+
+  const matches = cities.filter(city => fuzzyMatch(city.name.toLowerCase(), query));
+const numericPart = query.match(/-?\d+/);  // يستخرج أول رقم حتى لو في حروف
+if (numericPart) {
+  let year = parseInt(numericPart[0]);
+
+  // Check for BCE or BC and convert to negative if not already
+  if (query.toUpperCase().includes('BCE') || query.toUpperCase().includes('BC')) {
+    year = -Math.abs(year);
+  }
+
+  if (year >= START_YEAR && year <= END_YEAR) {
+    const yearSuggestion = document.createElement('div');
+    yearSuggestion.className = 'suggestion-item';
+    yearSuggestion.dataset.year = year;
+    yearSuggestion.innerHTML = `Go to Year: <strong>${Math.abs(year)} ${year < 0 ? 'BCE' : 'CE'}</strong>`;
+    suggestionsBox.appendChild(yearSuggestion);
+  }
+}
+
+
+
+
+  matches.forEach(city => {
+    const suggestionItem = document.createElement('div');
+    suggestionItem.innerHTML = highlightMatch(city.name, query);
+    suggestionItem.className = 'suggestion-item';
+    suggestionItem.dataset.city = city.name;
+    suggestionsBox.appendChild(suggestionItem);
+  });
+
+  suggestionsBox.style.display = 'block';
+  updateSuggestionsPosition();
+});
+
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('suggestion-item')) {
+    if (e.target.dataset.city) {
+      const cityName = e.target.dataset.city;
+      const cityObj = cities.find(city => city.name === cityName);
+      if (cityObj) {
+        scrollToCity(cityObj.element);
+      }
+    } else if (e.target.dataset.year) {
+      const year = parseInt(e.target.dataset.year);
+      scrollToYear(year);
+    }
+              suggestionsBox.style.display = 'none';
+    searchInput.value = '';
+if (window.innerWidth <= 1025 && filterBoxMobile.classList.contains('opening')) {
+  filterBoxMobile.classList.remove('opening');
+  filterBoxMobile.classList.add('closing');
+
+  setTimeout(() => {
+    console.log('قفلنا الفلتر عشان الشاشة صغيرة');
+    filterBoxMobile.style.display = "none";
+    openFilterBtn.style.display = "flex";
+    document.body.style.overflow = "";
+  }, 400); // نفس مدة الأنيميشن
+}
+
+
+  } else if (!e.target.closest('.filter-box')) {
+    // لو الكليك برة filter-box كله اقفل الاقتراحات
+    suggestionsBox.style.display = 'none';
+  }
+});
+
+
+
+function scrollToYear(year) {
+  const percent = (year - START_YEAR) / YEAR_SPAN;
+  const scrollPosition = percent * (container.scrollWidth - container.clientWidth);
+  container.scrollTo({
+    left: scrollPosition,
+    behavior: 'smooth'
+  });
+}
+
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const firstSuggestion = suggestionsBox.querySelector('.suggestion-item');
+    if (firstSuggestion) {
+      firstSuggestion.click();
+    }
+  }
+});
+
+function scrollToCity(cityElement) {
+  const containerRect = container.getBoundingClientRect();
+  const cityRect = cityElement.getBoundingClientRect();
+  const scrollOffset = (cityRect.left + container.scrollLeft) - (containerRect.width / 2) + (cityRect.width / 2);
+  container.scrollTo({
+    left: scrollOffset,
+    behavior: 'smooth'
+  });
+}
+
+function fuzzyMatch(text, query) {
+  const pattern = query.split('').map(c => c.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('.*?');
+  const regex = new RegExp(pattern, 'i');
+  return regex.test(text);
+}
+
+function highlightMatch(text, query) {
+  const pattern = query.split('').map(c => c.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('.*?');
+  const regex = new RegExp(pattern, 'i');
+  return text.replace(regex, match => `<strong>${match}</strong>`);
+}
+
+function updateSuggestionsPosition() {
+  const inputRect = searchInput.getBoundingClientRect();
+  suggestionsBox.style.left = `${inputRect.left}px`;
+  suggestionsBox.style.top = `${inputRect.bottom}px`;
+  suggestionsBox.style.width = `${inputRect.width}px`;
+  suggestionsBox.style.position = 'fixed';
+}
+
+// --- Scroll Buttons ---
+const scrollStep = 3000;
+const scrollContainer = document.querySelector('.timeline-container');
+
+document.getElementById('scroll-start').addEventListener('click', () => {
+  scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+});
+
+document.getElementById('scroll-end').addEventListener('click', () => {
+  scrollContainer.scrollTo({ left: scrollContainer.scrollWidth, behavior: 'smooth' });
+});
+
+document.getElementById('scroll-left').addEventListener('click', () => {
+  scrollContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+});
+
+document.getElementById('scroll-right').addEventListener('click', () => {
+  scrollContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', updateSuggestionsPosition);
+
+
+const zoomButtons = document.querySelectorAll('.zoom-btn');
+
+zoomButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    zoomButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const zoomLevel = parseInt(btn.dataset.zoom);
+
+    // Level 1 (Active Periods)
+    document.querySelectorAll('.active-period').forEach(el => {
+      el.style.display = (zoomLevel === 1) ? 'block' : 'none';
+    });
+
+    // Level 2 (Era Periods)
+    document.querySelectorAll('.era-period').forEach(el => {
+      el.style.display = (zoomLevel === 2) ? 'block' : 'none';
+    });
+
+    // Level 3 (Cities)
+    document.querySelectorAll('.city').forEach(el => {
+      el.style.display = (zoomLevel === 3) ? 'block' : 'none';
+    });
+  });
+});
+
+
+
+let currentZoomLevel = 1;
+
+const zoomInBtn = document.getElementById('zoom-in');
+const zoomOutBtn = document.getElementById('zoom-out');
+const zoomLevelDisplay = document.getElementById('zoom-level-display');
+
+function updateZoomDisplay() {
+  zoomLevelDisplay.innerText = currentZoomLevel;
+  zoomInBtn.disabled = (currentZoomLevel === 3);
+  zoomOutBtn.disabled = (currentZoomLevel === 1);
+
+  document.querySelectorAll('.active-period').forEach(el => {
+    el.style.display = (currentZoomLevel === 1) ? 'block' : 'none';
+  });
+
+  document.querySelectorAll('.era-period').forEach(el => {
+    el.style.display = (currentZoomLevel === 2) ? 'block' : 'none';
+  });
+
+  document.querySelectorAll('.city').forEach(el => {
+    el.style.display = (currentZoomLevel === 3) ? 'block' : 'none';
+  });
+}
+
+zoomInBtn.addEventListener('click', () => {
+  if (currentZoomLevel < 3) {
+    currentZoomLevel++;
+    updateZoomDisplay();
+  }
+});
+
+zoomOutBtn.addEventListener('click', () => {
+  if (currentZoomLevel > 1) {
+    currentZoomLevel--;
+    updateZoomDisplay();
+  }
+});
+
+// Initialize to Level 3 on load
+updateZoomDisplay();
+
+
+
+const eraDividers = [
+  { name: 'Chalcolithic Age', year: -4466.2 },
+  { name: 'Bronze Age', year: -3267.7 },
+  { name: 'Iron Age ', year: -1170.1 },
+  { name: 'Classical Antiquity', year: -520.5},
+  { name: 'Early Medieval', year: 528.5},
+  { name: 'High Medieval', year: 1027.5 },
+  { name: 'Late Medieval', year: 1327.2 },
+  { name: 'Renaissance', year: 1527.1 }
+];
+
+const timelineScroll = document.querySelector('.timeline-scroll');
+
+eraDividers.forEach(era => {
+  const divider = document.createElement('div');
+  divider.className = 'era-divider';
+  divider.style.left = yearToPercent(era.year) + '%';
+
+  const label = document.createElement('div');
+  label.className = 'era-label';
+  label.innerText = era.name;
+  label.style.left = yearToPercent(era.year) + '%';
+
+  timelineScroll.appendChild(divider);
+  timelineScroll.appendChild(label);
+});
+
+
+document.getElementById('continue-btn').addEventListener('click', hideIntroCard);
+document.getElementById('close-btn').addEventListener('click', hideIntroCard);
+
+function hideIntroCard() {
+  document.getElementById('intro-card').style.display = 'none';
+}
+
+
+document.addEventListener('click', function(e) {
+  const introCard = document.getElementById('intro-card');
+  const introContent = document.querySelector('.intro-content');
+
+  // لو الكليك كان بره intro-content 
+  if (introCard.style.display !== 'none' && !introContent.contains(e.target)) {
+    introCard.style.display = 'none';
+  }
+});
+
+
+// Open Modal on City Click
+document.querySelectorAll('.city').forEach(city => {
+  city.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const modalId = this.getAttribute('data-modal');
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';  // <<<<<<< أهي دي
+    }
+  });
+});
+
+// Close Modal on Close Button
+document.querySelectorAll('.modal-close').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.closest('.city-modal').style.display = 'none';
+    document.body.style.overflow = '';  // <<<<<<< وأهي دي
+  });
+});
+
+
+// Close Modal on Outside Click
+document.querySelectorAll('.city-modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.style.display = 'none';
+      document.body.style.overflow = '';  // <<<<<<< أهي برضه هنا
+    }
+  });
+});
+
+
+
+
+const timelineContainer = document.querySelector('.timeline-container');
+const yearTracker = document.getElementById('year-tracker');
+
+const timelineStartYear = -5000;
+const timelineEndYear = 1650;
+const timelineWidth = 40200;
+
+timelineContainer.addEventListener('scroll', () => {
+  const scrollLeft = timelineContainer.scrollLeft;
+  const scrollPercentage = scrollLeft / (timelineWidth - timelineContainer.clientWidth);
+
+  const currentYear = Math.round(timelineStartYear + (timelineEndYear - timelineStartYear) * scrollPercentage);
+
+  let displayYear = '';
+  if (currentYear < 0) {
+    displayYear = `${Math.abs(currentYear)} BCE`;
+  } else {
+    displayYear = `${currentYear} CE`;
+  }
+
+  yearTracker.textContent = displayYear;
+});
+
+
+
+filterBox.addEventListener('mousedown', (e) => {
+  isDraggingFilter = true;
+  document.body.classList.add('no-select'); // <<<<< هنا
+  offset.x = e.clientX - filterBox.offsetLeft;
+  offset.y = e.clientY - filterBox.offsetTop;
+  filterBox.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mouseup', () => {
+  isDraggingFilter = false;
+  document.body.classList.remove('no-select'); // <<<<< هنا
+  filterBox.style.cursor = 'grab';
+});
+
+
+container.addEventListener('mousedown', (e) => {
+  isDown = true;
+  document.body.classList.add('no-select');  // <<<<< هنا
+  startX = e.pageX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+});
+
+container.addEventListener('mouseup', () => {
+  isDown = false;
+  document.body.classList.remove('no-select'); // <<<<< هنا
+});
+
+// زر فتح الفلتر على الموبايل
+const openFilterBtn = document.getElementById("open-filter-btn");
+const closeFilterBtn = document.querySelector(".close-btn");
+const filterBoxMobile = document.querySelector(".filter-box");
+
+// فتح الفلتر
+openFilterBtn.addEventListener("click", () => {
+  filterBoxMobile.classList.remove("closing");
+  filterBoxMobile.classList.add("opening");
+  filterBoxMobile.style.display = "inline-block";
+  document.body.style.overflow = "hidden";
+  openFilterBtn.style.display = "none"; // إخفاء الزر أثناء الفتح
+});
+
+// قفل الفلتر
+closeFilterBtn.addEventListener("click", () => {
+  filterBoxMobile.classList.remove("opening");
+  filterBoxMobile.classList.add("closing");
+  setTimeout(() => {
+    filterBoxMobile.style.display = "none";
+    document.body.style.overflow = "";
+    if (window.innerWidth <= 1025) {
+      openFilterBtn.style.display = "flex"; // رجوع الزر بعد الإغلاق للموبايل فقط
+    }
+  }, 400);
+});
+
+// إغلاق الفلتر تلقائيًا بعد اختيار نتيجة من السيرش
+document.addEventListener('click', function (e) {
+  if (
+    e.target.classList.contains('suggestion-item') &&
+    window.innerWidth <= 1025 // 👈 أضفنا الشرط هنا
+  ) {
+    filterBoxMobile.classList.remove("opening");
+    filterBoxMobile.classList.add("closing");
+    setTimeout(() => {
+      filterBoxMobile.style.display = "none";
+      openFilterBtn.style.display = "flex";
+      document.body.style.overflow = "";
+    }, 400);
+  }
+});
+
+const mobileScrollStep = 3000;
+const mobileScrollContainer = document.querySelector('.timeline-container');
+
+if (window.innerWidth >= 1025) {
+  document.querySelector('.mobile-scroll-buttons').style.display = 'none';
+}
+
+
+document.getElementById('mobile-scroll-start').addEventListener('click', () => {
+  mobileScrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+});
+
+document.getElementById('mobile-scroll-end').addEventListener('click', () => {
+  mobileScrollContainer.scrollTo({ left: mobileScrollContainer.scrollWidth, behavior: 'smooth' });
+});
+
+document.getElementById('mobile-scroll-left').addEventListener('click', () => {
+  mobileScrollContainer.scrollBy({ left: -mobileScrollStep, behavior: 'smooth' });
+});
+
+document.getElementById('mobile-scroll-right').addEventListener('click', () => {
+  mobileScrollContainer.scrollBy({ left: mobileScrollStep, behavior: 'smooth' });
+});
+
+
+const mobileScrollBox = document.querySelector('.mobile-scroll-buttons');
+
+let isTouchDragging = false;
+let touchOffsetX = 0, touchOffsetY = 0;
+
+mobileScrollBox.addEventListener('touchstart', function (e) {
+  isTouchDragging = true;
+  const touch = e.touches[0];
+
+  const rect = mobileScrollBox.getBoundingClientRect();
+  touchOffsetX = touch.clientX - rect.left;
+  touchOffsetY = touch.clientY - rect.top;
+
+  mobileScrollBox.style.cursor = 'grabbing';
+}, { passive: true });
+
+document.addEventListener('touchmove', function (e) {
+  if (!isTouchDragging) return;
+  e.preventDefault();
+
+  const touch = e.touches[0];
+  let x = touch.clientX - touchOffsetX;
+  let y = touch.clientY - touchOffsetY;
+
+  const maxX = window.innerWidth - mobileScrollBox.offsetWidth;
+  const maxY = window.innerHeight - mobileScrollBox.offsetHeight;
+
+  x = Math.max(0, Math.min(x, maxX));
+  y = Math.max(0, Math.min(y, maxY));
+
+  mobileScrollBox.style.left = `${x}px`;
+  mobileScrollBox.style.top = `${y}px`;
+  mobileScrollBox.style.right = 'auto';
+  mobileScrollBox.style.bottom = 'auto';
+}, { passive: false });
+
+document.addEventListener('touchend', function () {
+  isTouchDragging = false;
+  mobileScrollBox.style.cursor = 'grab';
+});
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const openBtn = document.getElementById("open-filter-btn");
+//   const closeBtn = document.getElementById("close-filter-btn");
+//   const sidebar = document.getElementById("filter-sidebar");
+
+//   if (openBtn && sidebar) {
+//     openBtn.addEventListener("click", () => {
+//       sidebar.classList.add("active");
+//       document.body.style.overflow = "hidden"; // يمنع اسكرول الصفحة
+//     });
+//   }
+
+//   if (closeBtn && sidebar) {
+//     closeBtn.addEventListener("click", () => {
+//       sidebar.classList.remove("active");
+//       document.body.style.overflow = ""; // يرجّع الاسكرول
+//     });
+//   }
+
+//   // لو فيه search suggestions تظهر فوق السايدبار
+//   const suggestions = document.getElementById("search-suggestions");
+//   if (suggestions && sidebar) {
+//     sidebar.appendChild(suggestions); // نحطه جوا السايدبار مؤقتًا
+//     sidebar.insertBefore(suggestions, sidebar.firstChild); // نحطه في الأول
+//   }
+// });
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

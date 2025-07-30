@@ -1,35 +1,1496 @@
-*{
-    scroll-behavior: smooth;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Outfit", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit", sans-serif;
 }
+
 
 
 body {
-    background-color: #000;
+  background: #111;
+  color: #eee;
+  padding-top: 60px;
+  overflow-x: hidden;
 }
 
+.no-select {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+
 header {
-    background-color: #111;
-    position: fixed;
-    padding: 12px 12px 12px 40px;
-    display: flex;
-    width: 100%;
-    color: #eeeeee;
-    align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #111;
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  color: #eee;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
 header a {
-    text-decoration: none;
-    color: #eeeeee;
-    margin-right: 12px;
-    font-size: 20px;
-    font-weight: 500;
+  color: #eee;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 12px;
 }
 
 .sub {
-    font-weight: 500;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+
+.timeline-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+}
+
+.timeline-container:active {
+  cursor: grabbing;
+}
+.timeline-container::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-scroll {
+  display: flex;
+  flex-direction: column;
+  min-width: 40000px;
+  gap: 10px;
+  position: relative;
+}
+
+.civilization-row {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  min-width: 40200px; /* مهم جداً لتمدد الخلفية */
+  position: relative;
+}
+
+.label-column {
+  width: 180px;
+  background: transparent;
+  padding: 30.5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #fff;
+  flex-shrink: 0;
+  text-align: center;
+  position: sticky;
+  left: 0;
+  z-index: 10;
+}
+
+.timeline-line {
+  position: relative;
+  height: 100%;
+  flex-grow: 1;
+  min-width: 40000px;
+  border-top: 2px solid #444;
+  border-bottom: 2px solid #444;
+}
+
+/* الخلفيات ممتدة كاملة لكل حضارة */
+
+.civilization-row.ancient-egypt .timeline-line {
+  background-color: #c9982e80;
+}
+
+.civilization-row.Mesopotamia .timeline-line {
+  background-color: #739e3fa4;
+}
+
+.civilization-row.indus-valley .timeline-line {
+  background-color: #b8693b8e;
+}
+
+.civilization-row.Mesoamerica .timeline-line {
+  background-color: #71b8cc8f;
+}
+
+.civilization-row.Ancient-China .timeline-line {
+  background-color: #8c131589;
+}
+
+.civilization-row.Persian-Empire .timeline-line {
+  background-color: #adb38293;
+}
+
+.civilization-row.Ancient-Greece .timeline-line {
+  background-color: #58899689;
+}
+
+.civilization-row.Roman-Empire .timeline-line {
+  background-color: #824b8793;
+}
+
+.civilization-row.Medieval-Era .timeline-line {
+  background-color: #baba2d78;
+}
+
+.civilization-row.Renaissance-Era .timeline-line {
+  background-color: #87c4407c;
+}
+
+.city {
+  position: absolute;
+  top: 2%;
+  transform: translateX(-50%);
+  display: block;
+  background: #3232326d;
+  color: #000;
+  padding: 4px 4px;
+  border-radius: 8px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  backdrop-filter: blur(3px);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.15),  /* ظل خفيف تحت الكارت */
+    0 6px 12px rgba(0, 0, 0, 0.10);  /* ظل أوسع وأخف للعمق */
+  cursor: pointer;
+}
+
+.city-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.city img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.city-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  margin-right: 4px;
+}
+
+.city-name {
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  color: #eee;
+}
+
+.city-date {
+  font-size: 10px;
+  color: #eee;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+
+.city-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.city-modal-content {
+  background: #22222282;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  border: px solid #2222229f;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 4px 6px rgba(0, 0, 0, 0.4);
+
+}
+
+.city-modal-content img {
+  width: 250px;
+  height: 190px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.city-modal-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #eee;
+  gap: 10px;
+}
+
+.city-modal-text h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.city-modal-text p {
+  font-size: 14px;
+  margin: 0;
+  color: #ccc;
+}
+
+.learn-more-btn {
+  padding: 8px 16px;
+  background-color: #C9972E;
+  border: none;
+  border-radius: 8px;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  align-self: center;
+  margin-top: 50px;
+}
+
+.learn-more-btn:hover {
+  transform: scale(1.05);
+  background-color: #f9bd3b;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-close:hover {
+  transform: scale(1.2);
+  color: #f00;
+}
+
+
+.years-line {
+  position: absolute;
+  top: 72%;
+  left: -40px;
+  width: 40060px;
+  border-top: 1px solid #d7d7d7;
+}
+
+.years-ticks {
+  position: absolute;
+  top: 73%;
+  left: 50px;
+  width: 39950px;
+  height: 100%;
+}
+
+.year-tick {
+  position: absolute;
+  top: 0;
+  font-size: 10px;
+  color: #d7d7d7;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.year-tick::before {
+  content: "";
+  display: block;
+  height: 8px;
+  width: 1px;
+  background: #d7d7d7;
+  margin-bottom: 2px;
+}
+
+footer {
+  background-color: #111;
+  color: #eee;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.6;
+  width: 100%;
+}
+
+footer .disclaimer {
+  font-size: 13px;
+  color: #999;
+  margin-top: 10px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer .made-by {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-top: 10px;
+}
+
+.label-column.egypt {
+  background-color: #C9972E;
+}
+
+.label-column.Mesopotamia {
+  background-color: #739E3F;
+}
+
+.label-column.indus-valley {
+  background-color: #B8693B;
+}
+
+.label-column.Mesoamerica {
+  background-color: #71B8CC;
+}
+
+.label-column.Ancient-China {
+  background-color: #8C1316;
+}
+
+.label-column.Persian-Empire {
+  background-color: #ADB382;
+}
+
+.label-column.Ancient-Greece {
+  background-color: #588996;
+}
+
+.label-column.Roman-Empire {
+  background-color: #824B87;
+}
+
+.label-column.Medieval-Era {
+  background-color: #BAB92D;
+}
+
+.label-column.Renaissance-Era {
+  background-color: #87C440;
+}
+
+
+.close-btn {
+  display: none;
+}
+
+
+
+.open-filter-btn {
+  position: fixed;
+  bottom: 20%; /* التلت الأخير تقريبًا */
+  right: 20px;
+  z-index: 1100;
+  width: 48px;
+  height: 48px;
+  background-color: #C9972E;
+  color: #111;
+  border: none;
+  border-radius: 50%; /* يخليه دايرة */
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.open-filter-btn:hover {
+  background-color: #e5ad41;
+  transform: scale(1.1);
+}
+
+
+
+.filter-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1e1e1e9a;
+  backdrop-filter: blur(4px);
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  color: #eee;
+  z-index: 999;
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 1fr,1fr,1fr; /* 3 أعمدة */
+  gap: 10px 20px; /* مسافة بين العناصر */
+  max-width: 600px;
+  user-select: none;
+  align-items: center;
+}
+
+
+.check {
+  display: grid ;
+  grid-template-columns: repeat(2,50%);
+  grid-column: span 3;
+  justify-content: center;
+  align-content: center;
+}
+
+.filter-box strong {
+  grid-column: span 3; /* العنوان ياخد عرض الbox كله */
+  font-size: 16px;
+  text-align: center;
+  color: #C9972E;
+  margin-bottom: 5px;
+}
+
+.filter-box label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.filter-box input[type="checkbox"] {
+  accent-color: #C9972E;
+  cursor: pointer;
+}
+
+#reset-position-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #C9972E;
+  color: #111;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.4s ease-in-out;
+  font-size: 12px;
+}
+
+#reset-position-btn:hover {
+  background-color: #e5ad41;
+  transform: scale(1.05);
+}
+
+#filter-search {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  height: 30px;
+}
+
+#search-suggestions {
+  position: absolute;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  z-index: 9999;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+
+.suggestion-item {
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #333;
+}
+
+.suggestion-item strong {
+  color: yellow;
+}
+
+
+
+.scroll-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.scroll-buttons button {
+  padding: 6px 12px;
+  background-color: #C9972E;
+  color: #111;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.4s ease-in-out;
+}
+
+.scroll-buttons button:hover {
+  background-color: #e5ad41;
+  transform: scale(1.05);
+}
+
+
+
+
+.search-zoom-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: span 3;
+}
+
+#filter-search {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.zoom-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #333;
+  padding: 4px 10px;
+  border-radius: 8px;
+  height: 30px;
+}
+
+.zoom-label {
+  color: #C9972E;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.zoom-control button {
+  padding: 2px 8px;
+  background-color: #C9972E;
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.zoom-control button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.zoom-control span {
+  font-size: 14px;
+  color: #eee;
+  min-width: 20px;
+  text-align: center;
+}
+
+.game-mode-link {
+  display: inline-block;
+  padding: 6px 6px;
+  background-color: #C9972E;
+  color: #111;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.4s ease-in-out;
+  text-align: center;
+}
+
+.game-mode-link:hover {
+  background-color: #e5ad41;
+  transform: scale(1.05);
+}
+
+.active-period {
+  position: absolute;
+  top: 10%;
+  height: 50%;
+  background: rgba(0,0,0,0.2);
+  z-index: 2;
+  border-radius: 4px;
+  padding-top: 3px;
+  text-align: center;
+
+}
+
+.era-period {
+  position: absolute;
+  top: 10%;
+  height: 50%;
+  background: rgba(0,0,0,0.4);
+  border-radius: 4px;
+  z-index: 3;
+  text-align: center;
+}
+
+.active-period span {
+  color: #eeeeee;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.era-period span {
+  color: #eeeeee;
+  font-weight: 500;
+  font-size: 18px;
+}
+.era-period P {
+  color: #eeeeee;
+  font-weight: 500;
+  font-size: 12px;
+}
+.active-period.ancient-egypt {
+  background-color: #C9972E;
+  justify-content: center;
+
+}
+
+.active-period.Mesopotamia {
+  background-color: #739E3F;
+
+}
+
+.active-period.indus-valley {
+  background-color: #B8693B;
+}
+
+
+.active-period.Mesoamerica {
+  background-color: #71B8CC;
+}
+
+.active-period.Ancient-China {
+  background-color: #8C1316;
+}
+
+.active-period.Persian-Empire {
+  background-color: #ADB382;
+}
+
+
+.active-period.Ancient-Greece {
+  background-color: #588996;
+}
+
+.active-period.Roman-Empire {
+  background-color: #824B87;
+}
+
+.active-period.Medieval-Era {
+  background-color: #BAB92D;
+}
+
+
+.active-period.Renaissance-Era {
+  background-color: #87C440;
+
+}
+
+
+.era-period.ancient-egypt {
+  background-color: #C9972E;
+}
+
+.era-period.Mesopotamia {
+  background-color: #739E3F;
+
+}
+
+.era-period.indus-valley {
+  background-color: #B8693B;
+}
+
+.era-period.Mesoamerica {
+  background-color: #71B8CC;
+}
+
+.era-period.Ancient-China {
+  background-color: #8C1316;
+}
+
+.era-period.Persian-Empire {
+  background-color: #ADB382;
+}
+
+.era-period.Ancient-Greece {
+  background-color: #588996;
+}
+
+.era-period.Roman-Empire {
+  background-color: #824B87;
+}
+
+.era-period.Medieval-Era {
+  background-color: #BAB92D;
+}
+
+.era-period.Renaissance-Era {
+  background-color: #87C440;
+}
+
+
+.era-divider {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-left: 2px solid #fff;
+  opacity: 0.8;
+  z-index: 6;
+}
+
+.era-label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-70%, -50%) rotate(-90deg);
+  transform-origin: center;
+  color: #ffffff83;
+  padding: 2px 6px;
+  font-size: 60px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 6;
+}
+
+
+
+
+.intro-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.intro-content {
+  background: rgba(34, 34, 34, 0.516)000;
+  padding: 50px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative; /* مهم عشان زرار X */
+  max-width: 800px;
+  color: #eee;
+  backdrop-filter: blur(8px);
+  border: 2px solid #33333381;
+}
+
+.intro-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.intro-content h2 {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.intro-content p {
+  font-size: 16px;
+}
+
+.intro-content span {
+  font-size: 12px;
+
+}
+#close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #eee;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+  font-weight: 700;
+}
+
+#close-btn:hover {
+  color: #ff0000;
+  transform: scale(1.3);
+}
+
+.intro-buttons {
+  margin-top: 20px;
+}
+
+#continue-btn {
+  padding: 10px 20px;
+  background-color: #C9972E;
+  border: none;
+  border-radius: 8px;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+
+#continue-btn:hover {
+  background-color: #e5ad41;
+  transform: scale(1.05);
+}
+
+
+#year-tracker {
+  margin-left: auto;
+  background: rgba(34, 34, 34, 0.85);
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #C9972E;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  user-select: none;
+  pointer-events: none;
+}
+
+
+
+
+/* .mobile-scroll-buttons {
+  position: fixed;
+  left: 10px;
+  top: 80%;
+  touch-action: none;
+  cursor: grab;
+  z-index: 9999;
+  display: none;
+  gap: 10px;
+}
+
+.mobile-scroll-buttons button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  background: #C9972E;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  cursor: pointer;
+  width: 45px;
+  border: none;
+}
+ */
+
+
+@media (max-width: 600px) {
+
+  /* ====== الأساسيات ====== */
+  body {
+    padding-top: 48px;
+    font-size: 12px;
+  }
+
+  /* ====== الهيدر ====== */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 6px 14px;
+    gap: 4px;
+    height: auto;
+  }
+
+  header a {
+    font-size: 13px;
+    margin-right: 8px;
+  }
+
+  .sub {
+    font-size: 12px;
+  }
+
+  /* ====== الصفوف والتايملاين ====== */
+  .civilization-row {
+    height: 60px;
+  }
+
+  .label-column {
+    width: 110px;
+    font-size: 10px;
+    padding: 24px 4px;
+  }
+
+  .era-label {
+    font-size: 26px;
+    transform: translate(-90%, -50%) rotate(-90deg);
+  }
+
+  .active-period span,
+  .era-period span {
+    font-size: 14px;
+  }
+
+  .era-period p {
+    font-size: 10px;
+  }
+
+  .year-tick {
+    font-size: 8px;
+    top: -1%;
+  }
+
+  #year-tracker {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  /* ====== المدينة ====== */
+  .city {
+    padding: 2px 4px;
+    max-width: 160px;
+    top: 5%;
+  }
+
+  .city-inner {
+    gap: 6px;
+  }
+
+  .city img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .city-name {
+    font-size: 9px;
+  }
+
+  .city-date {
+    font-size: 8px;
+  }
+
+  /* ====== مودال المدينة ====== */
+  .city-modal-content {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .city-modal-content img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .city-modal-text h2 {
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  .city-modal-text p {
+    font-size: 10px;
+  }
+
+  .learn-more-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+    margin-top: 20px;
+  }
+
+  .modal-close {
+    font-size: 20px;
+    top: 12px;
+    right: 12px;
+  }
+
+  /* ====== intro card ====== */
+  .intro-content {
+    padding: 20px;
+  }
+
+  .intro-content h1 {
+    font-size: 22px;
+  }
+
+  .intro-content h2 {
+    font-size: 13px;
+  }
+
+  .intro-content p {
+    font-size: 12px;
+  }
+
+  .intro-content span {
+    font-size: 11px;
+  }
+
+  #continue-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+
+  #close-btn {
+    font-size: 20px;
+    top: 10px;
+    right: 12px;
+  }
+
+  /* ====== أزرار Scroll للموبايل ====== */
+  .mobile-scroll-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    top: 75%;
+    left: 10px;
+  }
+
+  .mobile-scroll-buttons button {
+    font-size: 12px;
+    width: 40px;
+    padding: 6px;
+  }
+
+
+  /* ====== الفوتر ====== */
+  footer {
+    font-size: 13px;
+    padding: 30px 16px;
+  }
+
+  footer .disclaimer {
+    font-size: 11px;
+  }
+
+  footer .made-by {
+    font-size: 12px;
+  }
+}
+
+
+
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+  /* ====== الأساسيات ====== */
+  body {
+    padding-top: 60px;
+    font-size: 14px;
+  }
+
+  header {
+    align-items: flex-start;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+
+  header a {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .sub {
+    font-size: 14px;
+  }
+
+  /* ====== الصفوف والتايملاين ====== */
+  .civilization-row {
+    height: 65px;
+  }
+
+  .label-column {
+    width: 150px;
+    font-size: 11px;
+    padding: 25px 4px;
+  }
+
+  .era-label {
+    font-size: 30px;
+    transform: translate(-90%, -50%) rotate(-90deg);
+  }
+
+  .active-period span,
+  .era-period span {
+    font-size: 15px;
+  }
+
+  .era-period p {
+    font-size: 12px;
+  }
+
+  .year-tick {
+    font-size: 9px;
+  }
+
+  #year-tracker {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  /* ====== المدن ====== */
+  .city {
+    padding: 4px 6px;
+    max-width: 200px;
+    top: 5%;
+  }
+
+  .city-inner {
+    gap: 8px;
+  }
+
+  .city img {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+  }
+
+  .city-name {
+    font-size: 11px;
+  }
+
+  .city-date {
+    font-size: 10px;
+  }
+
+  /* ====== مودال المدينة ====== */
+  .city-modal-content {
+    flex-direction: row;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .city-modal-content img {
+    width: 45%;
+    height: auto;
+  }
+
+  .city-modal-text h2 {
     font-size: 18px;
+  }
+
+  .city-modal-text p {
+    font-size: 13px;
+  }
+
+  .learn-more-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+    margin-top: 24px;
+  }
+
+  .modal-close {
+    font-size: 22px;
+    top: 14px;
+    right: 14px;
+  }
+
+  /* ====== كارت المقدمة ====== */
+  .intro-content {
+    padding: 30px;
+  }
+
+  .intro-content h1 {
+    font-size: 26px;
+  }
+
+  .intro-content h2 {
+    font-size: 15px;
+  }
+
+  .intro-content p {
+    font-size: 14px;
+  }
+
+  .intro-content span {
+    font-size: 12px;
+  }
+
+  #continue-btn {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+
+  #close-btn {
+    font-size: 22px;
+    top: 12px;
+    right: 14px;
+  }
+
+  /* ====== أزرار Scroll للتابلت ====== */
+  .mobile-scroll-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    top: unset;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mobile-scroll-buttons button {
+    font-size: 13px;
+    width: 42px;
+    padding: 6px 8px;
+  }
+
+
+  /* ====== الفوتر ====== */
+  footer {
+    font-size: 14px;
+    padding: 40px 24px;
+  }
+
+  footer .disclaimer {
+    font-size: 12px;
+  }
+
+  footer .made-by {
+    font-size: 13px;
+  }
+}
+
+
+
+@media (min-width:240px) and (max-width: 1024px) {
+
+
+
+  .zoom-control button {
+    font-size: 20px;
+  }
+
+  .filter-box {
+   background-color: #000;
+   padding: 30px 10px;
+   color: #eee;
+   z-index: 999;
+   font-size: 14px;
+   min-width: 100%;
+   user-select: none;
+   height: 100vh;
+   position: relative;
+   display: inline-block;
+   right: 0;
+   bottom: 0;
+   text-align: center;
+   
+  }
+
+  .scroll-buttons {
+    display: none;
+  }
+  
+
+  .filter-box #reset-position-btn {
+    display: none;
+  }
+
+
+  .filter-box #filter-search {
+    margin: 150px 0 40px 0;
+    width: 100%;
+  }
+
+
+  .close-btn {
+    display: flex;
+    right: 20px;
+    top: 30px;
+    color: #eee;
+    background-color: transparent;
+    font-size: 24px;
+    position: absolute;
+    border: none;
+  }
+
+  .filter-box .zoom-control {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+
+  .filter-box .check {
+    display: grid;
+    grid-template-columns: repeat(2,50%);
+    gap: 15px;
+    margin-left: 30px;
+  }
+
+
+ .open-filter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .filter-box {
+    display: none; /* مخفي افتراضيًا */
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .filter-box.visible {
+    display: inline-block; /* يظهر لما نضيف الكلاس */
+  }
+
+  .filter-box.visible + .open-filter-btn {
+    display: none !important;
+  }
+
+}
+
+
+
+/* === Animations for filter menu === */
+@keyframes slideInMenu {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutMenu {
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInBtn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Classes used for animations === */
+.filter-box {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.filter-box.opening {
+  animation: slideInMenu 0.4s forwards;
+}
+
+.filter-box.closing {
+  animation: slideOutMenu 0.4s forwards;
+}
+
+/* Open button animation */
+.open-menu-btn {
+  animation: fadeInBtn 0.4s ease-in-out;
+}
+
+.open-menu-btn:hover {
+  background-color: #444;
+  box-shadow: 0 0 10px #aaa;
+  transform: scale(1.1);
+}
+
+
+
+@media (min-width: 1025px) {
+  #open-filter-btn {
+    display: none !important;
+  }
+}
+
+
+@media (max-width: 1025px) {
+  .mobile-scroll-buttons {
+    position: fixed;
+    display: flex;
+    gap: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    border-radius: 50px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    touch-action: none;
+    cursor: grab;
+    transition: background-color 0.3s ease;
+    flex-direction: row !important;
+  }
+
+  .mobile-scroll-buttons:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .mobile-scroll-buttons button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .mobile-scroll-buttons button:hover {
+    background-color: #666;
+    transform: scale(1.1);
+  }
+
+  .mobile-scroll-buttons button:active {
+    background-color: #888;
+  }
+}
+
+
+/* نخفي الزرار في الديسكتوب */
+@media (min-width: 1025px) {
+  .mobile-scroll-buttons {
+    display: none !important;
+  }
 }
