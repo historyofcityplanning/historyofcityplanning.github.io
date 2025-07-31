@@ -52,12 +52,13 @@
       <label><input type="checkbox" data-civ="Medieval-Era" checked> Medieval Era</label>
       <label><input type="checkbox" data-civ="Renaissance-Era" checked> Renaissance Era</label>
     </div>
+
     <button id="reset-position-btn">Reset Position</button>
     <div class="scroll-buttons">    
-     <button id="scroll-start">|&lt;</button>   <!-- البداية -->
-     <button id="scroll-left">&lt;</button>    <!-- تحرك يسار -->
-     <button id="scroll-right">&gt;</button>   <!-- تحرك يمين -->
-     <button id="scroll-end">&gt;|</button>    <!-- النهاية -->
+      <button id="scroll-start">|&lt;</button>   <!-- البداية -->
+      <button id="scroll-left">&lt;</button>    <!-- تحرك يسار -->
+      <button id="scroll-right">&gt;</button>   <!-- تحرك يمين -->
+      <button id="scroll-end">&gt;|</button>    <!-- النهاية -->
     </div>
 
     
@@ -89,14 +90,17 @@
       
 
       <div class="civilization-row Mesopotamia">
-        <div class="label-column Mesopotamia">Mesopotamia</div>
+        <div class="label-column Mesopotamia">
+          <span class="label-title">Mesopotamia</span>
+          <img src="images/mesopotamia.png" class="label-icon" alt="Mesopotamia Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Mesopotamia" style="left: 0.07%; width: 67%;">
             <span>Mesopotamian Civilization</span>
           </div> <!-- Level 1 -->
           <div class="era-period Mesopotamia" style="left: 0.07%; width: 45.03%;">
-            <span>Early Mesopotamia</span>
-            <P>5000 : 2000 BCE</P>
+            <span class="mesopotamia">Early Mesopotamia</span>
+            <P class="mesopotamia-date">5000 : 2000 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Mesopotamia" style="left: 45.14%; width: 16.47%;">
             <SPAn>Classical Mesopotamia</SPAn>
@@ -161,18 +165,21 @@
         </div>
       </div>
       <div class="civilization-row indus-valley">
-        <div class="label-column indus-valley">Indus Valley</div>
+        <div class="label-column indus-valley">
+          <span>Indus Valley</span>
+          <img src="images/indus-valley.png" class="label-icon" alt="Mesopotamia Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period indus-valley" style="left: -1%; width: 56.61%;">
-            <span>Indus Valley Civilization</span>
+            <span class="label-title">Indus Valley Civilization</span>
           </div> <!-- Level 1 -->
-          <div class="era-period indus-valley" style="left: -1%; width: 37.1%;">
-            <SPAn>Pre-Harappan</SPAn>
-            <P>7000 : 2600  BCE</P>
+          <div class="era-period indus-valley" style="left: -0.1%; width: 37.1%;">
+            <SPAn class="indus">Pre-Harappan</SPAn>
+            <P class="indus-date">2600 : 1900 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period indus-valley" style="left: 36.15%; width: 10.45%;">
-            <SPAn>Mature Harappan</SPAn>
-            <P>2600 : 1900 BCE</P>
+            <SPAn class="indus-1">Mature Harappan</SPAn>
+            <P class="indus-date-1">2600 : 1900 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period indus-valley" style="left: 46.65%; width: 8.95%;">
             <SPAn>Late Harappan</SPAn>
@@ -278,7 +285,10 @@
 
 
       <div class="civilization-row ancient-egypt">
-        <div class="label-column egypt">Ancient Egypt</div>
+        <div class="label-column egypt">
+          <span class="label-title">Ancient Egypt</span>
+          <img src="images/ancient-egypt.png" class="label-icon" alt="egypt Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period ancient-egypt" style="left: 15.08%; width: 59.6%;">
             <span>Egyptian Civilization</span>
@@ -445,7 +455,10 @@
 
 
       <div class="civilization-row Ancient-Greece">
-        <div class="label-column Ancient-Greece">Ancient Greece</div>
+        <div class="label-column Ancient-Greece">
+          <span class="label-title">Ancient Greece</span>
+          <img src="images/greek.png" class="label-icon" alt="Mesopotamia Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Ancient-Greece" style="left: 45.1%; width: 29.58%;">
             <span>Ancient Greece</span>
@@ -455,8 +468,8 @@
             <P>800 : 480 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Ancient-Greece" style="left: 67.85%; width: 3.12%;">
-            <SPAn>Classical Greece</SPAn>
-            <P>480 : 323 BCE</P>
+            <SPAn class="greece">Classical Greece</SPAn>
+            <P class="greece-date">480 : 323 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Ancient-Greece" style="left: 71%; width: 3.7%;">
             <SPAn>Hellenistic Greece</SPAn>
@@ -591,22 +604,25 @@
 
 
       <div class="civilization-row Persian-Empire">
-        <div class="label-column Persian-Empire">Persian Empire</div>
+        <div class="label-column Persian-Empire">
+          <span class="label-title">Persian Empire</span>
+          <img src="images/persian.png" class="label-icon" alt="Mesopotamia Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Persian-Empire" style="left: 66.88%; width: 18.03%;">
             <span>Persian Empire</span>
           </div> <!-- Level 1 -->
           <div class="era-period Persian-Empire" style="left: 66.88%; width: 3.4%;">
-            <SPAn>Achaemenid Empire</SPAn>
-            <P>550 : 330 BCE</P>
+            <SPAn class="persian">Achaemenid Empire</SPAn>
+            <P class="persian-date">550 : 330 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Persian-Empire" style="left: 71.4%; width: 7.095%;">
-            <SPAn>Parthian Empire</SPAn>
-            <P>247 BCE : 224 CE</P>
+            <SPAn class="persian-1">Parthian Empire</SPAn>
+            <P class="persian-date-1">247 BCE : 224 CE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Persian-Empire" style="left: 78.57%; width: 6.34%;">
-            <SPAn>Sasanian Empire</SPAn>
-            <P>224 : 651 CE</P>
+            <SPAn class="persian-2">Sasanian Empire</SPAn>
+            <P class="persian-date-2">224 : 651 CE</P>
           </div> <!-- Level 2 -->
 
 
@@ -733,26 +749,29 @@
 
 
       <div class="civilization-row Ancient-China">
-        <div class="label-column Ancient-China">Ancient China</div>
+        <div class="label-column Ancient-China">
+          <span>Ancient China</span>
+          <img src="images/chinese.png" class="label-icon" alt="china Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Ancient-China" style="left: 44.05%; width: 34.4%;">
-            <span>Ancient China</span>
+            <span class="label-title">Ancient China</span>
           </div> <!-- Level 1 -->
           <div class="era-period Ancient-China" style="left: 44.05%; width: 7.05%;">
             <SPAn>Xia Dynasty</SPAn>
             <P>2070 : 1600 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Ancient-China" style="left: 51.15%; width: 8.2%;">
-            <SPAn>Shang Dynasty</SPAn>
-            <P>1600 : 1046 BCE</P>
+            <SPAn class="china">Shang Dynasty</SPAn>
+            <P class="china-date">1600 : 1046 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Ancient-China" style="left: 59.4%; width: 11.97%;">
-            <SPAn>Zhou Dynasty</SPAn>
-            <P>1046 : 256 BCE</P>
+            <SPAn class="china-1">Zhou Dynasty</SPAn>
+            <P class="china-date-1">1046 : 256 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Ancient-China" style="left: 72.1%; width: 6.4%;">
-            <SPAn>Han Dynasty</SPAn>
-            <P>206 BCE : 220 CE</P>
+            <SPAn class="china-2">Han Dynasty</SPAn>
+            <P class="china-date-2">206 BCE : 220 CE</P>
           </div> <!-- Level 2 -->
 
 
@@ -845,7 +864,10 @@
 
 
       <div class="civilization-row Mesoamerica">
-        <div class="label-column Mesoamerica">Mesoamerica</div>
+        <div class="label-column Mesoamerica">
+          <span class="label-title">Mesoamerica</span>
+          <div><img src="images/mesoamerican.png" class="label-icon" alt="mesoamerica Icon"></div>
+        </div>
         <div class="timeline-line">
           <div class="active-period Mesoamerica" style="left: 52.61%; width: 45.4%;">
             <span>Mesoamerican Civilization</span>
@@ -855,8 +877,8 @@
             <P>1500 : 400 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Mesoamerica" style="left: 78.9%; width: 9.75%;">
-            <SPAn>Maya Classic</SPAn>
-            <P>250 : 900 CE</P>
+            <SPAn class="mesoamerica">Maya Classic</SPAn>
+            <P class="mesoamerica-date">250 : 900 CE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Mesoamerica" style="left: 94.65%; width: 3.3%;">
             <SPAn>Aztec Empire</SPAn>
@@ -933,7 +955,10 @@
       
       
       <div class="civilization-row Roman-Empire">
-        <div class="label-column Roman-Empire">Roman Empire</div>
+        <div class="label-column Roman-Empire">
+          <span class="label-title">Roman Empire</span>
+          <img src="images/roman.png" class="label-icon" alt="roman Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Roman-Empire" style="left: 63.82%; width: 18.45%;">
             <span>Roman Empire</span>
@@ -947,8 +972,8 @@
             <P>509 : 27 BCE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Roman-Empire" style="left: 74.8%; width: 7.47%;">
-            <SPAn>Roman Empire</SPAn>
-            <P>27 BCE : 476 CE</P>
+            <SPAn class="roman">Roman Empire</SPAn>
+            <P class="roman-date">27 BCE : 476 CE</P>
           </div> <!-- Level 2 -->
 
 
@@ -1139,14 +1164,17 @@
         </div>
       </div>
       <div class="civilization-row Medieval-Era">
-        <div class="label-column Medieval-Era">Medieval Era</div>
+        <div class="label-column Medieval-Era">
+          <span class="label-title">Medieval Era</span>
+          <img src="images/medieval.png" class="label-icon" alt="Medieval Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Medieval-Era" style="left: 82.27%; width: 15.39%;">
             <span>Medieval Era</span>
           </div> <!-- Level 1 -->
           <div class="era-period Medieval-Era" style="left: 82.27%; width: 7.82%;">
-            <SPAn>Early Middle Ages</SPAn>
-            <P>476 : 1000 CE</P>
+            <SPAn class="middle">Early Middle Ages</SPAn>
+            <P class="middle-date">476 : 1000 CE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Medieval-Era" style="left: 90.15%; width: 4.45%;">
             <SPAn>High Middle Ages</SPAn>
@@ -1335,7 +1363,10 @@
         </div>
       </div>
       <div class="civilization-row Renaissance-Era">
-        <div class="label-column Renaissance-Era">Renaissance Era</div>
+        <div class="label-column Renaissance-Era">
+          <span class="label-title">Renaissance Era</span>
+          <img src="images/renaissance.png" class="label-icon" alt="renaissance Icon">
+        </div>
         <div class="timeline-line">
           <div class="active-period Renaissance-Era" style="left: 94.65%; width: 4.5%;">
             <span>Renaissance Era</span>
@@ -1345,12 +1376,12 @@
             <P>1300 : 1500 CE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Renaissance-Era" style="left: 97.66%; width: 1.47%;">
-            <SPAn>High + Late Renaissance</SPAn>
-            <P>1500 : 1600 CE</P>
+            <SPAn class="era-1">High + Late Renaissance ↓</SPAn>
+            <P class="era-date-1">1500 : 1600 CE</P>
           </div> <!-- Level 2 -->
           <div class="era-period Renaissance-Era" style="left: 99.15%; width: 0.85%;">
-            <SPAn>Transition to Modern Era</SPAn>
-            <P>1600 : 1750 CE (Begining of Modern Era)</P>
+            <SPAn class="era">Transition to Modern Era</SPAn>
+            <P class="era-date">1600 : 1750 CE (Begining of Modern Era)</P>
           </div> <!-- Level 2 -->
 
 
@@ -3263,73 +3294,73 @@ document.getElementById('scroll-right').addEventListener('click', () => {
 window.addEventListener('scroll', updateSuggestionsPosition);
 
 
-const zoomButtons = document.querySelectorAll('.zoom-btn');
+// const zoomButtons = document.querySelectorAll('.zoom-btn');
 
-zoomButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    zoomButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const zoomLevel = parseInt(btn.dataset.zoom);
+// zoomButtons.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     zoomButtons.forEach(b => b.classList.remove('active'));
+//     btn.classList.add('active');
+//     const zoomLevel = parseInt(btn.dataset.zoom);
 
-    // Level 1 (Active Periods)
-    document.querySelectorAll('.active-period').forEach(el => {
-      el.style.display = (zoomLevel === 1) ? 'block' : 'none';
-    });
+//     // Level 1 (Active Periods)
+//     document.querySelectorAll('.active-period').forEach(el => {
+//       el.style.display = (zoomLevel === 1) ? 'block' : 'none';
+//     });
 
-    // Level 2 (Era Periods)
-    document.querySelectorAll('.era-period').forEach(el => {
-      el.style.display = (zoomLevel === 2) ? 'block' : 'none';
-    });
+//     // Level 2 (Era Periods)
+//     document.querySelectorAll('.era-period').forEach(el => {
+//       el.style.display = (zoomLevel === 2) ? 'block' : 'none';
+//     });
 
-    // Level 3 (Cities)
-    document.querySelectorAll('.city').forEach(el => {
-      el.style.display = (zoomLevel === 3) ? 'block' : 'none';
-    });
-  });
-});
+//     // Level 3 (Cities)
+//     document.querySelectorAll('.city').forEach(el => {
+//       el.style.display = (zoomLevel === 3) ? 'block' : 'none';
+//     });
+//   });
+// });
 
 
 
-let currentZoomLevel = 1;
+// let currentZoomLevel = 1;
 
-const zoomInBtn = document.getElementById('zoom-in');
-const zoomOutBtn = document.getElementById('zoom-out');
-const zoomLevelDisplay = document.getElementById('zoom-level-display');
+// const zoomInBtn = document.getElementById('zoom-in');
+// const zoomOutBtn = document.getElementById('zoom-out');
+// const zoomLevelDisplay = document.getElementById('zoom-level-display');
 
-function updateZoomDisplay() {
-  zoomLevelDisplay.innerText = currentZoomLevel;
-  zoomInBtn.disabled = (currentZoomLevel === 3);
-  zoomOutBtn.disabled = (currentZoomLevel === 1);
+// function updateZoomDisplay() {
+//   zoomLevelDisplay.innerText = currentZoomLevel;
+//   zoomInBtn.disabled = (currentZoomLevel === 3);
+//   zoomOutBtn.disabled = (currentZoomLevel === 1);
 
-  document.querySelectorAll('.active-period').forEach(el => {
-    el.style.display = (currentZoomLevel === 1) ? 'block' : 'none';
-  });
+//   document.querySelectorAll('.active-period').forEach(el => {
+//     el.style.display = (currentZoomLevel === 1) ? 'block' : 'none';
+//   });
 
-  document.querySelectorAll('.era-period').forEach(el => {
-    el.style.display = (currentZoomLevel === 2) ? 'block' : 'none';
-  });
+//   document.querySelectorAll('.era-period').forEach(el => {
+//     el.style.display = (currentZoomLevel === 2) ? 'block' : 'none';
+//   });
 
-  document.querySelectorAll('.city').forEach(el => {
-    el.style.display = (currentZoomLevel === 3) ? 'block' : 'none';
-  });
-}
+//   document.querySelectorAll('.city').forEach(el => {
+//     el.style.display = (currentZoomLevel === 3) ? 'block' : 'none';
+//   });
+// }
 
-zoomInBtn.addEventListener('click', () => {
-  if (currentZoomLevel < 3) {
-    currentZoomLevel++;
-    updateZoomDisplay();
-  }
-});
+// zoomInBtn.addEventListener('click', () => {
+//   if (currentZoomLevel < 3) {
+//     currentZoomLevel++;
+//     updateZoomDisplay();
+//   }
+// });
 
-zoomOutBtn.addEventListener('click', () => {
-  if (currentZoomLevel > 1) {
-    currentZoomLevel--;
-    updateZoomDisplay();
-  }
-});
+// zoomOutBtn.addEventListener('click', () => {
+//   if (currentZoomLevel > 1) {
+//     currentZoomLevel--;
+//     updateZoomDisplay();
+//   }
+// });
 
-// Initialize to Level 3 on load
-updateZoomDisplay();
+// // Initialize to Level 3 on load
+// updateZoomDisplay();
 
 
 

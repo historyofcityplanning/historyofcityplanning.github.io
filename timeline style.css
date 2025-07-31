@@ -87,6 +87,7 @@ header a {
   height: 80px;
   min-width: 40200px; /* مهم جداً لتمدد الخلفية */
   position: relative;
+  
 }
 
 .label-column {
@@ -101,6 +102,16 @@ header a {
   position: sticky;
   left: 0;
   z-index: 10;
+}
+
+.label-icon {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 24px;
+  height: auto;
+  z-index: 9999;
 }
 
 .timeline-line {
@@ -156,7 +167,7 @@ header a {
 
 .city {
   position: absolute;
-  top: 2%;
+  top: 1.5%;
   transform: translateX(-50%);
   display: block;
   background: #3232326d;
@@ -179,8 +190,8 @@ header a {
 }
 
 .city img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   object-fit: cover;
   border-radius: 6px;
   flex-shrink: 0;
@@ -510,7 +521,7 @@ footer .made-by {
   border-radius: 8px;
   border: none;
   font-size: 14px;
-  width: 100%;
+  width: 200%;
   margin-bottom: 10px;
   box-sizing: border-box;
   height: 30px;
@@ -551,6 +562,7 @@ footer .made-by {
   gap: 10px;
   margin-top: 10px;
   justify-content: center;
+  
 }
 
 .scroll-buttons button {
@@ -593,6 +605,7 @@ footer .made-by {
   padding: 4px 10px;
   border-radius: 8px;
   height: 30px;
+  display: none;
 }
 
 .zoom-label {
@@ -645,42 +658,193 @@ footer .made-by {
 
 .active-period {
   position: absolute;
-  top: 10%;
-  height: 50%;
+  top: 62.5%;
+  height: 5%;
   background: rgba(0,0,0,0.2);
   z-index: 2;
   border-radius: 4px;
   padding-top: 3px;
-  text-align: center;
+
+
 
 }
 
 .era-period {
   position: absolute;
-  top: 10%;
-  height: 50%;
+  top: 60%;
+  height: 10%;
   background: rgba(0,0,0,0.4);
   border-radius: 4px;
-  z-index: 3;
-  text-align: center;
+  z-index: 4;
+
 }
 
 .active-period span {
   color: #eeeeee;
   font-weight: 500;
   font-size: 24px;
+  text-align: left;
+  display: none;
+}
+.era-period.Mesopotamia .mesopotamia {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  margin-left: 130px;
+  margin-top: -40px;
+
+}
+
+.era-period.Mesopotamia span {
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  margin-top: -40px;
+  margin-left: 10px;
+}
+
+.era-period.Mesopotamia .mesopotamia-date {
+  text-align: left;
+  margin-left: 130px;
+  position: relative;
+  margin-top: -20px; 
+}
+.era-period.Mesopotamia p {
+  text-align: left;
+  position: relative;
+  margin-top: -20px; 
+  margin-left: 10px;
+
 }
 
 .era-period span {
+  position: absolute;
   color: #eeeeee;
   font-weight: 500;
   font-size: 18px;
+  text-align: left;
+  margin-top: -40px;
+  margin-left: 10px;
+
 }
 .era-period P {
   color: #eeeeee;
   font-weight: 500;
   font-size: 12px;
+  text-align: left;
+  margin-top: -20px;
+  margin-left: 10px;
 }
+
+.era-period.indus-valley .indus {
+  margin-top: -40px;
+  margin-left: 70px;
+
+}
+.era-period.indus-valley .indus-date {
+  margin-left: 70px;
+
+}
+.era-period.indus-valley .indus-1 {
+  margin-left: 110px;
+
+}
+
+.era-period.indus-valley .indus-date-1 {
+  margin-left: 110px;
+}
+
+.era-period.Ancient-Greece .greece {
+  margin-left: 150px;
+
+}
+.era-period.Ancient-Greece .greece-date {
+  margin-left: 150px;
+
+}
+.era-period.Persian-Empire .persian {
+  margin-left: 330px;
+}
+
+.era-period.Persian-Empire .persian-date {
+  margin-left: 330px;
+}
+.era-period.Persian-Empire .persian-1 {
+  margin-left: 150px;
+}
+.era-period.Persian-Empire .persian-date-1 {
+  margin-left: 150px;
+}
+
+.era-period.Persian-Empire .persian-2 {
+  margin-left: 350px;
+}
+.era-period.Persian-Empire .persian-date-2 {
+  margin-left: 350px;
+}
+.era-period.Ancient-China .china {
+  margin-left: 150px;
+
+}
+.era-period.Ancient-China .china-date {
+  margin-left: 150px;
+
+}
+
+.era-period.Ancient-China .china-1 {
+  margin-left: 170px;
+
+}
+.era-period.Ancient-China .china-date-1 {
+  margin-left: 170px;
+
+}
+
+.era-period.Ancient-China .china-2 {
+  margin-left: 170px;
+
+}
+.era-period.Ancient-China .china-date-2 {
+  margin-left: 170px;
+
+}
+
+.era-period.Mesoamerica .mesoamerica {
+  margin-left: 130px;
+}
+.era-period.Mesoamerica .mesoamerica-date {
+  margin-left: 130px;
+}
+
+.era-period.Roman-Empire .roman {
+  margin-left: 570px;
+}
+.era-period.Roman-Empire .roman-date {
+  margin-left: 570px;
+}
+.era-period.Medieval-Era .middle {
+  margin-left: 0px;
+}
+.era-period.Medieval-Era .middle-date {
+  margin-left: 0px;
+}
+.era-period.Renaissance-Era .era {
+  margin-left: 170px;
+  font-size: 14px;
+}
+.era-period.Renaissance-Era .era-date {
+  margin-left: 170px;
+  font-size: 9px;
+}
+.era-period.Renaissance-Era .era-1 {
+  margin-top: -120px;
+
+}
+.era-period.Renaissance-Era .era-date-1 {
+  margin-top: -100px;
+}
+
+
 .active-period.ancient-egypt {
   background-color: #C9972E;
   justify-content: center;
