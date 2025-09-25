@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>History Of City Planning</title>
+    <link rel="stylesheet" href="gamefinalstyle.css">
+    <link rel="icon" href="images/c6c665cc322dcdf5e5194dd5201de914.png" type="image/png">
+</head>
+<body>
+    <header>
+        <a onclick="location.reload()">History Of City Planning</a>
+        <p>Game Mode</p>
+    </header>
+
+    <!-- شاشة البداية -->
+    <div id="start-screen" class="start-screen">
+        <div class="start-content">
+            <h1>Historical Cities Timeline</h1>
+            <p>Test your knowledge of historical cities and their founding years</p>
+            <button onclick="startNewGame()" class="start-button">New Game</button>
+        </div>
+    </div>
+
+    <div class="game-info">
+        <div class="level-info">
+            <h3>Level <span id="current-level">1</span>: <span id="level-name">Ancient Civilizations</span></h3>
+            <div class="level-progress">
+                <div class="progress-bar">
+                    <div id="progress-fill" style="width: 0%"></div>
+                </div>
+                <span id="level-score">Score: 0/4</span>
+            </div>
+        </div>
+        
+        <div class="attempts-info">
+            <h3>Attempts Remaining</h3>
+            <div class="attempts-count">
+                <span id="attempts-left">5</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions-container">
+        <div class="instructions">
+            <h3>How To Play</h3>
+            <p>Arrange the Cities from Oldest to Newest by their founding year</p>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div id="card-zone">
+            <div id="active-card" class="card-row"></div>
+            <div class="drop-zone-wrapper">
+                <div class="drop-row-container">
+                    <div id="drop-zones-inner" class="drop-row-inner"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay"></div>
+
+        <div id="gameoverboard" class="gameoverboard">
+            <h1>Game Over!</h1>
+            <h2 id="final-score" class="smallscore">Score: 0</h2>
+            <h3 id="position" class="position">Try Again</h3>
+            <button onclick="restartGame()">Try Again</button>
+        </div>
+
+        <!-- صفحة الاحتفالات -->
+        <div id="celebration-screen" class="celebration-screen" style="display: none;">
+            <div class="celebration-content">
+                <h1>🎉 Congratulations! 🎉</h1>
+                <p>You've completed all levels perfectly!</p>
+                <div class="final-stats">
+                    <p>Total Score: <span id="final-total-score">0</span></p>
+                    <p>Attempts Used: <span id="attempts-used">0</span></p>
+                </div>
+                <button onclick="startNewGame()" class="play-again-button">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="citiesdatafinal.js"></script>
+    <script src="gamefinalscript.js"></script>
+</body>
+</html>

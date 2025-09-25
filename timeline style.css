@@ -478,6 +478,17 @@ footer .made-by {
   align-content: center;
 }
 
+.game-mode {
+  text-decoration: none;
+  color: #000;
+  background-color: #C9972E;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 18px;
+  margin-right: 18px;
+  font-weight: 500;
+}
+
 .filter-box strong {
   grid-column: span 3; /* العنوان ياخد عرض الbox كله */
   font-size: 16px;
@@ -521,7 +532,7 @@ footer .made-by {
   border-radius: 8px;
   border: none;
   font-size: 14px;
-  width: 200%;
+  width: 186%;
   margin-bottom: 10px;
   box-sizing: border-box;
   height: 30px;

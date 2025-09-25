@@ -1,21 +1,29 @@
-// citiesGameData.js موجود فعلاً
-let placedCards = [];
-let remainingCards = [...gameCards];
-let activeCard = null;
-let score = 0;
-let lives = 5;
+// ======================================================
+//          ملف game.js الجديد بالكامل
+// ======================================================
 
-const placedCardsContainer = document.getElementById('placed-cards');
 const dropZonesContainer = document.getElementById('drop-zones');
 const activeCardContainer = document.getElementById('active-card');
 const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives');
 
+// متغيرات اللعبة
+let remainingCards = [...gameCards].sort((a, b) => 0.5 - Math.random()); // نلخبط الكروت في الأول
+let activeCard = null;
+let score = 0;
+let lives = 5;
+
+// **المتغير الأهم: ده هو الخط الزمني اللي هيتبني تحت**
+// هنستخدم null لتمثيل الـ drop-zone الفاضي
+let timeline = [];
+
+// دالة لتحديث الأرقام على الشاشة
 function updateScore() {
   scoreDisplay.textContent = `Score: ${score}`;
   livesDisplay.textContent = `Lives: ${lives}`;
 }
 
+// دالة لإنشاء عنصر الكارت
 function createCardElement(cardData, draggable = true) {
   const card = document.createElement('div');
   card.className = 'card';
@@ -24,101 +32,124 @@ function createCardElement(cardData, draggable = true) {
     card.addEventListener('dragstart', () => card.classList.add('dragging'));
     card.addEventListener('dragend', () => card.classList.remove('dragging'));
   }
-
   const img = document.createElement('img');
   img.src = cardData.image;
   const name = document.createElement('div');
   name.className = 'card-name';
   name.textContent = cardData.name;
-
   card.appendChild(img);
   card.appendChild(name);
-
   return card;
 }
 
-function setupDropZones() {
-  dropZonesContainer.innerHTML = '';
+// **دالة جديدة لرسم الخط الزمني تحت**
+function redrawTimeline() {
+  dropZonesContainer.innerHTML = ''; // نفضي المكان كل مرة
 
-  for (let i = 0; i <= placedCards.length; i++) {
-    const zone = document.createElement('div');
-    zone.className = 'drop-zone';
-    zone.dataset.index = i;
-
-    zone.addEventListener('dragover', (e) => e.preventDefault());
-
-    zone.addEventListener('drop', () => {
-      handleCardDrop(i);
-    });
-
-    dropZonesContainer.appendChild(zone);
-  }
+  timeline.forEach((item, index) => {
+    if (item === null) {
+      // لو المكان فاضي (null)، ارسم drop-zone
+      const zone = document.createElement('div');
+      zone.className = 'drop-zone';
+      zone.dataset.index = index;
+      zone.addEventListener('dragover', (e) => e.preventDefault());
+      zone.addEventListener('drop', () => handleCardDrop(index));
+      dropZonesContainer.appendChild(zone);
+    } else {
+      // لو المكان فيه كارت، ارسم الكارت
+      const cardEl = createCardElement(item, false); // false عشان ميتسحبش تاني
+      dropZonesContainer.appendChild(cardEl);
+    }
+  });
 }
 
+// دالة لإظهار الكارت التالي القابل للعب
 function showNextCard() {
   if (remainingCards.length === 0 || lives <= 0) {
     endGame();
     return;
   }
-
   activeCardContainer.innerHTML = '';
-  setupDropZones();
-
   activeCard = remainingCards.shift();
   const cardEl = createCardElement(activeCard, true);
   activeCardContainer.appendChild(cardEl);
 }
 
+// **دالة جديدة تماماً للتعامل مع رمي الكارت**
 function handleCardDrop(dropIndex) {
-  const correctIndex = placedCards.findIndex(c => activeCard.year < c.year);
-  const actualIndex = correctIndex === -1 ? placedCards.length : correctIndex;
+  // 1. تحديد الكارت السابق والتالي لمكان الرمي عشان نعرف الترتيب صح ولا غلط
+  let prevCard = null;
+  for (let i = dropIndex - 1; i >= 0; i--) {
+    if (timeline[i] !== null) {
+      prevCard = timeline[i];
+      break;
+    }
+  }
 
-  if (dropIndex === actualIndex) {
+  let nextCard = null;
+  for (let i = dropIndex + 1; i < timeline.length; i++) {
+    if (timeline[i] !== null) {
+      nextCard = timeline[i];
+      break;
+    }
+  }
+
+  // 2. التحقق من صحة الترتيب
+  const isAfterPrev = prevCard ? activeCard.year > prevCard.year : true;
+  const isBeforeNext = nextCard ? activeCard.year < nextCard.year : true;
+
+  if (isAfterPrev && isBeforeNext) {
     score++;
   } else {
     lives--;
   }
+  
+  // 3. ضع الكارت في مكانه في الخط الزمني السفلي
+  timeline[dropIndex] = activeCard;
 
-  placedCards.splice(actualIndex, 0, activeCard);
-  redrawPlacedCards();
+  // 4. ضيف أماكن لعب جديدة على الأطراف
+  if (timeline[0] !== null) {
+      timeline.unshift(null);
+  }
+  if (timeline[timeline.length - 1] !== null) {
+      timeline.push(null);
+  }
+
+  // 5. أعد رسم الخط الزمني بالكامل وأظهر الكارت التالي
+  redrawTimeline();
   updateScore();
   showNextCard();
 }
 
-function redrawPlacedCards() {
-  placedCardsContainer.innerHTML = '';
-  placedCards.forEach(card => {
-    const cardEl = createCardElement(card, false); // ثابت
-    placedCardsContainer.appendChild(cardEl);
-  });
-}
-
+// دالة نهاية اللعبة
 function endGame() {
   document.querySelector('.game-container').style.display = 'none';
   document.getElementById('leaderboard').style.display = 'block';
   document.getElementById('final-score').textContent = score;
-
-  const li = document.createElement('li');
-  li.textContent = `Score: ${score}`;
-  document.getElementById('leaderboard-list').appendChild(li);
+  // (ممكن تضيف هنا كود حفظ النتيجة لو حبيت)
 }
 
+// دالة إعادة تشغيل اللعبة
 function restartGame() {
-  placedCards = [];
-  remainingCards = [...gameCards];
-  score = 0;
-  lives = 5;
-  document.getElementById('leaderboard').style.display = 'none';
-  document.querySelector('.game-container').style.display = 'flex';
-  startGame();
+    // إعادة كل شيء لوضعه الأصلي
+    remainingCards = [...gameCards].sort((a, b) => 0.5 - Math.random());
+    score = 0;
+    lives = 5;
+    document.getElementById('leaderboard').style.display = 'none';
+    document.querySelector('.game-container').style.display = 'flex';
+    startGame();
 }
 
+// دالة بدء اللعبة
 function startGame() {
-  // أول لعب، حط كارتين ثابتين
-  placedCards = remainingCards.splice(0, 2);
-  redrawPlacedCards();
+  // نبدأ الخط الزمني السفلي بأول كارت من الكروت الباقية ومكانين فاضيين حواليه
+  const firstCard = remainingCards.shift();
+  timeline = [null, firstCard, null]; // [مكان فاضي, كارت, مكان فاضي]
+  
+  redrawTimeline();
   updateScore();
   showNextCard();
 }
 
+// ابدأ اللعبة عند تحميل الصفحة
 window.onload = startGame;

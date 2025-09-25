@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Historical Cities Timeline Game</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+        /* --- General Styles --- */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: "Outfit", sans-serif;
+        }
+
+        html, body {
+            overflow-x: hidden !important;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000 50%, #1a1a1a 100%);
+            color: #FFD700;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        header {
+            background: linear-gradient(90deg, #000 0%, #1a1a1a 50%, #000 100%);
+            padding: 12px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        header a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        header a:hover {
+            color: #FFF;
+            text-shadow: 0 0 10px #FFD700;
+        }
+
+        header p {
+            color: #FFD700;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        /* --- Scoreboard --- */
+        .scoreboard {
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            padding: 18px;
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+            color: #000;
+            width: 140px;
+            margin-left: 5%;
+            margin-top: 1%;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* --- Instructions --- */
+        .instructions-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2%;
+        }
+
+        .instructions {
+            background: linear-gradient(145deg, #1a1a1a, #000);
+            padding: 16px;
+            border-radius: 12px;
+            border: 2px solid #FFD700;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .instructions h3 {
+            color: #FFD700;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .instructions p {
+            color: #FFF;
+        }
+
+        /* --- Game Layout --- */
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        /* --- Cards --- */
+        .card-row {
+            display: flex;
+            gap: 15px;
+            margin: 20px;
+            justify-content: center;
+            min-height: 190px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        .card {
+            width: 160px;
+            height: 190px;
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+            color: #000;
+            border-radius: 12px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            text-align: center;
+            padding: 8px;
+            flex-shrink: 0;
+            cursor: grab;
+            transition: all 0.3s ease;
+            
+            /* Prevent unwanted interactions */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            touch-action: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.6);
+            background: linear-gradient(145deg, #FFF, #FFD700);
+        }
+
+        .card.dragging { 
+            opacity: 0.7;
+            transform: rotate(8deg) scale(1.05);
+            cursor: grabbing;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.8);
+        }
+
+        .card.touch-dragging {
+            opacity: 0.5 !important;
+            transform: scale(0.95) rotate(5deg) !important;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #000;
+        }
+
+        .card-info h4 { 
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-shadow: none;
+        }
+
+        .card-info p {
+            font-size: 12px;
+            color: #000;
+            font-weight: 600;
+        }
+
+        .card.placed { 
+            cursor: default;
+            border: 3px solid #32CD32;
+            background: linear-gradient(145deg, #90EE90, #32CD32);
+            animation: placedPulse 0.6s ease-out;
+        }
+
+        @keyframes placedPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- Drop Zones --- */
+        .drop-zone-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: relative;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .drop-row-container {
+            display: flex;
+            justify-content: center;
+            width: calc(100% - 120px);
+            max-width: calc(100vw - 120px);
+            overflow-x: auto;
+            overflow-y: hidden;
+            cursor: grab;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+            border: 2px dashed #FFD700;
+            border-radius: 12px;
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .drop-row-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .drop-row-inner {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: max-content;
+            padding: 0 80px 0 20px; /* مساحة أكبر على اليمين للسكرول */
+            justify-content: flex-start;
+            width: 100%;
+        }
+
+        .drop-zone {
+            width: 60px;
+            height: 190px;
+            border: 3px dashed #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            touch-action: none;
+        }
+
+        .drop-zone::after {
+            content: '+';
+            font-size: 28px;
+            color: #FFD700;
+            opacity: 0.7;
+            font-weight: bold;
+        }
+
+        .drop-zone.active {
+            background: rgba(50, 205, 50, 0.3) !important;
+            border: 3px dashed #32CD32 !important;
+            transform: scale(1.1) !important;
+            box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+        }
+
+        .drop-zone.active::after {
+            color: #32CD32;
+            opacity: 1;
+        }
+
+        /* --- Scroll Buttons --- */
+        .scroll-btn {
+            position: absolute;
+            z-index: 100;
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+            color: #000;
+            border: 2px solid #000;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .scroll-btn:hover {
+            background: linear-gradient(145deg, #FFF, #FFD700);
+            transform: scale(1.2);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .scroll-btn:active {
+            transform: scale(1.1);
+        }
+
+        .scroll-btn-left {
+            left: 15px;
+        }
+
+        .scroll-btn-right {
+            right: 15px;
+        }
+
+        /* --- Drag Clone Styles --- */
+        .drag-clone {
+            border: 3px solid #32CD32 !important;
+            border-radius: 12px !important;
+            box-shadow: 0 15px 40px rgba(50, 205, 50, 0.6) !important;
+            z-index: 9999;
+        }
+
+        /* --- Game Over Screen --- */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9998;
+            display: none;
+            backdrop-filter: blur(8px);
+        }
+
+        .gameoverboard {
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+            color: #000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 350px;
+            text-align: center;
+            border-radius: 20px;
+            border: 3px solid #000;
+            padding: 30px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.8);
+        }
+
+        .gameoverboard h1 { 
+            font-size: 32px; 
+            margin-bottom: 16px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .gameoverboard h2 { 
+            font-size: 22px; 
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .gameoverboard h3 { 
+            font-size: 18px; 
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .gameoverboard button {
+            background: linear-gradient(145deg, #000, #1a1a1a);
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            padding: 15px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .gameoverboard button:hover {
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        /* --- Flash Messages --- */
+        .flash-message {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 25px;
+            border-radius: 10px;
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            text-align: center;
+            max-width: 90vw;
+            border: 2px solid #000;
+        }
+
+        .success-flash {
+            background: linear-gradient(145deg, #32CD32, #90EE90);
+        }
+
+        .error-flash {
+            background: linear-gradient(145deg, #FF6B6B, #FF8E8E);
+        }
+
+        .info-flash {
+            background: linear-gradient(145deg, #FFD700, #FFA500);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .card {
+                width: 140px;
+                height: 170px;
+            }
+            
+            .card img {
+                height: 90px;
+            }
+            
+            .scoreboard {
+                width: 120px;
+                padding: 15px;
+                margin-left: 3%;
+            }
+            
+            .gameoverboard {
+                width: 300px;
+                padding: 25px;
+                margin: 0 20px;
+            }
+            
+            header {
+                padding: 10px 20px;
+            }
+            
+            .drop-row-container {
+                width: calc(100% - 100px);
+            }
+            
+            .scroll-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 130px;
+                height: 160px;
+            }
+            
+            .card img {
+                height: 80px;
+            }
+            
+            .drop-zone {
+                width: 50px;
+                height: 160px;
+            }
+            
+            .scroll-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .gameoverboard {
+                width: 280px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" onclick="location.reload()">Historical Cities Timeline</a>
+        <p>Game Mode</p>
+    </header>
+
+    <div class="scoreboard">
+        <div class="score">Score: 0</div>
+        <div class="lives">Lives: 5</div>
+    </div>
+
+    <div class="instructions-container">
+        <div class="instructions">
+            <h3>How To Play</h3>
+            <p>Arrange the Cities from Oldest to Newest by their founding year</p>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div id="card-zone">
+            <div id="active-card" class="card-row"></div>
+            <div class="drop-zone-wrapper">
+                <div class="drop-row-container">
+                    <div id="drop-zones-inner" class="drop-row-inner"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="overlay"></div>
+
+        <div id="gameoverboard" class="gameoverboard">
+            <h1>Game Over!</h1>
+            <h2 id="final-score" class="smallscore">Score: 0</h2>
+            <h3 id="position" class="position">Try Again</h3>
+            <button onclick="restartGame()">Play Again!</button>
+        </div>
+    </div>
+
+    <script>
+        // Cities data with founding years
+        const citiesData = [
+            { name: "Eridu", year: -5000, img: "https://images.unsplash.com/photo-1539650116574-75c0c6d4d4d0?w=300&h=200&fit=crop" },
+            { name: "Nippur", year: -4800, img: "https://images.unsplash.com/photo-1571841238318-a4a5efa3e9dc?w=300&h=200&fit=crop" },
+            { name: "Chanhu-Daro", year: -4000, img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop" },
+            { name: "Naqada", year: -4000, img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=300&h=200&fit=crop" },
+            { name: "Kalibangan", year: -3500, img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=300&h=200&fit=crop" },
+            { name: "Dholavira", year: -3000, img: "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=300&h=200&fit=crop" },
+            { name: "Kot Diji", year: -2800, img: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop" },
+            { name: "Ashur", year: -2600, img: "https://images.unsplash.com/photo-1571841238318-a4a5efa3e9dc?w=300&h=200&fit=crop" },
+            { name: "Banawali", year: -2600, img: "https://images.unsplash.com/photo-1539650116574-75c0c6d4d4d0?w=300&h=200&fit=crop" },
+            { name: "Lothal", year: -2400, img: "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?w=300&h=200&fit=crop" },
+            { name: "Surkotada", year: -1700, img: "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=300&h=200&fit=crop" },
+            { name: "Nineveh", year: -700, img: "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=300&h=200&fit=crop" }
+        ];
+
+        // Game variables
+        let score = 0;
+        let lives = 5;
+        let availableCities = [];
+        let activeCards = [];
+        let placedCards = [];
+        let totalCities = 0;
+        let dragScrollInterval = null;
+
+        // DOM elements
+        const scoreEl = document.querySelector(".score");
+        const livesEl = document.querySelector(".lives");
+        const activeRow = document.getElementById("active-card");
+        const dropContainer = document.querySelector('.drop-row-container');
+        const dropInner = document.getElementById('drop-zones-inner');
+        const gameOverBoard = document.getElementById("gameoverboard");
+        const overlay = document.getElementById("overlay");
+        const finalScoreEl = document.getElementById("final-score");
+        const positionEl = document.getElementById("position");
+
+        // Touch state for mobile
+        let touchState = {
+            isDragging: false,
+            draggedCard: null,
+            touchStartX: 0,
+            touchStartY: 0,
+            currentDropZone: null,
+            dragClone: null
+        };
+
+        // Helper functions for years
+        function parseYear(yearText) {
+            if (typeof yearText === 'number') return yearText;
+            if (yearText.includes('BCE')) {
+                return -parseInt(yearText.replace('BCE', '').trim());
+            }
+            return parseInt(yearText.replace('CE', '').trim());
+        }
+
+        function formatYear(year) {
+            return year < 0 ? `${Math.abs(year)} BCE` : `${year} CE`;
+        }
+
+        function compareYears(year1, year2) {
+            return year1 - year2;
+        }
+
+        // Create HTML elements
+        function createPlacedCardHTML(name, year, imgSrc) {
+            const displayYear = formatYear(year);
+            return `
+            <div class="card placed">
+                <img src="${imgSrc}" alt="${name}">
+                <div class="card-info">
+                    <h4>${name}</h4>
+                    <p>${displayYear}</p>
+                </div>
+            </div>`;
+        }
+
+        function createDropZone(index) {
+            const zone = document.createElement('div');
+            zone.className = 'drop-zone';
+            zone.dataset.index = index;
+            
+            zone.addEventListener('dragover', e => e.preventDefault());
+            zone.addEventListener('dragenter', () => zone.classList.add('active'));
+            zone.addEventListener('dragleave', (e) => {
+                if (!zone.contains(e.relatedTarget)) {
+                    zone.classList.remove('active');
+                }
+            });
+            zone.addEventListener('drop', function (e) {
+                zone.classList.remove('active');
+                handleDrop.call(this, e);
+            });
+            
+            return zone;
+        }
+
+        // Scroll functionality
+        function createScrollButtons() {
+            const oldLeftBtn = document.querySelector('.scroll-btn-left');
+            const oldRightBtn = document.querySelector('.scroll-btn-right');
+            if (oldLeftBtn) oldLeftBtn.remove();
+            if (oldRightBtn) oldRightBtn.remove();
+
+            const leftBtn = document.createElement('button');
+            leftBtn.className = 'scroll-btn scroll-btn-left';
+            leftBtn.innerHTML = '◀';
+            leftBtn.onclick = () => {
+                // إذا كنا قريبين من البداية، اسكرول للبداية تماماً
+                if (dropContainer.scrollLeft <= 150) {
+                    scrollToStart();
+                } else {
+                    scrollDropZone(-250);
+                }
+            };
+            
+            const rightBtn = document.createElement('button');
+            rightBtn.className = 'scroll-btn scroll-btn-right';
+            rightBtn.innerHTML = '▶';
+            rightBtn.onclick = () => {
+                // إذا كنا قريبين من النهاية، اسكرول للنهاية تماماً
+                if (dropContainer.scrollLeft >= (dropContainer.scrollWidth - dropContainer.clientWidth - 150)) {
+                    scrollToEnd();
+                } else {
+                    scrollDropZone(250);
+                }
+            };
+            
+            const wrapper = document.querySelector('.drop-zone-wrapper');
+            wrapper.appendChild(leftBtn);
+            wrapper.appendChild(rightBtn);
+            
+            updateScrollButtons();
+        }
+
+        function scrollDropZone(amount) {
+            dropContainer.scrollBy({
+                left: amount,
+                behavior: 'smooth'
+            });
+            setTimeout(updateScrollButtons, 300);
+        }
+
+        // دالة للسكرول للبداية (أول drop zone)
+        function scrollToStart() {
+            dropContainer.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+            setTimeout(updateScrollButtons, 300);
+        }
+
+        // دالة للسكرول للنهاية  
+        function scrollToEnd() {
+            dropContainer.scrollTo({
+                left: dropContainer.scrollWidth,
+                behavior: 'smooth'
+            });
+            setTimeout(updateScrollButtons, 300);
+        }
+
+        function updateScrollButtons() {
+            const leftBtn = document.querySelector('.scroll-btn-left');
+            const rightBtn = document.querySelector('.scroll-btn-right');
+            
+            if (!leftBtn || !rightBtn) return;
+            
+            const isAtStart = dropContainer.scrollLeft <= 10; // مساحة أصغر للحساسية
+            const isAtEnd = dropContainer.scrollLeft >= (dropContainer.scrollWidth - dropContainer.clientWidth - 10);
+            
+            // تحديث شكل الأزرار
+            leftBtn.style.opacity = isAtStart ? '0.4' : '1';
+            leftBtn.style.cursor = isAtStart ? 'not-allowed' : 'pointer';
+            
+            rightBtn.style.opacity = isAtEnd ? '0.4' : '1';
+            rightBtn.style.cursor = isAtEnd ? 'not-allowed' : 'pointer';
+            
+            // إظهار/إخفاء الأزرار حسب الحاجة للسكرول
+            const needsScroll = dropContainer.scrollWidth > dropContainer.clientWidth + 20;
+            leftBtn.style.display = needsScroll ? 'flex' : 'none';
+            rightBtn.style.display = needsScroll ? 'flex' : 'none';
+            
+            // تحديث محتوى الأزرار لتوضيح الوظيفة
+            if (isAtStart) {
+                leftBtn.innerHTML = '◀';
+                leftBtn.title = 'At the beginning';
+            } else if (dropContainer.scrollLeft <= 150) {
+                leftBtn.innerHTML = '⏮';
+                leftBtn.title = 'Go to start';
+            } else {
+                leftBtn.innerHTML = '◀';
+                leftBtn.title = 'Scroll left';
+            }
+            
+            if (isAtEnd) {
+                rightBtn.innerHTML = '▶';
+                rightBtn.title = 'At the end';
+            } else if (dropContainer.scrollLeft >= (dropContainer.scrollWidth - dropContainer.clientWidth - 150)) {
+                rightBtn.innerHTML = '⏭';
+                rightBtn.title = 'Go to end';
+            } else {
+                rightBtn.innerHTML = '▶';
+                rightBtn.title = 'Scroll right';
+            }
+        }
+
+        // Touch support
+        function handleTouchStart(e, card) {
+            e.preventDefault();
+            touchState.isDragging = true;
+            touchState.draggedCard = card;
+            touchState.touchStartX = e.touches[0].clientX;
+            touchState.touchStartY = e.touches[0].clientY;
+            
+            createDragClone(card, e.touches[0].clientX, e.touches[0].clientY);
+            card.classList.add('dragging', 'touch-dragging');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function handleTouchMove(e) {
+            if (!touchState.isDragging || !touchState.dragClone) return;
+            e.preventDefault();
+            
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - touchState.touchStartX;
+            const deltaY = touch.clientY - touchState.touchStartY;
+            
+            touchState.dragClone.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+            
+            const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+            const dropZone = elementBelow?.closest('.drop-zone');
+            
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.classList.remove('active');
+            });
+            
+            if (dropZone) {
+                dropZone.classList.add('active');
+                touchState.currentDropZone = dropZone;
+            } else {
+                touchState.currentDropZone = null;
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!touchState.isDragging) return;
+            e.preventDefault();
+            
+            document.body.style.overflow = '';
+            
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.classList.remove('active');
+            });
+            
+            if (touchState.currentDropZone && touchState.draggedCard) {
+                const dropEvent = new Event('drop');
+                Object.defineProperty(dropEvent, 'preventDefault', { value: () => {} });
+                
+                const card = touchState.draggedCard;
+                card.classList.add('dragging');
+                
+                handleDrop.call(touchState.currentDropZone, dropEvent);
+            }
+            
+            cleanupTouch();
+        }
+
+        function createDragClone(card, x, y) {
+            const clone = card.cloneNode(true);
+            clone.className = 'card drag-clone';
+            
+            Object.assign(clone.style, {
+                position: 'fixed',
+                top: card.getBoundingClientRect().top + 'px',
+                left: card.getBoundingClientRect().left + 'px',
+                width: card.offsetWidth + 'px',
+                height: card.offsetHeight + 'px',
+                zIndex: '9999',
+                opacity: '0.8',
+                pointerEvents: 'none',
+                transform: 'rotate(5deg)',
+                transition: 'none'
+            });
+            
+            document.body.appendChild(clone);
+            touchState.dragClone = clone;
+        }
+
+        function cleanupTouch() {
+            if (touchState.dragClone) {
+                document.body.removeChild(touchState.dragClone);
+            }
+            
+            if (touchState.draggedCard) {
+                touchState.draggedCard.classList.remove('dragging', 'touch-dragging');
+            }
+            
+            touchState = {
+                isDragging: false,
+                draggedCard: null,
+                touchStartX: 0,
+                touchStartY: 0,
+                currentDropZone: null,
+                dragClone: null
+            };
+        }
+
+        // Game logic
+        function startGame() {
+            score = 0;
+            lives = 5;
+            totalCities = citiesData.length;
+            availableCities = [...citiesData].sort(() => 0.5 - Math.random());
+            activeCards = [];
+            placedCards = [];
+
+            updateUI();
+            dropInner.innerHTML = "";
+            activeRow.innerHTML = "";
+            gameOverBoard.style.display = "none";
+            overlay.style.display = "none";
+
+            dropInner.appendChild(createDropZone(0));
+            createScrollButtons();
+            initializeScrollFeatures(); // إضافة المؤشرات البصرية
+            refillActiveCards();
+            
+            showFlash(`Welcome! Arrange these ${totalCities} cities by their founding year`, 'info');
+        }
+
+        function updateUI() {
+            scoreEl.textContent = "Score: " + score;
+            livesEl.textContent = "Lives: " + lives;
+        }
+
+        function addActiveCard() {
+            if (availableCities.length === 0 || activeCards.length >= 3) return;
+            
+            const city = availableCities.pop();
+            activeCards.push(city);
+
+            const card = document.createElement("div");
+            card.className = "card";
+            card.draggable = true;
+            card.dataset.year = city.year;
+            card.dataset.name = city.name;
+            
+            card.innerHTML = `
+                <img src="${city.img}" alt="${city.name}">
+                <div class="card-info">
+                    <h4>${city.name}</h4>
+                </div>`;
+
+            // Desktop drag handlers
+            let dragStartHandler = (e) => {
+                card.classList.add("dragging");
+                e.dataTransfer.effectAllowed = "move";
+                e.dataTransfer.setData("text/plain", "");
+            };
+
+            let dragEndHandler = () => {
+                card.classList.remove("dragging");
+            };
+
+            // Touch handlers
+            let touchStartHandler = (e) => handleTouchStart(e, card);
+            let touchMoveHandler = (e) => handleTouchMove(e);
+            let touchEndHandler = (e) => handleTouchEnd(e);
+
+            card.addEventListener("dragstart", dragStartHandler);
+            card.addEventListener("dragend", dragEndHandler);
+            card.addEventListener("touchstart", touchStartHandler, { passive: false });
+            document.addEventListener("touchmove", touchMoveHandler, { passive: false });
+            document.addEventListener("touchend", touchEndHandler, { passive: false });
+
+            card._dragHandlers = { 
+                dragStartHandler, 
+                dragEndHandler, 
+                touchStartHandler, 
+                touchMoveHandler, 
+                touchEndHandler 
+            };
+
+            activeRow.appendChild(card);
+        }
+
+        function refillActiveCards() {
+            while (activeCards.length < 3 && availableCities.length > 0) {
+                addActiveCard();
+            }
+            
+            if (availableCities.length === 0 && activeCards.length === 0 && placedCards.length > 0) {
+                setTimeout(winGame, 500);
+            }
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const dragged = document.querySelector(".dragging");
+            if (!dragged) return;
+
+            const year = parseInt(dragged.dataset.year);
+            const name = dragged.dataset.name;
+            const imgElement = dragged.querySelector('img');
+            const imgSrc = imgElement ? imgElement.src : '';
+            const zoneIndex = parseInt(this.dataset.index);
+
+            if (isNaN(year) || !name) {
+                console.error('Invalid card data:', { year, name });
+                return;
+            }
+
+            if (checkPlacement(year, zoneIndex)) {
+                score++;
+                showFlash('Excellent! +1 Point', 'success');
+            } else {
+                lives--;
+                const correctPosition = findCorrectPosition(year);
+                showFlash(`Wrong! Correct position is ${correctPosition + 1}`, 'error');
+                
+                if (lives <= 0) {
+                    endGame();
+                    return;
+                }
+            }
+
+            updateUI();
+            placeInCorrectSpot(name, year, imgSrc);
+            
+            activeCards = activeCards.filter(c => c.name !== name);
+            if (dragged._dragHandlers) {
+                dragged.removeEventListener("dragstart", dragged._dragHandlers.dragStartHandler);
+                dragged.removeEventListener("dragend", dragged._dragHandlers.dragEndHandler);
+                dragged.removeEventListener("touchstart", dragged._dragHandlers.touchStartHandler);
+                document.removeEventListener("touchmove", dragged._dragHandlers.touchMoveHandler);
+                document.removeEventListener("touchend", dragged._dragHandlers.touchEndHandler);
+            }
+            dragged.remove();
+            
+            refillActiveCards();
+        }
+
+        function checkPlacement(year, index) {
+            const leftCard = placedCards[index - 1] || null;
+            const rightCard = placedCards[index] || null;
+
+            if (leftCard && compareYears(year, leftCard.year) < 0) return false;
+            if (rightCard && compareYears(year, rightCard.year) > 0) return false;
+
+            return true;
+        }
+
+        function findCorrectPosition(year) {
+            for (let i = 0; i <= placedCards.length; i++) {
+                if (checkPlacement(year, i)) {
+                    return i;
+                }
+            }
+            return placedCards.length;
+        }
+
+        function placeInCorrectSpot(name, year, img) {
+            placedCards.push({ name, year, img });
+            placedCards.sort((a, b) => compareYears(a.year, b.year));
+            
+            updateDropZones();
+            setTimeout(() => {
+                scrollToNewCard(year);
+                updateScrollButtons();
+            }, 100);
+        }
+
+        function updateDropZones() {
+            dropInner.innerHTML = "";
+            dropInner.appendChild(createDropZone(0));
+
+            placedCards.forEach((city, i) => {
+                const cardEl = document.createElement("div");
+                cardEl.innerHTML = createPlacedCardHTML(city.name, city.year, city.img);
+                dropInner.appendChild(cardEl.firstElementChild);
+                dropInner.appendChild(createDropZone(i + 1));
+            });
+            
+            setTimeout(updateScrollButtons, 100);
+        }
+
+        function scrollToNewCard(year) {
+            const targetCard = Array.from(dropInner.querySelectorAll(".card.placed"))
+                .find(card => {
+                    const yearText = card.querySelector('p')?.textContent;
+                    if (!yearText) return false;
+                    
+                    const cardYear = parseYear(yearText);
+                    return cardYear === year;
+                });
+
+            if (targetCard) {
+                const containerWidth = dropContainer.offsetWidth;
+                const cardLeft = targetCard.offsetLeft;
+                const cardWidth = targetCard.offsetWidth;
+                const newScroll = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+                
+                dropContainer.scrollTo({ 
+                    left: Math.max(0, newScroll), 
+                    behavior: "smooth" 
+                });
+            }
+        }
+
+        function showFlash(message, type = 'info') {
+            document.querySelectorAll('.flash-message').forEach(flash => {
+                if (document.body.contains(flash)) {
+                    document.body.removeChild(flash);
+                }
+            });
+
+            const flash = document.createElement('div');
+            flash.className = `flash-message ${type}-flash`;
+            flash.textContent = message;
+
+            document.body.appendChild(flash);
+            
+            setTimeout(() => flash.style.opacity = '1', 10);
+            
+            setTimeout(() => {
+                flash.style.opacity = '0';
+                setTimeout(() => {
+                    if (document.body.contains(flash)) {
+                        document.body.removeChild(flash);
+                    }
+                }, 300);
+            }, 2500);
+        }
+
+        function winGame() {
+            overlay.style.display = "block";
+            gameOverBoard.style.display = "flex";
+            finalScoreEl.textContent = `Final Score: ${score}/${totalCities}`;
+            positionEl.textContent = "Congratulations! You completed the timeline!";
+            
+            const gameTitle = gameOverBoard.querySelector('h1');
+            if (gameTitle) {
+                gameTitle.textContent = "Victory!";
+                gameTitle.style.color = "#32CD32";
+            }
+        }
+
+        function endGame() {
+            overlay.style.display = "block";
+            gameOverBoard.style.display = "flex";
+            finalScoreEl.textContent = `Score: ${score}/${totalCities}`;
+            
+            let message = "Try Again!";
+            const percentage = (score / totalCities) * 100;
+            
+            if (percentage >= 80) message = "Amazing work!";
+            else if (percentage >= 60) message = "Well done!";
+            else if (percentage >= 40) message = "Good effort!";
+            else if (percentage >= 20) message = "Keep practicing!";
+            
+            positionEl.textContent = message;
+            
+            const gameTitle = gameOverBoard.querySelector('h1');
+            if (gameTitle) {
+                gameTitle.textContent = "Game Over!";
+                gameTitle.style.color = "#FF6B6B";
+            }
+
+            activeRow.querySelectorAll(".card").forEach(card => {
+                card.draggable = false;
+                card.style.opacity = '0.5';
+                card.style.cursor = 'not-allowed';
+                
+                if (card._dragHandlers) {
+                    card.removeEventListener("touchstart", card._dragHandlers.touchStartHandler);
+                    document.removeEventListener("touchmove", card._dragHandlers.touchMoveHandler);
+                    document.removeEventListener("touchend", card._dragHandlers.touchEndHandler);
+                }
+            });
+        }
+
+        function restartGame() {
+            if (placedCards.length > 0 && lives > 0) {
+                if (!confirm('Are you sure you want to restart? You will lose your current progress.')) {
+                    return;
+                }
+            }
+            
+            if (dragScrollInterval) {
+                clearInterval(dragScrollInterval);
+                dragScrollInterval = null;
+            }
+            
+            startGame();
+        }
+
+        // Initialize game
+        function initializeGame() {
+            startGame();
+        }
+
+        // Start game when page loads
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeGame);
+        } else {
+            initializeGame();
+        }
+
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', () => {
+            if (dragScrollInterval) {
+                clearInterval(dragScrollInterval);
+            }
+            cleanupTouch();
+        });
+
+        // Mouse wheel support with improved scrolling
+        dropContainer.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                e.preventDefault();
+                
+                // سكرول أسرع وأكثر سلاسة
+                const scrollAmount = e.deltaY * 3;
+                dropContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+                
+                setTimeout(updateScrollButtons, 50);
+            }
+        }, { passive: false });
+
+        // إضافة مؤشر بصري للمحتوى المخفي
+        function addScrollIndicators() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .drop-row-container::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 30px;
+                    background: linear-gradient(90deg, rgba(255,215,0,0.3), transparent);
+                    z-index: 50;
+                    pointer-events: none;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                
+                .drop-row-container::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 30px;
+                    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3));
+                    z-index: 50;
+                    pointer-events: none;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+                
+                .drop-row-container.has-left-content::before {
+                    opacity: 1;
+                }
+                
+                .drop-row-container.has-right-content::after {
+                    opacity: 1;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // تحديث مؤشرات المحتوى المخفي
+        function updateScrollIndicators() {
+            const hasLeftContent = dropContainer.scrollLeft > 20;
+            const hasRightContent = dropContainer.scrollLeft < (dropContainer.scrollWidth - dropContainer.clientWidth - 20);
+            
+            dropContainer.classList.toggle('has-left-content', hasLeftContent);
+            dropContainer.classList.toggle('has-right-content', hasRightContent);
+        }
+
+        // Update scroll buttons on scroll with indicators
+        dropContainer.addEventListener('scroll', () => {
+            setTimeout(() => {
+                updateScrollButtons();
+                updateScrollIndicators();
+            }, 50);
+        });
+
+        // Initialize scroll indicators
+        function initializeScrollFeatures() {
+            addScrollIndicators();
+            updateScrollButtons();
+            updateScrollIndicators();
+        }
+    </script>
+</body>
+</html>

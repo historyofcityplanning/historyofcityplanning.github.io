@@ -9,15 +9,12 @@
 
 body {
   background: #000;
-  color: #fff;
+  color: #eeeeee;
 }
 
 header {
   background: #111;
   padding: 12px 40px;
-  display: flex;
-  align-items: center;
-  color: #eee;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
@@ -117,4 +114,8 @@ header a {
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
   text-align: center;
   z-index: 99999;
+}
+
+#placed-cards {
+  display: none; /* اخفي الصف العلوي تماماً */
 }
